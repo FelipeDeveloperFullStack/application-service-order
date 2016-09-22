@@ -1,0 +1,113 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<meta charset="UTF-8"/>
+	<title>Cadastro de Cliente</title>
+	
+</head>
+
+<body>
+
+	<section layout:fragment="header">
+		<br />
+		<ol class="breadcrumb">
+			<li>
+				<a th:href="@{/}">
+					<i class="fa fa-desktop"></i>
+					Dashboard
+				</a>
+			</li>
+			<li class="active">Categoria de despesa</li>
+		</ol>
+	</section>
+
+	<div layout:fragment="content">
+			<div class="box">
+			<form method="post" th:object="${categoriaDespesa}">
+			
+                <div layout:include = "view/mensagens/mensagem"></div>
+			
+				<div class="box-header with-border">
+					<h3 class="box-title">Categoria de despesa</h3>
+				</div>
+				<div class="box-body">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group input-group-sm" th:classappend="${#fields.hasErrors('categoria')} ? has-error">
+								<label for="categoria">Categoria</label> 
+								<input id="categoria" type="text" class="form-control" th:field="*{categoria}" autofocus="autofocus"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-default">Salvar</button>
+				</div>
+			</form>
+		</div>
+
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Lista de Categorias</h3>
+					<div class="box-tools">
+						<div class="input-group input-group-sm" style="width: 200px;">
+							<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar a categoria"/>
+							<div class="input-group-btn">
+								<button class="btn btn-sm btn-default">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th style="width: 30px;">#</th>
+								<th>Categoria</th>
+								<th style="width: 50px;"><i class=""></i></th>
+								<th style="width: 50px;"><i class=""></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="c : ${categoriasDespesas}">
+								<td th:text="${c.id}"></td>
+								<td th:text="${c.categoria}"></td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" 
+									   th:attr="data-codigo=${c.id}, data-categoria=${c.categoria}"
+									   data-toggle="modal" data-target="#editarCategoriaModal">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+								</td>
+								<td style="width: 50px;">
+									<a style="color: black;" data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+										th:attr="data-codigo=${c.id}, data-categoria=${c.categoria}">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="6" th:if="${#lists.isEmpty(categoriasDespesas)}">Nenhum registro encontrado!</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer clearfix">
+					<ul class="pagination pagination-sm no-margin pull-right">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div layout:include = "view/dialog/dialog"></div>
+		  
+		</div>
+</body>
+</html>

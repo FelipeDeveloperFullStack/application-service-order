@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorator="layout">
+
+<th:block layout:fragment="content">
+
+	<div class="error-page">
+		<h2 class="headline text-red">500</h2>
+		<div class="error-content">
+			<h3>
+				<i class="fa fa-warning text-red"></i> Oops! Erro no servidor
+			</h3>
+			<p>
+				Desculpe, algo muito estranho aconteceu e não conseguimos processar
+				a sua requisição, tente novamente ou entre em
+				contato com a equipe de suporte técnico. <a th:href="@{/}">Voltar
+					para a página principal</a>
+			</p>
+		</div>
+	</div>
+
+</th:block>
+</html>

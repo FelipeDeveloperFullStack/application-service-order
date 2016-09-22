@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<meta charset="UTF-8" />
+</head>
+
+<div class="callout callout-success"
+	th:if="${not #strings.isEmpty(mensagem)}">
+	<span th:text="${mensagem}"></span> <i class="fa fa-thumbs-o-up"
+		aria-hidden="true"></i>
+</div>
+
+<div class="callout callout-danger" th:if="${#fields.hasAnyErrors()}">
+	<h4>
+		<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Atenção
+	</h4>
+	<th:block th:each="erro : ${#fields.detailedErrors()}">
+		<span th:text="${erro.message}"></span>
+	</th:block>
+</div>
+
+</html>

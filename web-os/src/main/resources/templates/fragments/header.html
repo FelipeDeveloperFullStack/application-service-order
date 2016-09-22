@@ -1,0 +1,88 @@
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<!-- Logo -->
+<a href="#" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+	<span class="logo-mini"><b> <i class="fa fa-fire"
+			aria-hidden="true"></i>
+	</b> <!-- Colocar alguma coisa aqui --></span> <!-- logo for regular state and mobile devices -->
+	<span class="logo-lg"><b> <!-- Colocar alguma coisa aqui -->
+	</b> <i class="fa fa-fire" aria-hidden="true"></i> </span>
+</a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top">
+	<!-- Sidebar toggle button-->
+	<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+		role="button"> <span class="sr-only">Toggle navigation</span>
+	</a>
+
+	<div class="navbar-custom-menu">
+		<ul class="nav navbar-nav">
+			<li class="dropdown messages-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown"> <i
+					class="fa fa-calendar-o"></i> <span>Mês: Setembro / 2016</span>
+			</a></li>
+			<!-- User Account: style can be found in dropdown.less -->
+			<li class="dropdown user user-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown">
+					<img th:src="@{/dist/img/img_felipe.jpg}" class="user-image"
+						alt="User Image"/> <span class="hidden-xs">Felipe Miguel dos Santos</span>
+			</a>
+				<ul class="dropdown-menu">
+					<!-- User image -->
+					<!-- <li class="user-header"><img
+						th:src="@{/dist/img/img_felipe.jpg}" class="img-circle"
+						alt="User Image" />
+						<p>Felipe Miguel - Desenvolvedor</p></li>
+					Menu Footer
+					<li class="user-footer">
+						<div class="pull-left">
+							<a href="#" class="btn btn-default btn-flat">Minha Conta</a>
+						</div>
+						<div class="pull-right">
+							<a href="/logout" class="btn btn-default btn-flat">Sair</a>
+						</div>
+					</li> -->
+
+					<li class="box box-widget widget-user" style="height: 200px;">
+						<!-- Add the bg color to the header using any of the bg-* classes -->
+						<div class="widget-user-header bg-aqua-active">
+							<h3 class="widget-user-username">Felipe Miguel</h3>
+							<h5 class="widget-user-desc">Desenvolvedor</h5>
+						</div>
+						<div class="widget-user-image">
+							<img class="img-circle" th:src="@{/dist/img/img_felipe.jpg}" alt="User Avatar"/>
+						</div>
+						<div class="box-footer">
+							<div class="row">
+								<div class="col-sm-4 border-right">
+									<div class="description-block">
+										<div class="pull-left">
+											<a href="#" class="btn btn-default btn-flat">Meu perfil</a>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-4 border-right">
+									<div class="description-block">
+										<a th:href="@{/bloqueioPagina}" class="btn btn-default btn-flat">Bloquear tela</a>
+									</div>
+								</div>
+								<div class="col-sm-4">
+									<div class="description-block">
+										<div class="pull-right">
+											<a href="#" class="btn btn-default btn-flat">Sair</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				</li>
+			<!-- Control Sidebar Toggle Button -->
+			<li><a href="#" data-toggle="control-sidebar"><i
+					class="fa fa-gears"></i></a></li>
+		</ul>
+	</div>
+</nav>
