@@ -2,16 +2,19 @@
  <meta charset="UTF-8" />
 <section class="sidebar">
     <!-- sidebar menu: : style can be found in sidebar.less -->
-    <div class="user-panel">
-            <div class="pull-left image">
-              <img th:src="@{/dist/img/img_felipe.jpg}" class="img-circle" alt="User Image"/>
-            </div>
-            <div class="pull-left info">
-              <p>Felipe Miguel</p>
-              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-          </div>
+    
     <ul class="sidebar-menu">
+    	<li class="header">
+    		<div class="user-panel">
+	            <div class="pull-left image">
+	              <img th:src="@{/dist/img/img_felipe.jpg}" class="img-circle" alt="User Image"/>
+	            </div>
+	            <div class="pull-left info">
+	              <p>Felipe Miguel</p>
+	              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+	            </div>
+    		</div>
+    	</li>
         <li class="active treeview">
             <a th:href="@{/}">
                 <i class="fa fa-desktop"></i> <span>Dashboard</span>
