@@ -10,26 +10,75 @@
 
 	<div layout:fragment="content">
 
-		<div class="col-md-12">
-			<div class="box">
-				<div style="position: absolute; height: 100px; top: 50%; left: 25%; margin-top: -20px; margin-left: -50px;">
+		<div class="box">
+			<div class="box-body">
+				<div style="position: relative; width: 100%; height: 100px; top: 50%; left: 25%; margin-top: -20px; margin-left: -50px;">
 					<div class="box-header"></div>
 					<div class="box-body">
-						<a class="btn btn-app"> <span class="badge bg-yellow">3</span>
-							<i class="fa fa-bullhorn"></i> Clientes
-						</a> <a class="btn btn-app"> <span class="badge bg-green">300</span>
-							<i class="fa fa-barcode"></i> Produtos
-						</a> <a class="btn btn-app"> <span class="badge bg-purple">891</span>
-							<i class="fa fa-users"></i> Serviços
-						</a> <a class="btn btn-app"> <span class="badge bg-teal">67</span>
-							<i class="fa fa-inbox"></i> OS
-						</a> <a class="btn btn-app"> <span class="badge bg-aqua">12</span>
-							<i class="fa fa-envelope"></i> Vendas
+						<a class="btn btn-app bg-purple margin"> <span
+							class="badge bg-purple">3</span> <i class="fa fa-users"></i>
+							Clientes
+						</a> <a class="btn btn-app bg-navy margin"> <span
+							class="badge bg-navy">300</span> <i class="fa fa-barcode"></i>
+							Produtos
+						</a> <a class="btn btn-app bg-orange margin"> <span
+							class="badge bg-orange">891</span> <i
+							class="fa fa-pencil-square-o"></i> Serviços
+						</a> <a class="btn btn-app bg-maroon margin"> <span
+							class="badge bg-maroon">67</span> <i class="fa fa-check-square-o"></i>
+							OS
+						</a> <a class="btn btn-app bg-olive margin"> <span
+							class="badge bg-olive">12</span> <i class="fa fa-cart-plus"></i>
+							Vendas
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="box">
+			<div class="box-header with-border">
+				<h3 class="box-title">Ordens de serviço abertas</h3>
+			</div>
+			<div class="box-body">
+				<table class="table table-condensed table-hover">
+					<thead>
+						<tr>
+							<th style="width: 200px;">Nº OS</th>
+							<th style="width: 200px;">Data Inicial</th>
+							<th style="width: 200px;">Data Final</th>
+							<th>Cliente</th>
+							<th style="width: 50px;"><i class=""></i></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>4055</td>
+							<td>23/09/2016</td>
+							<td>25/09/2016</td>
+							<td>FELIPE MIGUEL DOS SANTOS</td>
+							<td></td>
+							<td>
+								<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar"> 
+									<span class="glyphicon glyphicon-new-window"></span>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<!-- <td colspan="6" th:if="${#lists.isEmpty(categoriasDespesas)}">Nenhum registro encontrado!</td> -->
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="box-footer clearfix">
+				<ul class="pagination pagination-sm no-margin pull-right">
+					<li><a href="#">&laquo;</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+			</div>
+		</div>
+		
 	</div>
 </body>
 </html>
