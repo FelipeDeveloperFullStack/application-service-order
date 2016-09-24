@@ -1,0 +1,145 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<meta charset="UTF-8"/>
+	<title>Listagem de Cliente</title>
+	
+</head>
+
+<body>
+
+	<section layout:fragment="header">
+		<br />
+		<ol class="breadcrumb">
+			<li>
+				<a th:href="@{/}">
+					<i class="fa fa-desktop"></i>
+					Dashboard
+				</a>
+			</li>
+			<li class="active">Listagem de clientes</li>
+		</ol>
+	</section>
+
+	<div layout:fragment="content">
+	
+			<div class="row">
+				<div class="col-md-3">
+					<a th:href="@{/cliente/cadastrar_cliente}" class="btn btn-block btn-social btn-instagram">
+		                <i class="glyphicon glyphicon-plus-sign"></i>Adicionar cliente
+		            </a>
+				</div>
+			</div>
+				
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Listagem de clientes</h3>
+					<div class="box-tools">
+						<div class="input-group input-group-sm" style="width: 300px;">
+							<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar a cliente"/>
+							<div class="input-group-btn">
+								<button class="btn btn-sm btn-default">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th style="width: 30px;">#</th>
+								<th>Nome</th>
+								<th style="width: 120px;">CPF/CNPJ</th>
+								<th style="width: 120px;">Telefone</th>
+								<th style="width: 50px;"><i class=""></i></th>
+								<th style="width: 50px;"><i class=""></i></th>
+								<th style="width: 50px;"><i class=""></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Felipe Miguel dos Santos</td>
+								<td>755.626.261-87</td>
+								<td>(62) 99169-4274</td>
+								<td>
+									<a th:href="@{/cliente/visualizar_cliente}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
+										<span class="glyphicon glyphicon-eye-open"></span>
+									</a>
+								</td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+								</td>
+								<td style="width: 50px;">
+									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Adnair Miguel</td>
+								<td>654.012.878-01</td>
+								<td>(62) 99465-0077</td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
+										<span class="glyphicon glyphicon-eye-open"></span>
+									</a>
+								</td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+								</td>
+								<td style="width: 50px;">
+									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>José Roberto Miguel</td>
+								<td>987.045.281-50</td>
+								<td>(62) 98465-4294</td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
+										<span class="glyphicon glyphicon-eye-open"></span>
+									</a>
+								</td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+								</td>
+								<td style="width: 50px;">
+									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+							<tr>
+								<!-- Nenhum registro encontrado -->
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer clearfix">
+					<ul class="pagination pagination-sm no-margin pull-right">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+			</div>
+		  
+		</div>
+</body>
+</html>

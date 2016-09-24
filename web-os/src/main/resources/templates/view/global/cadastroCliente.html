@@ -1,0 +1,277 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="UTF-8" />
+<title>Listagem de Cliente</title>
+
+</head>
+
+<body>
+
+	<section layout:fragment="header">
+		<br />
+		<ol class="breadcrumb">
+			<li><a th:href="@{/cliente}"> <i
+					class="fa fa-pencil-square-o"></i> Listagem de cliente
+			</a></li>
+			<li class="active">Cadastro de cliente</li>
+		</ol>
+	</section>
+
+	<div layout:fragment="content">
+
+		<div class="box box-primary">
+			<div class="box-header with-border">
+				<h3 class="box-title">Novo cliente</h3>
+			</div>
+			<div class="box-body">
+				<div class="nav-tabs-custom">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#tab_1" data-toggle="tab">Dados gerais</a></li>
+						<li><a href="#tab_2" data-toggle="tab">Pessoa Física</a></li>
+						<li><a href="#tab_3" data-toggle="tab">Pessoa Jurídica</a></li>
+						<li><a href="#tab_4" data-toggle="tab">Endereço</a></li>
+						<li><a href="#tab_5" data-toggle="tab">Contato</a></li>
+					</ul>
+				</div>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab_1">
+						<div class="row">
+							<div class="col-md-3">
+								  <label>Tipo Pessoa</label>
+				                  <select class="form-control input_forms">
+				                    <option>Pessoa Física</option>
+				                    <option>Pessoa Jurídica</option>
+				                  </select>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+				                  <label for="nome">Nome</label>
+				                  <input type="text" class="form-control input_forms" id="nome"/>
+				                </div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+				                  <label>Observação</label>
+				                  <textarea class="form-control input_forms" rows="3"></textarea>
+				                </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="tab_2">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="cpf">CPF</label>
+				                  <input type="text" class="form-control input_forms" id="cpf"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="rg">RG</label>
+				                  <input type="text" class="form-control input_forms" id="rg"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								  <label>Ôrgão expedidor</label>
+				                  <select class="form-control input_forms">
+				                    <option>CNH</option>
+				                    <option>SSP</option>
+				                  </select>
+							</div>
+							<div class="col-md-3">
+								  <label>UF Ôrgão expedidor</label>
+				                  <select class="form-control input_forms">
+				                    <option>DF</option>
+				                    <option>GO</option>
+				                  </select>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+				                <label>Data de aniversário</label>
+				                <div class="input-group date input_forms">
+				                  <div class="input-group-addon">
+				                    <i class="fa fa-calendar"></i>
+				                  </div>
+				                  <input type="text" class="form-control pull-right" id="datepicker"/>
+				                </div>
+				              </div>
+							</div>
+							<div class="col-md-3">
+								  <label>Sexo</label>
+				                  <select class="form-control input_forms">
+				                    <option>Masculino</option>
+				                    <option>Feminino</option>
+				                  </select>
+							</div>
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="tab_3">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="cnpj">CNPJ</label>
+				                  <input type="text" class="form-control input_forms" id="cnpj"/>
+				                </div>
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-md-6">
+								<div class="form-group">
+				                  <label for="rs">Razão Social</label>
+				                  <input type="text" class="form-control input_forms" id="rs"/>
+				                </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+				                  <label for="nf">Nome Fantasia</label>
+				                  <input type="text" class="form-control input_forms" id="nf"/>
+				                </div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="st">Inscrição Estadual</label>
+				                  <input type="text" class="form-control input_forms" id="st"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="stst">Inscrição Estadual ST</label>
+				                  <input type="text" class="form-control input_forms" id="stst"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="stmc">Inscrição Municipal</label>
+				                  <input type="text" class="form-control input_forms" id="stmc"/>
+				                </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="tab_4">
+						<div class="row">
+							<div class="col-md-2">
+								<div class="form-group">
+				                  <label for="cep">CEP</label>
+				                  <input type="text" class="form-control input_forms" id="cep" 
+				                  data-toggle="tooltip" data-placement="top" title="Use a tecla 'TAB' para procurar o endereço pelo CEP informado!"/>
+				                </div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+				                  <label for="uf">UF</label>
+				                  <input type="text" class="form-control input_forms" id="uf"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="mc">Município</label>
+				                  <input type="text" class="form-control input_forms" id="mc"/>
+				                </div>
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+				                  <label for="lg">Logradouro</label>
+				                  <input type="text" class="form-control input_forms" id="lg"/>
+				                </div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-2">
+								<div class="form-group">
+				                  <label for="n">Número</label>
+				                  <input type="text" class="form-control input_forms" id="n"/>
+				                </div>
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+				                  <label for="cp">Complemento</label>
+				                  <input type="text" class="form-control input_forms" id="cp"/>
+				                </div>
+							</div>
+							<div class="col-md-5">
+								<div class="form-group">
+				                  <label for="brr">Bairro</label>
+				                  <input type="text" class="form-control input_forms" id="brr"/>
+				                </div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+				                  <label for="pr">Ponto de referencia</label>
+				                  <input type="text" class="form-control input_forms" id="pr"/>
+				                </div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="tab-pane" id="tab_5">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="fonres">Telefone Residencial</label>
+				                  <input type="text" class="form-control input_forms" id="fonres"/>
+				                </div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+				                  <label for="foncel">Telefone Celular</label>
+				                  <input type="text" class="form-control input_forms" id="foncel"/>
+				                </div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+				                  <label for="ramal">Ramal</label>
+				                  <input type="text" class="form-control input_forms" id="ramal"/>
+				                </div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+				                  <label for="email">E-mail</label>
+				                  <input type="text" class="form-control input_forms" id="email"/>
+				                </div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+				                  <label for="site">Site</label>
+				                  <input type="text" class="form-control input_forms" id="site"/>
+				                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-12">
+					<a class="btn btn-app">
+		                <i class="fa fa-save"></i> Salvar
+		            </a>
+				</div>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>
