@@ -8,8 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ApplicationController {
 	
 	@RequestMapping
-	public String cadastro(){
-		return "/dashboard/index";
+	public String abrirLogin(){
+		return "/view/login";
+	}
+	
+	@RequestMapping(value = "/pagina_inicial")
+	public String abrirPagina_inicial(){
+		return "/dashboard/pagina_inicial";
 	}
 	
 	@RequestMapping(value = "/bloqueioPagina")
