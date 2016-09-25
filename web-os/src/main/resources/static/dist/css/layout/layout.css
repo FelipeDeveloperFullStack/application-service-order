@@ -1,6 +1,49 @@
 @CHARSET "UTF-8";
 
 .input_forms {
-	color: #3b8ab9; 
+	color: #3b8ab9;
 	font-weight: bold;
+}
+
+#centralizar_img {
+	position: relative;
+	top: 10%;
+	left: -15%;
+	margin-top: -50px;
+	margin-left: -50px;
+}
+
+#cor_nav01 {
+	background-color: #303040;
+}
+
+#cor_nav02 {
+	background-color: #3c4052;;
+}
+
+.cor_font_nav {
+	color: white;
+}
+
+.cor_atalho_dashboard {
+	background: #373a4b;
+	color: white;
+}
+
+.cor_atalho_dashboard:hover {
+	background: #373a4b;
+	color: #ecf0f5;
+}
+
+.centralizar_botoes {
+	position: relative;
+	top: 50%;
+	left: 25%;
+	margin-top: -20px;
+	margin-left: -50px;
+}
+
+.div_buttons {
+	position: relative;
+	left: 10px;
 }

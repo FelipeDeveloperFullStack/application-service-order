@@ -4,7 +4,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     
     <ul class="sidebar-menu">
-    	<li class="header">
+    	<!-- <li class="header">
     		<div class="user-panel">
 	            <div class="pull-left image">
 	              <img th:src="@{/dist/img/img_felipe.jpg}" class="img-circle" alt="User Image"/>
@@ -14,7 +14,7 @@
 	              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 	            </div>
     		</div>
-    	</li>
+    	</li> -->
         <li class="active treeview">
             <a th:href="@{/pagina_inicial}">
                 <i class="fa fa-desktop"></i> <span>Dashboard</span>
@@ -86,7 +86,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="#"><i class="fa fa-plus-square-o"></i>Nova OS</a></li>
-                <li><a href="#"><i class="fa fa-pencil-square-o"></i>Ordens de Serviço</a></li>
+                <li><a th:href="@{/os}"><i class="fa fa-pencil-square-o"></i>Ordens de Serviço</a></li>
                 <li><a href="#"><i class="fa fa-plus-square-o"></i>Serviços</a></li>
                 <li><a href="#"><i class="fa fa-tag"></i>Status de OS</a></li>
                 <li><a href="#"><i class="fa fa-tags"></i>Prioridade de OS</a></li>
