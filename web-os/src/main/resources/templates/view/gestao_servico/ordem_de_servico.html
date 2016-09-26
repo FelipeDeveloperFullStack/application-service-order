@@ -37,13 +37,9 @@
 		  	 			<a class="btn cor_atalho_dashboard">
 		                	<span class="fa fa-plus"></span> Adicionar Ordem de Serviço
 		                </a>
-		  	 		</div>
-		  	 		<div class="col-md-2" style="position: relative; left: 30px;">
 		  	 			<a class="btn cor_atalho_dashboard">
 		                	<span class="fa fa-print"></span> Imprimir
 		                </a>
-		  	 		</div>
-		  	 		<div class="col-md-2">
 		  	 			<a class="btn cor_atalho_dashboard">
 		                	<span class="fa fa-download"></span> Exportar
 		                </a>
@@ -54,6 +50,63 @@
 		  
 		  <div class="box">
 		  		<div class="box-body">
+		  			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">
+						25/09/2016
+					</h3>
+					<div class="box-tools">
+						<div class="input-group input-group-sm" style="width: 300px;">
+							<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar a Ordem de Serviço"/>
+							<div class="input-group-btn">
+								<button class="btn btn-sm btn-default">
+									<i class="fa fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th style="width: 50px;">#</th>
+								<th>Cliente</th>
+								<th>Data Inicial</th>
+								<th>Data Agendada</th>
+								<th>Status</th>
+								<th>Prioridade</th>
+								<th style="width: 150px;">Responsável</th>
+								<th style="width: 50px;"><i class=""></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>250101</td>
+								<td>FELIPE MIGUEL DOS SANTOS</td>
+								<td>19/08/2016</td>
+								<td>20/08/2016</td>
+								<td>ABERTA</td>
+								<td>URGENTE</td>
+								<td>PEDRO PAULO ALMEIDA</td>
+								<td>
+									<a th:href="@{/os/dados_os}" class="btn btn-link btn-xs" style="color: black;" 
+										data-toggle="tooltip" data-placement="top" title="Editar"> 
+										<span class="fa fa-pencil-square-o"></span>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer clearfix">
+					<ul class="pagination pagination-sm no-margin pull-right">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+			</div>
 		  		</div>
 		  </div>
 	</div>

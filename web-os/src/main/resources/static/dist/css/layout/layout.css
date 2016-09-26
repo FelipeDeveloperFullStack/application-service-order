@@ -47,3 +47,9 @@
 	position: relative;
 	left: 10px;
 }
+
+.sub_titulo{
+	font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif; 
+	font-weight: bold;
+	font-size: 18px;
+}
