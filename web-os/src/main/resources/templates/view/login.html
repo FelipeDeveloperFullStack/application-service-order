@@ -1,67 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Login</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/dist/fonts/font-awesome.css}"/>
-    <link rel="stylesheet" th:href="@{/dist/css/layout/ionicons.min.css}"/>
-    <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}" />
-    <link rel="stylesheet" th:href="@{/plugins/iCheck/square/blue.css}"/>
-    <link rel="stylesheet" th:href="@{/dist/css/layout/layout.css}"/>
-</head>
-<body class="hold-transition login-page" style="background-color: #367fa9;">
-	<div class="login-box">
-		<div class="login-logo">
-			<a><b>
-				WEB
-			</b>OS</a>
-		</div>
-		<!-- /.login-logo -->
-		<div class="login-box-body">
-			<p class="login-box-msg">INSIRA SEUS DADOS PARA ACESSAR O SISTEMA</p>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>LOGIN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        <meta name="description" content="Login do sistema WEBOS"></meta>
+        <meta name="keywords" content="html5, css3, form, switch, animation, :target, pseudo-class"></meta>
+        <meta name="author" content="Felipe Miguel"></meta>
+        <link rel="shortcut icon" href="../favicon.ico"></link>
+        <link rel="stylesheet" type="text/css" th:href="@{/dist/css/layout/demo.css}"></link>
+        <link rel="stylesheet" type="text/css" th:href="@{dist/css/layout/style.css}"></link>
+		<link rel="stylesheet" type="text/css" th:href="@{/dist/css/layout/animate-custom.css}"></link>
+    </head>
+    <body>
+        <div class="container">
+            <div class="codrops-top">
+                <a>
+                    <strong>&raquo; Licença: </strong><span>XOPS-9987-QPOIW-MN54</span>
+                    <strong>| Vencimento: </strong><span style="color: black; font-weight: none;">18 dias</span>
+                </a>
+                <div class="clr"></div>
+            </div>
+            <header>
+                <h1>Web<span>OS</span></h1>
+            </header>
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form autocomplete="off"> 
+                                <h1>Log in</h1> 
+                                <p> 
+                                    <label for="username" class="uname" data-icon="u" > Usuário </label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="Informe aqui seu usuário"/>
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" data-icon="p"> Senha </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="Informe aqui sua senha" /> 
+                                </p>
+                                <!-- <p class="keeplogin"> 
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+									<label for="loginkeeping">Keep me logged in</label>
+								</p> -->
+                                <p class="login button"> 
+                                    <a th:href="@{/pagina_inicial}" type="submit">Acessar</a > 
+								</p>
+                                <p class="change_link">
+									Esqueceu a senha?
+									<a href="#toregister" class="to_register">Clique aqui</a>
+								</p>
+                            </form>
+                        </div>
 
-			<form method="post">
-				<div class="form-group has-feedback">
-					<div class="input-group">
-		                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-		                <input type="text" class="form-control" placeholder="Usuário"/>
-	                </div>
-				</div>
-				<div class="form-group has-feedback">
-						<div class="input-group">
-			                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-			                <input type="password" class="form-control" placeholder="Senha"/>
-		                </div>
-				</div>
-				<div class="row">
-					<div class="col-xs-8">
-					</div>
-					<div class="col-xs-4">
-						<a th:href="@{/pagina_inicial}" type="submit" class="btn btn-primary btn-block">Acessar</a>
-					</div>
-				</div>
-			</form>
-
-			 <br></br>
-			 <a href="#" style="text-align: center;" class="text-center">Esqueceu a senha?</a>
-
-		</div>
-	</div>
-<script th:src="@{/plugins/jQuery/jQuery-2.2.0.min.js}"></script>
-<script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
-<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' // optional
-    });
-  });
-</script>
-</body>
+                        <div id="register" class="animate form">
+                            <form autocomplete="off"> 
+                                <h1>Recuperar senha</h1> 
+                                <p> 
+                                    <label for="emailsignup" class="youmail" data-icon="e" >Seu E-mail</label>
+                                    <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="Informe um e-mail válido"/> 
+                                </p>
+                                <p class="signin button"> 
+									<input type="submit" value="Enviar"/> 
+								</p>
+                                <p class="change_link">  
+									<a href="#tologin" class="to_register">Voltar</a>
+								</p>
+                            </form>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>
+             <div class="codrops-top">
+                <a>
+                Copyright &copy; 2016 - 2016 Todos os direitos reservados
+                </a>
+                <div class="clr"></div>
+            </div>
+        </div>
+    </body>
 </html>
