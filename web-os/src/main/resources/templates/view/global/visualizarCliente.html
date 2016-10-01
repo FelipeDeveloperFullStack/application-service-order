@@ -25,128 +25,162 @@
 
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="#tab_1" data-toggle="tab">Dados
-						do cliente</a></li>
+				<li class="active">
+					<a href="#tab_1" data-toggle="tab">Dados do cliente</a>
+				</li>
 				<li><a href="#tab_2" data-toggle="tab">Ordens de serviço</a></li>
+				<li><a href="#tab_3" data-toggle="tab">Financeiro</a></li>
 				<li class="pull-right">
 					<a href="#" class="text-muted" style="color: black;"></a>
 				</li>
 			</ul>
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab_1">
-					<div class="box-group" id="dados">
-						<div class="panel box box-primary">
-							<div class="box-header with-border">
-								<h4 class="box-title">
-									<a data-toggle="collapse" data-parent="#dados"
-										href="#collapse1"><i class="fa fa-list"></i> Dados
-										pessoais </a>
-								</h4>
-							</div>
-							<div id="collapse1" class="panel-collapse collapse in">
-								<div class="box-body">
-									<table class="table table-condensed table-hover">
-										<thead>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="width: 150px; font-weight: bold;">Nome</td>
-												<td>Felipe Miguel dos Santos</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Documento</td>
-												<td>755.626.215-78</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Data de cadatro</td>
-												<td>24/09/2016</td>
-											</tr>
-										</tbody>
-									</table>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="box">
+								<div class="box-header with-border">
+									<i class="fa fa-star" aria-hidden="true"> Perfil</i>
+								</div>
+								<div>
+									<div class="box-body table-condensed">
+						              <table class="table table-hover">
+						                <tr>
+						                  <td><i class="fa fa-user" aria-hidden="true"></i><strong> Nome</strong></td>
+						                  <td>Felipe Miguel dos Santos</td>
+						                </tr>
+						                <tr>
+						                  <td><i class="fa fa-file-text-o" aria-hidden="true"></i><strong> CPF/CNPJ</strong></td>
+						                  <td>755.987.012-48</td>
+						                </tr>
+						                <tr>
+						                  <td><i class="fa fa-file-text" aria-hidden="true"></i><strong> RG</strong></td>
+						                  <td>5986987</td>
+						                </tr>
+						                <tr>
+						                  <td><i class="fa fa-calendar" aria-hidden="true"></i><strong> Data de Nascimento</strong></td>
+						                  <td>17/02/1995</td>
+						                </tr>
+						              </table>
+						            </div>
 								</div>
 							</div>
 						</div>
-
-						<!-- 2 -->
-						<div class="panel box box-primary">
-							<div class="box-header with-border">
-								<h4 class="box-title">
-									<a data-toggle="collapse" data-parent="#dados" href="#collapse2"><i
-										class="fa fa-list"></i> Contatos </a>
-								</h4>
-							</div>
-							<div id="collapse2" class="panel-collapse collapse in">
-								<div class="box-body">
-									<table class="table table-condensed table-hover">
-										<thead>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="width: 150px; font-weight: bold;">Fone
-													Residencial</td>
-												<td>(62) 3564-4400</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Fone Celular</td>
-												<td>(62) 99166-4455</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">E-mail</td>
-												<td>felipeanalista3@gmail.com</td>
-											</tr>
-										</tbody>
-									</table>
+						<div class="col-md-6">
+							<div class="box">
+								<div class="box-header with-border">
+									<i class="fa fa-info-circle" aria-hidden="true"> Outras Informações</i> 
+								</div>
+								<div>
+									<div class="box-body table-condensed">
+						              <table class="table table-hover">
+						                <tr>
+						                  <th> Endereço</th>
+						                  <th></th>
+						                </tr>
+						                <tr>
+						                  <td>Rua EF 25, Nº 588, CENTRO</td>
+						                  <td>Rua EF 25, Nº 588, CENTRO</td>
+						                </tr>
+						              </table>
+						              <table class="table table-hover">
+						                <tr>
+						                  <th> Endereço de cobrança</th>
+						                  <th></th>
+						                </tr>
+						                <tr>
+						                  <td>Endereço não preenchido</td>
+						                </tr>
+						              </table>
+						            </div>
 								</div>
 							</div>
 						</div>
-
-						<!-- 3 -->
-						<div class="panel box box-primary">
-							<div class="box-header with-border">
-								<h4 class="box-title">
-									<a data-toggle="collapse" data-parent="#dados" href="#collapse3"><i
-										class="fa fa-list"></i> Endereço </a>
-								</h4>
-							</div>
-							<div id="collapse3" class="panel-collapse collapse">
-								<div class="box-body">
-									<table class="table table-condensed table-hover">
-										<thead>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="width: 150px; font-weight: bold;">Rua</td>
-												<td>EF 01 QD 20 LT 50</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Número</td>
-												<td>S/N</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Bairro</td>
-												<td>Residencial Village Santa Rita III</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Cidade</td>
-												<td>Cidade</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">CEP</td>
-												<td>74395-645</td>
-											</tr>
-										</tbody>
-									</table>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="box">
+								<div class="box-header with-border">
+									<i class="fa fa-star" aria-hidden="true"> Contatos</i> 
+								</div>
+								<div>
+									<div class="box-body table-condensed">
+						              <table class="table table-hover">
+						              	<tr>
+						              		<th>
+							              		<i class="fa fa-mobile" aria-hidden="true"></i><strong> Telefone Celular</strong>
+						              		</th>
+						              		<th><i class="fa fa-envelope" aria-hidden="true"></i><strong> E-mail</strong></th>
+							              	<th><i class="fa fa-phone-square" aria-hidden="true"></i><strong> Telefone Residencial</strong></th>
+							             </tr>
+						                <tr>
+						                  <td>(62) 9169-4559</td>
+						                  <td>felipeanalista3@gmail.com</td>
+						                  <td>(62) 3585-4599</td>
+						                </tr>
+						              </table>
+						            </div>
 								</div>
 							</div>
 						</div>
-
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3">
+							<div class="info-box cor_atalho_dashboard">
+								 <span class="info-box-icon"><i class="fa fa-desktop" aria-hidden="true"></i></span>
+							     <div class="info-box-content">
+									 <span class="info-box-text">Equipamentos</span>
+								     <span class="info-box-number">5</span>
+									 <div class="progress">
+									     <div class="progress-bar" style="width: 100%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="info-box cor_atalho_dashboard">
+								 <span class="info-box-icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
+							     <div class="info-box-content">
+									 <span class="info-box-text">OS</span>
+								     <span class="info-box-number">5</span>
+									 <div class="progress">
+									     <div class="progress-bar" style="width: 100%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="info-box cor_atalho_dashboard">
+								 <span class="info-box-icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>
+							     <div class="info-box-content">
+									 <span class="info-box-text">Vendas</span>
+								     <span class="info-box-number">25</span>
+									 <div class="progress">
+									     <div class="progress-bar" style="width: 100%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="info-box cor_atalho_dashboard">
+								 <span class="info-box-icon"><i class="fa fa-money" aria-hidden="true"></i></span>
+							     <div class="info-box-content">
+									 <span class="info-box-text">Lançamentos</span>
+								     <span class="info-box-number">25</span>
+									 <div class="progress">
+									     <div class="progress-bar" style="width: 100%"></div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 				
 				<!-- TAB OS -->
 				<div class="tab-pane" id="tab_2">
 					<div class="box-group" id="os">
-						<div class="panel box box-primary">
+						<div class="panel box">
 							<div class="box-header with-border">
 								<h4 class="box-title">
 									<a data-toggle="collapse" data-parent="#os" href="#collapse4">Ordem de Serviço de nº 350</a>
@@ -154,7 +188,7 @@
 							</div>
 							<div id="collapse4" class="panel-collapse collapse in">
 								<div class="box-body">
-									<table class="table table-condensed table-hover">
+									<table class="table table-condensed">
 										<thead>
 										</thead>
 										<tbody>
@@ -205,7 +239,7 @@
 						</div>
 						
 						<!-- 4 -->
-						<div class="panel box box-primary">
+						<div class="panel box">
 							<div class="box-header with-border">
 								<h4 class="box-title">
 									<a data-toggle="collapse" data-parent="#os" href="#collapse5">Ordem de Serviço de nº 351</a>
@@ -265,6 +299,130 @@
 						
 						
 					</div>
+				</div>
+				
+				<!-- TAB 3 -->
+				<div class="tab-pane" id="tab_3">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="small-box bg-aqua">
+					            <div class="inner">
+					              <p>Total de Receitas</p>
+					              <h3>R$: 150,98</h3>
+					            </div>
+					            <div class="icon">
+					              <i class="fa fa-arrow-up"></i>
+					            </div>
+					            <a href="#" class="small-box-footer"></a>
+					          </div>
+						</div>
+						<div class="col-md-6">
+							<div class="small-box bg-red">
+					            <div class="inner">
+					              <p>Total de Despesas</p>
+					              <h3>R$: 58,00</h3>
+					            </div>
+					            <div class="icon">
+					              <i class="fa fa-arrow-down"></i>
+					            </div>
+					            <a href="#" class="small-box-footer"></a>
+					          </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="small-box cor_atalho_dashboard">
+					            <div class="inner">
+					              <p>Total de Lançamentos</p>
+					              <h3>15</h3>
+					            </div>
+					            <div class="icon">
+					              <i class="fa fa-bookmark-o"></i>
+					            </div>
+					            <a href="#" class="small-box-footer"></a>
+					          </div>
+						</div>
+						<div class="col-md-6">
+							<div class="small-box bg-yellow">
+					            <div class="inner">
+					              <p>Total Pendente</p>
+					              <h3>R$: 320,50</h3>
+					            </div>
+					            <div class="icon">
+					              <i class="fa fa-retweet"></i>
+					            </div>
+					            <a href="#" class="small-box-footer"></a>
+					          </div>
+						</div>
+					</div>
+					
+					<div class="row">
+					  <div class="col-md-12">
+						<div class="box">
+							<div class="box-header with-border">
+								<h3 class="box-title"></h3>
+								<div class="box-tools">
+									<div class="input-group input-group-sm" style="width: 300px;">
+										<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar a categoria"/>
+										<div class="input-group-btn">
+											<button class="btn btn-sm btn-default">
+												<i class="fa fa-search"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="box-body">
+								<table class="table table-condensed table-hover">
+									<thead>
+										<tr>
+											<th style="width: 30px;">Tipo</th>
+											<th>Parcela</th>
+											<th>Descrição</th>
+											<th>Valor</th>
+											<th>Vencimento</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="label label-primary">Receita</span></td>
+											<td>1 de 1</td>
+											<td>Venda</td>
+											<td>R$: 235,00</td>
+											<td>12/09/2016</td>
+											<td><span class="label label-success">Pago</span></td>
+										</tr>
+										<tr>
+											<td><span class="label label-danger">Despesa</span></td>
+											<td>1 de 1</td>
+											<td>Cliente não pagou pelo serviço</td>
+											<td>R$: 15,58</td>
+											<td>12/09/2016</td>
+											<td><span class="label label-success">Pago</span></td>
+										</tr>
+										<tr>
+											<td><span class="label label-primary">Receita</span></td>
+											<td>1 de 1</td>
+											<td>Cliente não pagou pelo serviço</td>
+											<td>R$: 405,00</td>
+											<td>12/09/2016</td>
+											<td><span class="label label-warning">Pendente</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="box-footer clearfix">
+								<ul class="pagination pagination-sm no-margin pull-right">
+									<li><a href="#">&laquo;</a></li>
+									<li><a href="#">1</a></li>
+									<li><a href="#">&raquo;</a></li>
+								</ul>
+							</div>
+						</div>
+					  </div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
