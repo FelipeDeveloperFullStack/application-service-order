@@ -51,55 +51,55 @@
   //Layout options
   demo_settings.append(
       "<h4 class='control-sidebar-heading'>"
-      + "Layout Options"
+      + "Ferramentas do layout"
       + "</h4>"
         //Fixed layout
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
       + "<input type='checkbox' data-layout='fixed' class='pull-right'/> "
-      + "Fixed layout"
+      + "Layout Fixo"
       + "</label>"
-      + "<p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>"
+      + "<p>Ativar o layout fixo</p>"
       + "</div>"
-        //Boxed layout
+       /* //Boxed layout
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
       + "<input type='checkbox' data-layout='layout-boxed'class='pull-right'/> "
       + "Boxed Layout"
       + "</label>"
       + "<p>Activate the boxed layout</p>"
-      + "</div>"
+      + "</div>"*/
         //Sidebar Toggle
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
       + "<input type='checkbox' data-layout='sidebar-collapse' class='pull-right'/> "
-      + "Toggle Sidebar"
+      + "Alternar Sidebar"
       + "</label>"
-      + "<p>Toggle the left sidebar's state (open or collapse)</p>"
+      + "<p>Alternar Sidebar (aberto ou colapso)</p>"
       + "</div>"
-        //Sidebar mini expand on hover toggle
+      /*  //Sidebar mini expand on hover toggle
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
       + "<input type='checkbox' data-enable='expandOnHover' class='pull-right'/> "
       + "Sidebar Expand on Hover"
       + "</label>"
       + "<p>Let the sidebar mini expand on hover</p>"
-      + "</div>"
+      + "</div>"*/
         //Control Sidebar Toggle
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
       + "<input type='checkbox' data-controlsidebar='control-sidebar-open' class='pull-right'/> "
-      + "Toggle Right Sidebar Slide"
+      + "Alternar barra lateral direita corrediça"
       + "</label>"
-      + "<p>Toggle between slide over content and push content effects</p>"
+      + "<p>Alternar entre slides sobre o conteúdo e empurre efeitos de conteúdo</p>"
       + "</div>"
         //Control Sidebar Skin Toggle
       + "<div class='form-group'>"
       + "<label class='control-sidebar-subheading'>"
-      + "<input type='checkbox' data-sidebarskin='toggle' class='pull-right'/> "
-      + "Toggle Right Sidebar Skin"
+      + "<input type='checkbox' data-sidebarskin='toggle' class='pull-right'/>"
+      + "Alterar a cor da barra lateral direita"
       + "</label>"
-      + "<p>Toggle between dark and light skins for the right sidebar</p>"
+      + "<p>Alternar entre cor escura ou clara para a barra lateral direita</p>"
       + "</div>"
   );
   var skins_list = $("<ul />", {"class": 'list-unstyled clearfix'});
@@ -312,7 +312,7 @@
         sidebar.addClass("control-sidebar-light")
       } else {
         sidebar.removeClass("control-sidebar-light")
-        sidebar.addClass("control-sidebar-dark")
+         sidebar.addClass("control-sidebar-dark");
       }
     });
 
