@@ -271,6 +271,7 @@
 <!-- jQuery 2.2.0 -->
 <script th:src="@{/plugins/jQuery/jQuery-2.2.0.min.js}"></script>
 <script th:src="@{/dist/js/pages/jquery-ui.min.js}"></script>
+<script th:src="@{/plugins/jQuery/jquery.mask.js}"></script>
 <!-- jQuery UI 1.11.4 -->
 <!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -300,10 +301,6 @@
 <script>
 	$(function (){
 		
-		 $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-		 
-		 $("[data-mask]").inputmask();
-		 
 		 $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
 		      checkboxClass: 'icheckbox_minimal-blue',
 		      radioClass: 'iradio_minimal-blue'
