@@ -14,19 +14,19 @@
     <!-- Ionicons -->
    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" /> -->
      <link rel="stylesheet" th:href="@{/fonts/ionicons.min.css}"/>
+    <!-- Date Picker -->
+    <link rel="stylesheet" th:href="@{/plugins/datepicker/datepicker3.css}"/>
+    <!-- iCheck -->
+    <link rel="stylesheet" th:href="@{/plugins/iCheck/all.css}" />
     <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" th:href="@{/dist/css/skins/_all-skins.min.css}"/>
-    <!-- iCheck -->
-    <link rel="stylesheet" th:href="@{/plugins/iCheck/flat/blue.css}" />
     <!-- Morris chart -->
     <link rel="stylesheet" th:href="@{/plugins/morris/morris.css}"/>
     <!-- jvectormap -->
     <link rel="stylesheet" th:href="@{/plugins/jvectormap/jquery-jvectormap-1.2.2.css}"/>
-    <!-- Date Picker -->
-    <link rel="stylesheet" th:href="@{/plugins/datepicker/datepicker3.css}"/>
     <!-- Daterange picker -->
     <link rel="stylesheet" th:href="@{/plugins/daterangepicker/daterangepicker-bs3.css}"/>
     <!-- bootstrap wysihtml5 - text editor -->
@@ -291,10 +291,34 @@
 <script th:src="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
 <script th:src="@{/plugins/slimScroll/jquery.slimscroll.min.js}"></script>
 <script th:src="@{/plugins/fastclick/fastclick.js}"></script>
+<script th:src="@{/plugins/iCheck/icheck.min.js}"></script>
 <script th:src="@{/dist/js/app.min.js}"></script>
 <script th:src="@{/dist/js/pages/dashboard.js}"></script>
 <script th:src="@{/dist/js/demo.js}"></script>
 <script th:src="@{/dist/js/scripts/categoria.js}"></script>
 <script th:src="@{/dist/js/pages/table_search.js}"></script>
+<script>
+	$(function (){
+		
+		 $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+		 
+		 $("[data-mask]").inputmask();
+		 
+		 $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+		      checkboxClass: 'icheckbox_minimal-blue',
+		      radioClass: 'iradio_minimal-blue'
+		 });
+		 
+		 $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+		      checkboxClass: 'icheckbox_minimal-red',
+		      radioClass: 'iradio_minimal-red'
+		 });
+		 
+		 $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+		     checkboxClass: 'icheckbox_flat-green',
+		     radioClass: 'iradio_flat-green'
+		 });
+	});
+</script>
 </body>
 </html>
