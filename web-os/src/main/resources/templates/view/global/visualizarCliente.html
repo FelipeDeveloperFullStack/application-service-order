@@ -179,125 +179,58 @@
 				
 				<!-- TAB OS -->
 				<div class="tab-pane" id="tab_2">
-					<div class="box-group" id="os">
-						<div class="panel box">
-							<div class="box-header with-border">
-								<h4 class="box-title">
-									<a data-toggle="collapse" data-parent="#os" href="#collapse4">Ordem de Serviço de nº 350</a>
-								</h4>
-							</div>
-							<div id="collapse4" class="panel-collapse collapse in">
-								<div class="box-body">
-									<table class="table table-condensed">
-										<thead>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="width: 150px; font-weight: bold;">Data Inicial</td>
-												<td>19/09/2016</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Data Final</td>
-												<td>27/09/2016</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Descrição</td>
-												<td>
-													5s4s40d0d4s5 5s4as40 asd6540a a65s4d0a6s54 asd405
-													456540a65s4d6540 65a4s0d654as0 654as0d654as065 4
-													646540a6s54d 06as54d0 6a5s4d0 6a5s4d065as406d54as 0
-													565a4sd06 5a4s0d65 4as06d54 as06d54 a0s65d4 0a6s5 
-													6a5s4d0 6a5s4d0 6as40 d65as406 d54as06d5 4as06d 540as
-													6as54d 06a5s4d 06a5s4 06as54 d6a5s4d 65as40540540540
-												</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Defeito</td>
-												<td>
-													654a0s65d40as654d0 a6540 6as54d06 as54d0 6as54d0 6as54
-													65as4d06a5s4 6a5s40d 6a5s40d 6a5s4d 06as54d 06as54d 0a6s0
-													as65d4as06 54da0s6 54d0as65 4da0s65d05d4 a06s5 0500540540
-												</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;"></td>
-												<td>
-													<div class="row">
-														<a class="btn btn-app">
-												           <i class="fa fa-eye"></i> Visualizar
-												        </a>
-													    <a class="btn btn-app">
-												           <i class="fa fa-edit"></i> Editar
-												        </a>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
+					<div class="box">
+						<div class="box-header with-border">
+							<h3 class="box-title">Ordem de Serviços <span class="texto_negrito">Abertas</span> ou <span class="texto_negrito">Em andamento</span></h3>
+							<div class="box-tools">
+								<div class="input-group input-group-sm" style="width: 200px;">
+									<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar ordem de serviço"/>
+									<div class="input-group-btn">
+										<button class="btn btn-sm btn-default">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-						
-						<!-- 4 -->
-						<div class="panel box">
-							<div class="box-header with-border">
-								<h4 class="box-title">
-									<a data-toggle="collapse" data-parent="#os" href="#collapse5">Ordem de Serviço de nº 351</a>
-								</h4>
-							</div>
-							<div id="collapse5" class="panel-collapse collapse">
-								<div class="box-body">
-									<table class="table table-condensed table-hover">
-										<thead>
-										</thead>
-										<tbody>
-											<tr>
-												<td style="width: 150px; font-weight: bold;">Data Inicial</td>
-												<td>19/09/2016</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Data Final</td>
-												<td>27/09/2016</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Descrição</td>
-												<td>
-													5s4s40d0d4s5 5s4as40 asd6540a a65s4d0a6s54 asd405
-													456540a65s4d6540 65a4s0d654as0 654as0d654as065 4
-													646540a6s54d 06as54d0 6a5s4d0 6a5s4d065as406d54as 0
-													565a4sd06 5a4s0d65 4as06d54 as06d54 a0s65d4 0a6s5 
-													6a5s4d0 6a5s4d0 6as40 d65as406 d54as06d5 4as06d 540as
-													6as54d 06a5s4d 06a5s4 06as54 d6a5s4d 65as40540540540
-												</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;">Defeito</td>
-												<td>
-													654a0s65d40as654d0 a6540 6as54d06 as54d0 6as54d0 6as54
-													65as4d06a5s4 6a5s40d 6a5s40d 6a5s4d 06as54d 06as54d 0a6s0
-													as65d4as06 54da0s6 54d0as65 4da0s65d05d4 a06s5 0500540540
-												</td>
-											</tr>
-											<tr>
-												<td style="font-weight: bold;"></td>
-												<td>
-													<div class="row">
-														<a class="btn btn-app">
-												           <i class="fa fa-eye"></i> Visualizar
-												        </a>
-													    <a class="btn btn-app">
-												           <i class="fa fa-edit"></i> Editar
-												        </a>
-													</div>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
+						<div class="box-body">
+							<table class="table table-condensed table-hover">
+								<thead>
+									<tr>
+										<th style="width: 50px;">#</th>
+										<th>Data Inicial</th>
+										<th>Data Final</th>
+										<th>Status</th>
+										<th>Prioridade</th>
+										<th>Responsável</th>
+										<th style="width: 50px;"><i class=""></i></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1045</td>
+										<td>01/10/2016</td>
+										<td>09/10/2016</td>
+										<td>Em andamento</td>
+										<td><span class="label label-danger">Urgente</span></td>
+										<td>FELIPE MIGUEL</td>
+										<td>
+											<a class="btn btn-link btn-xs" style="color: black;"
+												data-toggle="tooltip" data-placement="top" title="Visualizar"> 
+												<span class="glyphicon glyphicon-eye-open"></span>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
-						
-						
+						<div class="box-footer clearfix">
+							<ul class="pagination pagination-sm no-margin pull-right">
+								<li><a href="#">&laquo;</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">&raquo;</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				

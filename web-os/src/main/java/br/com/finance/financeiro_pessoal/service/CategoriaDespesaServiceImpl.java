@@ -48,9 +48,5 @@ public class CategoriaDespesaServiceImpl implements CategoriaDespesaService {
 		return categoriaDespesaRepository.findOne(id);
 	}
 
-	@Override
-	public List<CategoriaDespesa> findByCategoriaDespesa(String categoria) {
-		return categoriaDespesaRepository.findByCategoriaDespesa(categoria);
-	}
 
 }

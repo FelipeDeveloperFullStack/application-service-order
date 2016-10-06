@@ -12,6 +12,4 @@ public interface GenericService<T> {
 
 	void excluir(Long codigo);
 
-	List<T> findByCategoriaDespesa(String categoria);
-
 }
