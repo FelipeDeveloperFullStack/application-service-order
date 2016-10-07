@@ -48,9 +48,9 @@
 						
 							<div class="col-md-3">
 								  <label>Tipo Pessoa</label>
-				                  <select class="form-control input_forms input-sm">
-				                    <option>PESSOA FÍSICA</option>
-				                    <option>PESSOA JURÍDICA</option>
+				                  <select class="form-control input_forms input-sm" th:field="*{tipoPessoa}">
+				                    <option value="" th:text="'PESSOA FÍSICA'"></option>
+				                    <option value="" th:text="'PESSOA JURÍDICA'"></option>
 				                  </select>
 							</div>
 							<div class="col-md-6">
@@ -84,16 +84,18 @@
 							</div>
 							<div class="col-md-3">
 								  <label>Ôrgão expedidor</label>
-				                  <select class="form-control input_forms input-sm">
-				                    <option>CNH</option>
-				                    <option>SSP</option>
+				                  <select class="form-control input_forms input-sm" th:field="*{orgaoExpedidor}">
+				                    <option value="" th:text="'CNH'"></option>
+				                    <option value="" th:text="'SSP'"></option>
 				                  </select>
 							</div>
 							<div class="col-md-3">
 								  <label>UF Ôrgão expedidor</label>
-				                  <select class="form-control input_forms input-sm">
-				                    <option>DF</option>
-				                    <option>GO</option>
+				                  <select class="form-control input_forms input-sm" th:field="*{uf}">
+				                    <option value="" th:text="'GO'"></option>
+				                    <option value="" th:text="'DF'"></option>
+				                    <option value="" th:text="'SP'"></option>
+				                    <option value="" th:text="'MT'"></option>
 				                  </select>
 							</div>
 						</div>
@@ -112,9 +114,9 @@
 							</div>
 							<div class="col-md-3">
 								  <label>Sexo</label>
-				                  <select class="form-control input_forms input-sm">
-				                    <option>MASCULINO</option>
-				                    <option>FEMININO</option>
+				                  <select class="form-control input_forms input-sm" th:field="*{sexo}">
+				                    <option th:text="'MASCULINO'" value=""></option>
+				                    <option th:text="'FEMININO'" value=""></option>
 				                  </select>
 							</div>
 						</div>
