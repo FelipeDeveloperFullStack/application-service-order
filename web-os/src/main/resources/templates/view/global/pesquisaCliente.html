@@ -54,21 +54,23 @@
 							<tr>
 								<th style="width: 30px;">#</th>
 								<th>Nome/Nome Fantasia</th>
-								<th style="width: 120px;">CPF/CNPJ</th>
-								<th style="width: 170px;">E-mail</th>
+								<th style="width: 150px;">CPF/CNPJ</th>
+								<th style="width: 250px;">Logradouro</th>
+								<th>Município</th>
 								<th style="width: 120px;">Telefone</th>
-								<th style="width: 50px;"><i class=""></i></th>
-								<th style="width: 50px;"><i class=""></i></th>
-								<th style="width: 50px;"><i class=""></i></th>
+								<th style="width: 5px;"><i class=""></i></th>
+								<th style="width: 5px;"><i class=""></i></th>
+								<th style="width: 5px;"><i class=""></i></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Felipe Miguel dos Santos</td>
-								<td>755.626.261-87</td>
-								<td>felipeanalistasdsdsd3@gmail.com</td>
-								<td>(62) 99169-4274</td>
+							<tr th:each="cliente : ${clientes}">
+								<td th:text="${cliente.id}"></td>
+								<td th:text="${cliente.nome}"></td>
+								<td th:text="${cliente.cpf != ''} ? ${cliente.cpf} : ${cliente.cnpj}"></td>
+								<td th:text="${cliente.logradouro}"></td>
+								<td th:text="${cliente.municipio}"></td>
+								<td th:text="${cliente.telefoneCelular}"></td>
 								<td>
 									<a th:href="@{/cliente/visualizar_cliente}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
 										<span class="glyphicon glyphicon-eye-open"></span>
@@ -86,51 +88,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td>1</td>
-								<td>Adnair Miguel</td>
-								<td>654.012.878-01</td>
-								<td>felipeanalista3@gmail.com</td>
-								<td>(62) 99465-0077</td>
-								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
-										<span class="glyphicon glyphicon-eye-open"></span>
-									</a>
-								</td>
-								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-								<td style="width: 50px;">
-									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
-										<i class="glyphicon glyphicon-trash"></i>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td>José Roberto Miguel</td>
-								<td>987.045.281-50</td>
-								<td>felipeanalista3@gmail.com</td>
-								<td>(62) 98465-4294</td>
-								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
-										<span class="glyphicon glyphicon-eye-open"></span>
-									</a>
-								</td>
-								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
-										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-								<td style="width: 50px;">
-									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
-										<i class="glyphicon glyphicon-trash"></i>
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<!-- Nenhum registro encontrado -->
+								<td colspan="6" th:if="${#lists.isEmpty(clientes)}">Nenhum registro encontrado!</td>
 							</tr>
 						</tbody>
 					</table>

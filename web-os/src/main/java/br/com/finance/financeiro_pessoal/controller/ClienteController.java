@@ -26,7 +26,6 @@ public class ClienteController {
 	private final String CAMINHO_PAGINA_VISUALIZAR_CLIENTE = "/view/global/visualizarCliente";
 	private final String CAMINHO_PAGINA_CADASTRO_CLIENTE = "/view/global/cadastroCliente";
 	private final String REDIRECT_CLIENTE = "redirect:/cliente";
-	private final String REDIRECT_CADASTRO_CLIENTE = "redirect:/cliente/cadastrar_cliente";
 	
 	@RequestMapping
 	public ModelAndView listarCliente(){
