@@ -272,6 +272,19 @@
 <script th:src="@{/plugins/jQuery/jQuery-2.2.0.min.js}"></script>
 <script th:src="@{/dist/js/pages/jquery-ui.min.js}"></script>
 <script th:src="@{/plugins/jQuery/jquery.mask.js}"></script>
+<script>
+	$(document).ready(function (){
+		$(".datemask").mask("99/99/9999");
+		$(".cpf").mask("999.999.999-99");
+		$(".cnpj").mask("99.999.999/9999-99");
+		$(".cep").mask("99999-999");
+		$(".fone_residencial").mask("(62) 9999-9999");
+		$(".fone_celular").mask("(62) 9999-9999");
+		$(".caixa_alta").keyup(function (){
+			$(this).val($(this).val().toUpperCase());
+		});
+	});
+</script>
 <!-- jQuery UI 1.11.4 -->
 <!-- <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script> -->
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -298,24 +311,6 @@
 <script th:src="@{/dist/js/demo.js}"></script>
 <script th:src="@{/dist/js/scripts/categoria.js}"></script>
 <script th:src="@{/dist/js/pages/table_search.js}"></script>
-<script>
-	$(function (){
-		
-		 $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-		      checkboxClass: 'icheckbox_minimal-blue',
-		      radioClass: 'iradio_minimal-blue'
-		 });
-		 
-		 $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-		      checkboxClass: 'icheckbox_minimal-red',
-		      radioClass: 'iradio_minimal-red'
-		 });
-		 
-		 $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-		     checkboxClass: 'icheckbox_flat-green',
-		     radioClass: 'iradio_flat-green'
-		 });
-	});
-</script>
+
 </body>
 </html>
