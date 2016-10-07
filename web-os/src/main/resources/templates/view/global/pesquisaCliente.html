@@ -72,7 +72,7 @@
 								<td th:text="${cliente.municipio}"></td>
 								<td th:text="${cliente.telefoneCelular}"></td>
 								<td>
-									<a th:href="@{/cliente/visualizar_cliente}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
+									<a th:href="@{'/cliente/visualizar_cliente/' + ${cliente.id}}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
 										<span class="glyphicon glyphicon-eye-open"></span>
 									</a>
 								</td>

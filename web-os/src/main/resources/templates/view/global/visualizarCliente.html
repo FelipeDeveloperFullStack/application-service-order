@@ -34,6 +34,7 @@
 					<a href="#" class="text-muted" style="color: black;"></a>
 				</li>
 			</ul>
+		<form method="GET" th:object="${cliente}">
 			<div class="tab-content">
 				<div class="tab-pane active" id="tab_1">
 					<div class="row">
@@ -47,19 +48,19 @@
 						              <table class="table table-hover">
 						                <tr>
 						                  <td><i class="fa fa-user" aria-hidden="true"></i><strong> Nome</strong></td>
-						                  <td>Felipe Miguel dos Santos</td>
+						                  <td th:text="*{nome}"></td>
 						                </tr>
 						                <tr>
 						                  <td><i class="fa fa-file-text-o" aria-hidden="true"></i><strong> CPF/CNPJ</strong></td>
-						                  <td>755.987.012-48</td>
+						                  <td th:text="*{cpf != ''} ? *{cpf} : *{cnpj}"></td>
 						                </tr>
 						                <tr>
 						                  <td><i class="fa fa-file-text" aria-hidden="true"></i><strong> RG</strong></td>
-						                  <td>5986987</td>
+						                  <td th:text="*{rg}"></td>
 						                </tr>
 						                <tr>
 						                  <td><i class="fa fa-calendar" aria-hidden="true"></i><strong> Data de Nascimento</strong></td>
-						                  <td>17/02/1995</td>
+						                  <td th:if="*{dataNascimento != ''} ? *{dataNascimento} : 'Data de nascimento não informado'"></td>
 						                </tr>
 						              </table>
 						            </div>
@@ -75,12 +76,20 @@
 									<div class="box-body table-condensed">
 						              <table class="table table-hover">
 						                <tr>
-						                  <th> Endereço</th>
-						                  <th></th>
+						                  <th> Logradouro</th>
+						                  <th> Complemento</th>
 						                </tr>
 						                <tr>
-						                  <td>Rua EF 25, Nº 588, CENTRO</td>
-						                  <td>Rua EF 25, Nº 588, CENTRO</td>
+						                  <td th:text="*{logradouro}"></td>
+						                  <td th:text="*{complemento}"></td>
+						                </tr>
+						                <tr>
+						                  <th> Bairro</th>
+						                  <th> Município</th>
+						                </tr>
+						                <tr>
+						                  <td th:text="*{bairro}"></td>
+						                  <td th:text="*{municipio}"></td>
 						                </tr>
 						              </table>
 						              <table class="table table-hover">
@@ -107,16 +116,16 @@
 									<div class="box-body table-condensed">
 						              <table class="table table-hover">
 						              	<tr>
+							              	<th><i class="fa fa-phone-square" aria-hidden="true"></i><strong> Telefone Residencial</strong></th>
 						              		<th>
 							              		<i class="fa fa-mobile" aria-hidden="true"></i><strong> Telefone Celular</strong>
 						              		</th>
 						              		<th><i class="fa fa-envelope" aria-hidden="true"></i><strong> E-mail</strong></th>
-							              	<th><i class="fa fa-phone-square" aria-hidden="true"></i><strong> Telefone Residencial</strong></th>
 							             </tr>
 						                <tr>
-						                  <td>(62) 9169-4559</td>
-						                  <td>felipeanalista3@gmail.com</td>
-						                  <td>(62) 3585-4599</td>
+						                  <td th:text="*{telefoneResidencial}"></td>
+						                  <td th:text="*{telefoneCelular}"></td>
+						                  <td th:text="*{email}"></td>
 						                </tr>
 						              </table>
 						            </div>
@@ -131,7 +140,7 @@
 								 <span class="info-box-icon"><i class="fa fa-desktop" aria-hidden="true"></i></span>
 							     <div class="info-box-content">
 									 <span class="info-box-text">Equipamentos</span>
-								     <span class="info-box-number">5</span>
+								     <span class="info-box-number">0</span>
 									 <div class="progress">
 									     <div class="progress-bar" style="width: 100%"></div>
 									</div>
@@ -143,7 +152,7 @@
 								 <span class="info-box-icon"><i class="fa fa-cog" aria-hidden="true"></i></span>
 							     <div class="info-box-content">
 									 <span class="info-box-text">OS</span>
-								     <span class="info-box-number">5</span>
+								     <span class="info-box-number">0</span>
 									 <div class="progress">
 									     <div class="progress-bar" style="width: 100%"></div>
 									</div>
@@ -155,7 +164,7 @@
 								 <span class="info-box-icon"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></span>
 							     <div class="info-box-content">
 									 <span class="info-box-text">Vendas</span>
-								     <span class="info-box-number">25</span>
+								     <span class="info-box-number">0</span>
 									 <div class="progress">
 									     <div class="progress-bar" style="width: 100%"></div>
 									</div>
@@ -167,7 +176,7 @@
 								 <span class="info-box-icon"><i class="fa fa-money" aria-hidden="true"></i></span>
 							     <div class="info-box-content">
 									 <span class="info-box-text">Lançamentos</span>
-								     <span class="info-box-number">25</span>
+								     <span class="info-box-number">0</span>
 									 <div class="progress">
 									     <div class="progress-bar" style="width: 100%"></div>
 									</div>
@@ -358,6 +367,7 @@
 					
 				</div>
 			</div>
+				</form>
 		</div>
 	</div>
 </body>
