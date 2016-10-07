@@ -26,9 +26,10 @@ public class ClienteController {
 	private final String CAMINHO_PAGINA_VISUALIZAR_CLIENTE = "/view/global/visualizarCliente";
 	private final String CAMINHO_PAGINA_CADASTRO_CLIENTE = "/view/global/cadastroCliente";
 	private final String REDIRECT_CLIENTE = "redirect:/cliente";
+	private final String REDIRECT_CADASTRO_CLIENTE = "redirect:/cliente/cadastrar_cliente";
 	
 	@RequestMapping
-	public ModelAndView listarCliente(Cliente cliente){
+	public ModelAndView listarCliente(){
 		mv = new ModelAndView(CAMINHO_PAGINA_PESQUISA_CLIENTE);
 		mv.addObject("clientes", clienteService.listarTodos());
 		return mv;
@@ -41,16 +42,15 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "/cadastrar_cliente")
-	public ModelAndView cadastrarCliente(){
+	public ModelAndView cadastrarCliente(Cliente cliente){
 		mv = new ModelAndView(CAMINHO_PAGINA_CADASTRO_CLIENTE);
 		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Valid Cliente cliente, 
-			BindingResult bindingResult, RedirectAttributes attributes){
+	public ModelAndView salvar(@Valid Cliente cliente, BindingResult bindingResult, RedirectAttributes attributes){
 		if(bindingResult.hasErrors()){
-			return listarCliente(cliente);
+			return cadastrarCliente(cliente);
 		}
 		attributes.addFlashAttribute("mensagem","Cliente salvo com sucesso!");
 		salvar(cliente);

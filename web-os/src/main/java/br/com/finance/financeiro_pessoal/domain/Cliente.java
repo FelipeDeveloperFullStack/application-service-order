@@ -1,5 +1,6 @@
 package br.com.finance.financeiro_pessoal.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,22 +19,70 @@ public class Cliente extends GenericDomain{
 	@NotBlank(message = "O nome do cliente é obrigatório!")
 	private String nome;
 	
-	@Column(name = "cli_cpf_cnpj")
-	@NotBlank(message = "O CPF/CNPJ do cliente é obrigatório!")
-	private String cpf_cnpj;
+	@Column(name = "cli_tipo_pessoa")
+	private String tipoPessoa;
+	
+	@Column(name = "cli_cpf")
+	private String cpf;
+	
+	@Column(name = "cli_orgao_expedidor")
+	private String orgaoExpedidor;
+	
+	@Column(name = "cli_uf_orgao_expedidor")
+	private String ufOrgaoExpedidor;
+	
+	@Column(name = "cli_cnpj")
+	private String cnpj;
+	
+	@Column(name = "cli_razao_social")
+	private String razaoSocial;
+	
+	@Column(name = "cli_nome_fantasia")
+	private String nomeFantasia;
+	
+	@Column(name = "cli_inscricao_estadual")
+	private String inscricaoEstadual;
+	
+	@Column(name = "cli_inscricao_estaduao_st")
+	private String inscricaoEstadualST;
+	
+	@Column(name = "cli_inscricao_municipal")
+	private String inscricaoMunicipal;
 	
 	@Column(name = "cli_rg")
 	private String rg;
 	
 	@Column(name = "cli_dataNascimento")
 	private Date dataNascimento;
-
-	@Column(name = "cli_endereco")
-	@NotBlank(message = "O endereço do cliente é obrigatório!")
-	private String endereco;
 	
-	@Column(name = "cli_enderecoCobranca")
-	@NotBlank(message = "O endereço de cobrança do cliente é obrigatório!")
+	@Column(name = "cli_sexo")
+	private String Sexo;
+	
+	@Column(name = "cli_cep")
+	private String cep;
+	
+	@Column(name = "cli_uf")
+	private String uf;
+	
+	@Column(name = "cli_municipio")
+	private String municipio;
+	
+	@Column(name = "cli_logradouro")
+	private String logradouro;
+	
+	@Column(name = "cli_numero")
+	private String numero;
+	
+	@Column(name = "cli_complemento")
+	private String complemento;
+	
+	@Column(name = "cli_bairro")
+	private String bairro;
+	
+	@Column(name = "cli_ponto_referencia")
+	private String pontoReferencia;
+
+	@Column(name = "cli_endereco_cobranca")
 	private String enderecoCobranca;
 	
 	@Column(name = "cli_telefoneCelular")
@@ -42,8 +91,33 @@ public class Cliente extends GenericDomain{
 	@Column(name = "cli_telefoneResidencial")
 	private String telefoneResidencial;
 	
+	@Column(name = "cli_ramal")
+	private String ramal;
+	
+	@Column(name = "cli_site")
+	private String site;
+	
 	@Column(name = "cli_email")
 	private String email;
+	
+	@Column(name = "cli_observacao")
+	private String observacao;
+	
+	//Crédito
+	@Column(name = "cli_multa")
+	private BigDecimal multa;
+	
+	@Column(name = "cli_mora")
+	private BigDecimal mora;
+	
+	@Column(name = "cli_dias_tolerancia")
+	private Long diasTolerancia;
+	
+	@Column(name = "cli_dias_bloqueio")
+	private Long diasBloqueio;
+	
+	@Column(name = "cli_dias_prazo_pagamento")
+	private Long diasPrazoPagamento;
 
 	public String getNome() {
 		return nome;
@@ -51,14 +125,6 @@ public class Cliente extends GenericDomain{
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getCpf_cnpj() {
-		return cpf_cnpj;
-	}
-
-	public void setCpf_cnpj(String cpf_cnpj) {
-		this.cpf_cnpj = cpf_cnpj;
 	}
 
 	public String getRg() {
@@ -75,14 +141,6 @@ public class Cliente extends GenericDomain{
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
 	}
 
 	public String getEnderecoCobranca() {
@@ -116,4 +174,222 @@ public class Cliente extends GenericDomain{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getOrgaoExpedidor() {
+		return orgaoExpedidor;
+	}
+
+	public void setOrgaoExpedidor(String orgaoExpedidor) {
+		this.orgaoExpedidor = orgaoExpedidor;
+	}
+
+	public String getUfOrgaoExpedidor() {
+		return ufOrgaoExpedidor;
+	}
+
+	public void setUfOrgaoExpedidor(String ufOrgaoExpedidor) {
+		this.ufOrgaoExpedidor = ufOrgaoExpedidor;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
+	}
+
+	public String getNomeFantasia() {
+		return nomeFantasia;
+	}
+
+	public void setNomeFantasia(String nomeFantasia) {
+		this.nomeFantasia = nomeFantasia;
+	}
+
+	public String getInscricaoEstadual() {
+		return inscricaoEstadual;
+	}
+
+	public void setInscricaoEstadual(String inscricaoEstadual) {
+		this.inscricaoEstadual = inscricaoEstadual;
+	}
+
+	public String getInscricaoEstadualST() {
+		return inscricaoEstadualST;
+	}
+
+	public void setInscricaoEstadualST(String inscricaoEstadualST) {
+		this.inscricaoEstadualST = inscricaoEstadualST;
+	}
+
+	public String getInscricaoMunicipal() {
+		return inscricaoMunicipal;
+	}
+
+	public void setInscricaoMunicipal(String inscricaoMunicipal) {
+		this.inscricaoMunicipal = inscricaoMunicipal;
+	}
+
+	public String getSexo() {
+		return Sexo;
+	}
+
+	public void setSexo(String sexo) {
+		Sexo = sexo;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
+	public String getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
+
+	public String getLogradouro() {
+		return logradouro;
+	}
+
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+
+	public String getPontoReferencia() {
+		return pontoReferencia;
+	}
+
+	public void setPontoReferencia(String pontoReferencia) {
+		this.pontoReferencia = pontoReferencia;
+	}
+
+	public String getRamal() {
+		return ramal;
+	}
+
+	public void setRamal(String ramal) {
+		this.ramal = ramal;
+	}
+
+	public String getSite() {
+		return site;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public BigDecimal getMulta() {
+		return multa;
+	}
+
+	public void setMulta(BigDecimal multa) {
+		this.multa = multa;
+	}
+
+	public BigDecimal getMora() {
+		return mora;
+	}
+
+	public void setMora(BigDecimal mora) {
+		this.mora = mora;
+	}
+
+	public Long getDiasTolerancia() {
+		return diasTolerancia;
+	}
+
+	public void setDiasTolerancia(Long diasTolerancia) {
+		this.diasTolerancia = diasTolerancia;
+	}
+
+	public Long getDiasBloqueio() {
+		return diasBloqueio;
+	}
+
+	public void setDiasBloqueio(Long diasBloqueio) {
+		this.diasBloqueio = diasBloqueio;
+	}
+
+	public Long getDiasPrazoPagamento() {
+		return diasPrazoPagamento;
+	}
+
+	public void setDiasPrazoPagamento(Long diasPrazoPagamento) {
+		this.diasPrazoPagamento = diasPrazoPagamento;
+	}
+	
+	
 }

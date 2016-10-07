@@ -18,7 +18,7 @@
 		<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Atenção
 	</h4>
 	<th:block th:each="erro : ${#fields.detailedErrors()}">
-		<span th:text="${erro.message}"></span>
+		<div th:text="${erro.message}"></div>
 	</th:block>
 </div>
 

@@ -22,9 +22,9 @@
 	</section>
 
 	<div layout:fragment="content">
-		<form method="POST">
+		<form method="POST" th:object="${cliente}" th:action="@{/cliente}">
 		
-		<!-- <div layout:include = "view/mensagens/mensagem"></div> -->
+		<div layout:include = "view/mensagens/mensagem"></div>
 			 
 		<div class="box box-primary">
 			<div class="box-header with-border">
@@ -54,15 +54,15 @@
 				                  </select>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group">
+								<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 				                  <label for="nome">Nome</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="nome"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="nome" th:field="*{nome}" autofocus="autofocus"/>
 				                </div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 				                  <label>Observação</label>
-				                  <textarea class="form-control input_forms input-sm caixa_alta" rows="3"></textarea>
+				                  <textarea class="form-control input_forms input-sm caixa_alta" rows="3" th:field="*{observacao}"></textarea>
 				                </div>
 							</div>
 						</div>
@@ -71,15 +71,15 @@
 					<div class="tab-pane" id="tab_2">
 						<div class="row">
 							<div class="col-md-3">
-								<div class="form-group">
+								<div class="form-group" th:classappend="${#fields.hasErrors('cpf')} ? has-error">
 				                  <label for="cpf">CPF</label>
-				                  <input type="text" class="form-control input_forms input-sm cpf" id="cpf"/>
+				                  <input type="text" class="form-control input_forms input-sm cpf" id="cpf" th:field="*{cpf}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="rg">RG</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="rg"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="rg" th:field="*{rg}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
@@ -102,7 +102,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 				                <label>Data de aniversário</label>
-				                <div class="input-group date input_forms">
+				                <div class="input-group date input_forms" th:classappend="${#fields.hasErrors('nome')} ? has-error">
 				                  <div class="input-group-addon">
 				                    <i class="fa fa-calendar"></i>
 				                  </div>
@@ -125,7 +125,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="cnpj">CNPJ</label>
-				                  <input type="text" class="form-control input_forms input-sm cnpj" id="cnpj"/>
+				                  <input type="text" class="form-control input_forms input-sm cnpj" id="cnpj" th:field="*{cnpj}"/>
 				                </div>
 							</div>
 						</div>
@@ -133,13 +133,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 				                  <label for="rs">Razão Social</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="rs"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="rs" th:field="*{razaoSocial}"/>
 				                </div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 				                  <label for="nf">Nome Fantasia</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="nf"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="nf" th:field="*{nomeFantasia}"/>
 				                </div>
 							</div>
 						</div>
@@ -148,19 +148,19 @@
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="st">Inscrição Estadual</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="st"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="st" th:field="*{inscricaoEstadual}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="stst">Inscrição Estadual ST</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="stst"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="stst" th:field="*{inscricaoEstadualST}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="stmc">Inscrição Municipal</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="stmc"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="stmc" th:field="*{inscricaoMunicipal}"/>
 				                </div>
 							</div>
 						</div>
@@ -172,25 +172,25 @@
 								<div class="form-group">
 				                  <label for="cep">CEP</label>
 				                  <input type="text" class="form-control input_forms input-sm cep" id="cep" 
-				                  data-toggle="tooltip" data-placement="top" title="Use a tecla 'TAB' para procurar o endereço pelo CEP informado!"/>
+				                  data-toggle="tooltip" data-placement="top" title="Use a tecla 'TAB' para procurar o endereço pelo CEP informado!" th:field="*{cep}"/>
 				                </div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="uf">UF</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="uf"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="uf" th:field="*{uf}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="mc">Município</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="mc"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="mc" th:field="*{municipio}"/>
 				                </div>
 							</div>
 							<div class="col-md-5">
 								<div class="form-group">
 				                  <label for="lg">Logradouro</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="lg"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="lg" th:field="*{logradouro}"/>
 				                </div>
 							</div>
 						</div>
@@ -199,19 +199,19 @@
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="n">Número</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="n"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="n" th:field="*{numero}"/>
 				                </div>
 							</div>
 							<div class="col-md-5">
 								<div class="form-group">
 				                  <label for="cp">Complemento</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="cp"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="cp" th:field="*{complemento}"/>
 				                </div>
 							</div>
 							<div class="col-md-5">
 								<div class="form-group">
 				                  <label for="brr">Bairro</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="brr"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="brr" th:field="*{bairro}"/>
 				                </div>
 							</div>
 						</div>
@@ -220,7 +220,7 @@
 							<div class="col-md-7">
 								<div class="form-group">
 				                  <label for="pr">Ponto de referencia</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="pr"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="pr" th:field="*{pontoReferencia}"/>
 				                </div>
 							</div>
 						</div>
@@ -231,19 +231,19 @@
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="fone_residencial">Telefone Residencial</label>
-				                  <input type="text" class="form-control input_forms input-sm fone_residencial" id="fone_residencial"/>
+				                  <input type="text" class="form-control input_forms input-sm fone_residencial" id="fone_residencial" th:field="*{telefoneResidencial}"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
 								<div class="form-group">
 				                  <label for="fone_celular">Telefone Celular</label>
-				                  <input type="text" class="form-control input_forms input-sm fone_celular" id="fone_celular"/>
+				                  <input type="text" class="form-control input_forms input-sm fone_celular" id="fone_celular" th:field="*{telefoneCelular}"/>
 				                </div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="ramal">Ramal</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="ramal"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="ramal" th:field="*{ramal}"/>
 				                </div>
 							</div>
 						</div>
@@ -252,13 +252,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 				                  <label for="email">E-mail</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="email"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="email" th:field="*{email}"/>
 				                </div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 				                  <label for="site">Site</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="site"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="site" th:field="*{site}"/>
 				                </div>
 							</div>
 						</div>
@@ -269,31 +269,31 @@
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="multa">% Multa</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="multa"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="multa" th:field="*{multa}"/>
 				                </div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="mora">% Mora</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="mora"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="mora" th:field="*{mora}"/>
 				                </div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="diasToleran">Dias tolerância</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="diasToleran"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="diasToleran" th:field="*{diasTolerancia}"/>
 				                </div>
 							</div>
 							<div class="col-md-2">
 								<div class="form-group">
-				                  <label for="diasBloqueio">Dias bloqueio</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="diasBloqueio"/>
+				                  <label for="diasBloqueio">Dias bloqueio</label> 
+				                  <input type="text" class="form-control input_forms input-sm" id="diasBloqueio" th:field="*{diasBloqueio}"/>
 				                </div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
 				                  <label for="diasPrazoPagam">Dias prazo pagamento</label>
-				                  <input type="text" class="form-control input_forms input-sm" id="diasPrazoPagam"/>
+				                  <input type="text" class="form-control input_forms input-sm" id="diasPrazoPagam" th:field="*{diasPrazoPagamento}"/>
 				                </div>
 							</div>
 						</div>
@@ -304,9 +304,9 @@
 			
 			<div class="row">
 				<div class="col-md-12">
-					<a class="btn cor_atalho_dashboard">
+					<button type="submit" class="btn cor_atalho_dashboard">
 		                <i class="fa fa-save"></i> Salvar
-		            </a>
+		            </button>
 				</div>
 			</div>
 			
