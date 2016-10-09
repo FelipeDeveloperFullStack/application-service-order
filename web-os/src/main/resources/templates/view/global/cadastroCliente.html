@@ -24,19 +24,21 @@
 	<div layout:fragment="content">
 		<form method="POST" th:object="${cliente}" th:action="@{/cliente}">
 		
+		<input type="hidden" th:field="*{id}"/>
+		
 		<div layout:include = "view/mensagens/mensagem"></div>
 			 
 		<div class="box box-primary">
 			<div class="box-header with-border">
-				<h3 class="box-title">Novo cliente</h3>
+				<h3 class="box-title"><span th:text="${id == null ? 'Novo cliente' : 'Editar cliente'}"></span></h3>
 			</div>
 			<div class="box-body">
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
 						<li class="active">
 							<a href="#tab_1" data-toggle="tab">Dados gerais</a></li>
-						<li><a href="#tab_2" data-toggle="tab">Pessoa Física</a></li>
-						<li><a href="#tab_3" data-toggle="tab">Pessoa Jurídica</a></li>
+						<li><a href="#tab_2" class="tab_tipo_pessoa" data-toggle="tab">Pessoa Física</a></li>
+						<!-- <li><a href="#tab_3" class="tab_tipo_pessoa" data-toggle="tab">Pessoa Jurídica</a></li> -->
 						<li><a href="#tab_4" data-toggle="tab">Endereço</a></li>
 						<li><a href="#tab_5" data-toggle="tab">Contato</a></li>
 						<li><a href="#tab_6" data-toggle="tab">Crédito</a></li>
@@ -45,12 +47,12 @@
 				<div class="tab-content">
 					<div class="tab-pane active" id="tab_1">
 						<div class="row">
-						
 							<div class="col-md-3">
 								  <label>Tipo Pessoa</label>
-				                  <select class="form-control input_forms input-sm" th:field="*{tipoPessoa}">
-				                    <option value="" th:text="'PESSOA FÍSICA'"></option>
-				                    <option value="" th:text="'PESSOA JURÍDICA'"></option>
+				                  <select id="cb_tipo_pessoa" class="form-control input_forms input-sm" th:field="*{tipoPessoa}">
+				                  	<!-- <option value="">Selecione o tipo de pessoa</option> -->
+				                    <option th:each="tipo : ${tipoPessoas}" th:value="${tipo}" th:text="${tipo.descricao}"
+				                            th:attr="data-tipoPessoa=${tipo.descricao}"></option>
 				                  </select>
 							</div>
 							<div class="col-md-6">
@@ -59,6 +61,14 @@
 				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="nome" th:field="*{nome}" autofocus="autofocus"/>
 				                </div>
 							</div>
+							<div class="col-md-3">
+								<label>Situação</label>
+				                  <select id="cb_situacao" class="form-control input_forms input-sm" th:field="*{situacao}">
+				                    <option th:each="s : ${situacao}" th:value="${s}" th:text="${s}"></option>
+				                  </select>
+							</div>
+						</div>
+						<div class="row">	
 							<div class="col-md-12">
 								<div class="form-group">
 				                  <label>Observação</label>
@@ -108,7 +118,7 @@
 				                  <div class="input-group-addon">
 				                    <i class="fa fa-calendar"></i>
 				                  </div>
-				                  <input type="text" class="form-control pull-right input_forms input-sm datemask"/>
+				                  <input type="text" class="form-control pull-right input_forms input-sm datemask" th:field="*{dataNascimento}"/>
 				                </div>
 				              </div>
 							</div>

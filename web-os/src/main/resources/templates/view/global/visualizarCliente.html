@@ -60,7 +60,11 @@
 						                </tr>
 						                <tr>
 						                  <td><i class="fa fa-calendar" aria-hidden="true"></i><strong> Data de Nascimento</strong></td>
-						                  <td th:if="*{dataNascimento != ''} ? *{dataNascimento} : 'Data de nascimento não informado'"></td>
+						                  <td th:text="*{{dataNascimento}}"></td>
+						                </tr>
+						                <tr>
+						                  <td><i class="fa fa-cog" aria-hidden="true"></i><strong> Situação</strong></td>
+						                  <td style="font-weight: bold;" th:text="*{situacao}"></td>
 						                </tr>
 						              </table>
 						            </div>

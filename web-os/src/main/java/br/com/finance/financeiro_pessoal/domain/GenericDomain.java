@@ -48,6 +48,11 @@ public class GenericDomain implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "GenericDomain [id=" + id + "]";
+	}
 	
 	
 

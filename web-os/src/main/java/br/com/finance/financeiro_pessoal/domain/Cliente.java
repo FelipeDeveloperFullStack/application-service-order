@@ -2,12 +2,15 @@ package br.com.finance.financeiro_pessoal.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "tbl_cliente")
@@ -16,11 +19,11 @@ public class Cliente extends GenericDomain{
 	private static final long serialVersionUID = -3773578657921276220L;
 	
 	@Column(name = "cli_nome")
-	@NotBlank(message = "O nome do cliente é obrigatório!")
 	private String nome;
 	
 	@Column(name = "cli_tipo_pessoa")
-	private String tipoPessoa;
+	@Enumerated(EnumType.STRING)
+	private TipoPessoa tipoPessoa;
 	
 	@Column(name = "cli_cpf")
 	private String cpf;
@@ -52,7 +55,9 @@ public class Cliente extends GenericDomain{
 	@Column(name = "cli_rg")
 	private String rg;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "cli_dataNascimento")
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	
 	@Column(name = "cli_sexo")
@@ -118,6 +123,10 @@ public class Cliente extends GenericDomain{
 	
 	@Column(name = "cli_dias_prazo_pagamento")
 	private Long diasPrazoPagamento;
+	
+	@Column(name = "cli_situacao")
+	@Enumerated(EnumType.STRING)
+	private Situacao situacao;
 
 	public String getNome() {
 		return nome;
@@ -175,11 +184,11 @@ public class Cliente extends GenericDomain{
 		this.email = email;
 	}
 
-	public String getTipoPessoa() {
+	public TipoPessoa getTipoPessoa() {
 		return tipoPessoa;
 	}
 
-	public void setTipoPessoa(String tipoPessoa) {
+	public void setTipoPessoa(TipoPessoa tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
 
@@ -390,6 +399,14 @@ public class Cliente extends GenericDomain{
 	public void setDiasPrazoPagamento(Long diasPrazoPagamento) {
 		this.diasPrazoPagamento = diasPrazoPagamento;
 	}
-	
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
+
 	
 }

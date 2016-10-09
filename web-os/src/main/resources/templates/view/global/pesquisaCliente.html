@@ -26,6 +26,9 @@
 
 	<div layout:fragment="content">
 	
+		<form th:object="${cliente}" method="POST">
+			<div layout:include = "view/mensagens/mensagem"></div>
+	
 			<div class="row">
 				<div class="col-md-3">
 		            <a th:href="@{/cliente/cadastrar_cliente}" class="btn cor_atalho_dashboard">
@@ -53,11 +56,11 @@
 						<thead>
 							<tr>
 								<th style="width: 30px;">#</th>
-								<th>Nome/Nome Fantasia</th>
-								<th style="width: 150px;">CPF/CNPJ</th>
-								<th style="width: 250px;">Logradouro</th>
-								<th>Município</th>
+								<th>Nome</th>
+								<th style="width: 150px;">CPF</th>
+								<th style="width: 100px;">Município</th>
 								<th style="width: 120px;">Telefone</th>
+								<th>Situação</th>
 								<th style="width: 5px;"><i class=""></i></th>
 								<th style="width: 5px;"><i class=""></i></th>
 								<th style="width: 5px;"><i class=""></i></th>
@@ -65,25 +68,20 @@
 						</thead>
 						<tbody>
 							<tr th:each="cliente : ${clientes}">
-								<td th:text="${cliente.id}"></td>
+								<td th:text="${cliente.id}" style="font-weight: bold;"></td>
 								<td th:text="${cliente.nome}"></td>
 								<td th:text="${cliente.cpf != ''} ? ${cliente.cpf} : ${cliente.cnpj}"></td>
-								<td th:text="${cliente.logradouro}"></td>
 								<td th:text="${cliente.municipio}"></td>
 								<td th:text="${cliente.telefoneCelular}"></td>
+								<td><span class="label" th:text="${cliente.situacao}" th:classappend="${#strings.toString(cliente.situacao) == 'ATIVO' ? 'label-success' : 'label-danger'}" ></span></td>
 								<td>
 									<a th:href="@{'/cliente/visualizar_cliente/' + ${cliente.id}}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Visualizar">
 										<span class="glyphicon glyphicon-eye-open"></span>
 									</a>
 								</td>
 								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+									<a th:href="@{/cliente/editar_cliente/{id}(id=${cliente.id})}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
 										<span class="glyphicon glyphicon-pencil"></span>
-									</a>
-								</td>
-								<td style="width: 50px;">
-									<a style="color: black;" class="btn btn-link btn-xs" data-toggle="tooltip" data-placement="top" title="Excluir">
-										<i class="glyphicon glyphicon-trash"></i>
 									</a>
 								</td>
 							</tr>
@@ -101,7 +99,7 @@
 					</ul>
 				</div>
 			</div>
-		  
+		  </form>
 		</div>
 </body>
 </html>

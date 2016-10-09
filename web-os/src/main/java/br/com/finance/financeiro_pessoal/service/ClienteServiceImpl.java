@@ -12,8 +12,8 @@ import br.com.finance.financeiro_pessoal.repository.ClienteRepository;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
-public class ClienteServiceImpl implements ClienteService{
-	
+public class ClienteServiceImpl implements ClienteService {
+
 	@Autowired
 	private ClienteRepository clienteRepository;
 

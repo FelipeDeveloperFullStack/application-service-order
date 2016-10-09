@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.finance.financeiro_pessoal.domain.Cliente;
+import br.com.finance.financeiro_pessoal.domain.Situacao;
+import br.com.finance.financeiro_pessoal.domain.TipoPessoa;
 import br.com.finance.financeiro_pessoal.service.ClienteService;
 
 @RestController
@@ -29,7 +31,7 @@ public class ClienteController {
 	private final String REDIRECT_CLIENTE = "redirect:/cliente";
 	
 	@RequestMapping
-	public ModelAndView listarCliente(){
+	public ModelAndView listarCliente(Cliente cliente){
 		mv = new ModelAndView(CAMINHO_PAGINA_PESQUISA_CLIENTE);
 		mv.addObject("clientes", clienteService.listarTodos());
 		return mv;
@@ -42,18 +44,30 @@ public class ClienteController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/cadastrar_cliente")
-	public ModelAndView cadastrarCliente(Cliente cliente){
+	@RequestMapping(value = "/editar_cliente/{id}", method = RequestMethod.GET)
+	public ModelAndView editarCliente(@PathVariable Long id){
+		Cliente cliente = clienteService.procurarPeloID(id);
 		mv = new ModelAndView(CAMINHO_PAGINA_CADASTRO_CLIENTE);
+		mv.addObject(cliente);
+		mv.addObject("tipoPessoas", TipoPessoa.values());
+		mv.addObject("situacao", Situacao.values());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/cadastrar_cliente")
+	public ModelAndView novoCliente(Cliente cliente){
+		mv = new ModelAndView(CAMINHO_PAGINA_CADASTRO_CLIENTE);
+		mv.addObject("tipoPessoas", TipoPessoa.values());
+		mv.addObject("situacao", Situacao.values());
 		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Cliente cliente, BindingResult bindingResult, RedirectAttributes attributes){
 		if(bindingResult.hasErrors()){
-			return cadastrarCliente(cliente);
+			return novoCliente(cliente);
 		}
-		attributes.addFlashAttribute("mensagem","Cliente salvo com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Cliente salvo com sucesso!");
 		salvar(cliente);
 		mv = new ModelAndView(REDIRECT_CLIENTE);
 		return mv;
@@ -62,5 +76,7 @@ public class ClienteController {
 	private void salvar(Cliente cliente){
 		clienteService.salvar(cliente);
 	}
+	
+	
 
 }

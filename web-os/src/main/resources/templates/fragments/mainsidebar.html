@@ -15,7 +15,7 @@
 	            </div>
     		</div>
     	</li> -->
-        <li class="active treeview">
+        <li class="treeview">
             <a th:href="@{/pagina_inicial}">
                 <i class="fa fa-desktop"></i> <span>Dashboard</span>
             </a>
@@ -228,7 +228,7 @@
 	            		 <i class="fa fa-angle-left pull-right"></i>	
 	            	</a>
 	            	<ul class="treeview-menu">
-	            		<li><a th:href="@{/cliente}"><i class="fa fa-pencil-square-o"></i>Cliente</a></li>
+	            		<li th:class="${#httpServletRequest.getRequestURI() == '/cliente' ? 'active':''}"><a th:href="@{/cliente}"><i class="fa fa-pencil-square-o"></i>Cliente</a></li>
 	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Unidade Empresarial</a></li>
 	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Departamento</a></li>
 	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Setor</a></li>
