@@ -16,7 +16,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-
+	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public Cliente salvar(Cliente cliente) {
@@ -39,6 +39,11 @@ public class ClienteServiceImpl implements ClienteService {
 		/*
 		 * Esse método não será usado
 		 */
+	}
+
+	@Override
+	public Long totalClienteCadastrado() {
+		return clienteRepository.count();
 	}
 
 }
