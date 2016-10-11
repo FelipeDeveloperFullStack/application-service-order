@@ -77,6 +77,14 @@ public class ClienteController {
 		clienteService.salvar(cliente);
 	}
 	
+	/*@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView pesquisaCliente(Cliente cliente){
+		
+		mv = new ModelAndView(REDIRECT_CLIENTE);
+		mv.addObject("clientes", clienteService.procurarPeloNome(cliente.getNome()));
+		return mv;
+	}*/
+	
 	
 
 }

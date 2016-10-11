@@ -26,13 +26,14 @@
 
 	<div layout:fragment="content">
 	
-		<form th:object="${cliente}" method="POST">
+		<form th:object="${cliente}" method="POST" th:action="@{/cliente}">
+		
 			<div layout:include = "view/mensagens/mensagem"></div>
 	
 			<div class="row">
 				<div class="col-md-3">
 		            <a th:href="@{/cliente/cadastrar_cliente}" class="btn cor_atalho_dashboard">
-		                <span class="glyphicon glyphicon-plus-sign"></span> Adicionar cliente
+		                <span class="glyphicon glyphicon-plus-sign"></span> Novo cliente
 		            </a>
 				</div>
 			</div>
@@ -42,9 +43,9 @@
 					<h3 class="box-title">Listagem de clientes</h3>
 					<div class="box-tools">
 						<div class="input-group input-group-sm" style="width: 300px;">
-							<input type="text" name="table_search" class="form-control input-sm pull-right" placeholder="Procurar a cliente"/>
+							<input type="text" class="form-control input-sm pull-right" placeholder="Procurar nome do cliente"/>
 							<div class="input-group-btn">
-								<button class="btn btn-sm btn-default">
+								<button type="submit" class="btn btn-sm btn-default">
 									<i class="fa fa-search"></i>
 								</button>
 							</div>

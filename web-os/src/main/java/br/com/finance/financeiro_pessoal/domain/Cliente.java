@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -19,6 +20,7 @@ public class Cliente extends GenericDomain{
 	private static final long serialVersionUID = -3773578657921276220L;
 	
 	@Column(name = "cli_nome")
+	@NotBlank(message = "O nome do cliente é obrigatório!")
 	private String nome;
 	
 	@Column(name = "cli_tipo_pessoa")
@@ -406,6 +408,22 @@ public class Cliente extends GenericDomain{
 
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", tipoPessoa=" + tipoPessoa + ", cpf=" + cpf + ", orgaoExpedidor="
+				+ orgaoExpedidor + ", ufOrgaoExpedidor=" + ufOrgaoExpedidor + ", cnpj=" + cnpj + ", razaoSocial="
+				+ razaoSocial + ", nomeFantasia=" + nomeFantasia + ", inscricaoEstadual=" + inscricaoEstadual
+				+ ", inscricaoEstadualST=" + inscricaoEstadualST + ", inscricaoMunicipal=" + inscricaoMunicipal
+				+ ", rg=" + rg + ", dataNascimento=" + dataNascimento + ", Sexo=" + Sexo + ", cep=" + cep + ", uf=" + uf
+				+ ", municipio=" + municipio + ", logradouro=" + logradouro + ", numero=" + numero + ", complemento="
+				+ complemento + ", bairro=" + bairro + ", pontoReferencia=" + pontoReferencia + ", enderecoCobranca="
+				+ enderecoCobranca + ", telefoneCelular=" + telefoneCelular + ", telefoneResidencial="
+				+ telefoneResidencial + ", ramal=" + ramal + ", site=" + site + ", email=" + email + ", observacao="
+				+ observacao + ", multa=" + multa + ", mora=" + mora + ", diasTolerancia=" + diasTolerancia
+				+ ", diasBloqueio=" + diasBloqueio + ", diasPrazoPagamento=" + diasPrazoPagamento + ", situacao="
+				+ situacao + "]";
 	}
 
 	

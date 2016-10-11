@@ -46,4 +46,9 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteRepository.count();
 	}
 
+	@Override
+	public List<Cliente> procurarPeloNome(String nome) {
+		return clienteRepository.findByNomeContaining(nome);
+	}
+
 }
