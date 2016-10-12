@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+<meta charset="UTF-8" />
+</head>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" tabindex="-1" data-keyboard="false" data-backdrop="static">
+	
+	<form>
+	
+	<div class="modal-dialog modal-lg" style="width: 500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Nova conta caixa</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="desc">Descrição</label> <input type="text"
+								class="form-control input_forms input-sm caixa_alta" id="desc"
+								autofocus="autofocus" />
+						</div>
+					</div>
+				</div>
+				<div class="row">	
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="sin">Saldo Inicial</label> 
+							<input type="text" class="form-control input_forms input-sm caixa_alta js-currency" id="sin" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Data Inicial</label>
+							<div class="input-group date input_forms">
+								<div class="input-group-addon">
+									<i class="fa fa-calendar"></i>
+								</div>
+								<input type="text"
+									class="form-control pull-right input_forms input-sm datemask" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+							<label>Situação</label>
+				           <!--  <select id="cb_situacao" class="form-control input_forms input-sm" th:field="*{situacao}">
+				                   <option th:each="s : ${situacao}" th:value="${s}" th:text="${s}"></option>
+				            </select> -->
+				    </div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						<button type="submit" class="btn cor_atalho_dashboard">
+							<i class="fa fa-save"></i> Salvar
+						</button>
+						<button type="reset" data-dismiss="modal"
+							class="btn bg-maroon margin">
+							<i class="fa fa-save"></i> Cancelar
+						</button>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	
+	</form>
+</div>
+
+</html>
