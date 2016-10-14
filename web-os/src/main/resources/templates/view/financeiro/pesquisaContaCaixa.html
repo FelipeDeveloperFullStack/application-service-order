@@ -15,7 +15,7 @@
 		<br />
 		<ol class="breadcrumb">
 			<li>
-				<a th:href="@{/}">
+				<a th:href="@{/pagina_inicial}">
 					<i class="fa fa-desktop"></i>
 					Dashboard
 				</a>
@@ -26,13 +26,13 @@
 
 	<div layout:fragment="content">
 	
-		<form method="POST">
+		<form method="POST" th:object="${contaCaixa}">
 		
-			<!-- <div layout:include = "view/mensagens/mensagem"></div> -->
+			<div layout:include = "view/mensagens/mensagem"></div> 
 	
 			<div class="row">
 				<div class="col-md-3">
-		            <a class="btn cor_atalho_dashboard" data-toggle="modal" data-target="#myModal">
+		            <a th:href="@{/conta_caixa/cadastro_conta_caixa}" class="btn cor_atalho_dashboard">
 		                <span class="glyphicon glyphicon-plus-sign"></span> Nova conta caixa
 		            </a>
 				</div>
@@ -65,23 +65,23 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td style="font-weight: bold;">1</td>
-								<td>Caixa da empresa</td>
+							<tr th:each="c : ${contaCaixas}">
+								<td style="font-weight: bold;" th:text="${c.id}"></td>
+								<td th:text="${c.descricao}"></td>
 								<td>
-									<span class="label label-success">Ativo</span>
+									<span class="label" th:classappend="${#strings.toString(c.situacao) == 'ATIVO' ? 'label-success' : 'label-danger'}" th:text="${c.situacao}"></span>
 								</td>
-								<td>10/10/2016</td>
-								<td>R$: 150,00</td>
+								<td th:text="${{c.dataInicial}}"></td>
+								<td th:text="${{c.saldoInicial}}"></td>
 								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+									<a th:href="@{/conta_caixa/editar/{id}(id=${c.id})}" class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
 										<span class="glyphicon glyphicon-pencil"></span>
 									</a>
 								</td>
 							</tr>
-							<!-- <tr>
-								<td colspan="6">Nenhum registro encontrado!</td>
-							</tr> -->
+							 <tr>
+								<td colspan="6" th:if="${#lists.isEmpty(contaCaixas)}">Nenhum registro encontrado!</td>
+							</tr> 
 						</tbody>
 					</table>
 				</div>

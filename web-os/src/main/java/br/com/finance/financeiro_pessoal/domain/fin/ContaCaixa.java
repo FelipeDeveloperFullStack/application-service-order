@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,6 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
+import br.com.finance.financeiro_pessoal.domain.Situacao;
 
 @Entity
 @Table(name = "tbl_conta_caixa")
@@ -29,17 +32,20 @@ public class ContaCaixa extends GenericDomain{
 	private String descricao;
 	
 	@Column(name = "cc_saldo_inicial")
-	@NotNull(message = "O saldo inicial é obrigatório!")
-	@DecimalMin(value = "0.01", message = "O valor não pode ser menor que 0,01")
+	@DecimalMin(value = "0.00", message = "O valor não pode ser menor que 0,00")
 	@DecimalMax(value = "9999999.99", message = "O valor não pode ser maior que 9.999.999,99")
 	@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal saldoInicial;
+	private BigDecimal saldoInicial = new BigDecimal(0.0);
 	
 	@Column(name = "cc_data_inicial")
 	@NotNull(message = "A data inicial é obrigatória!")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	private Date dataInicial;
+	private Date dataInicial = new Date();
+	
+	@Column(name = "cc_situacao")
+	@Enumerated(EnumType.STRING)
+	private Situacao situacao;
 
 	public String getDescricao() {
 		return descricao;
@@ -64,8 +70,14 @@ public class ContaCaixa extends GenericDomain{
 	public void setDataInicial(Date dataInicial) {
 		this.dataInicial = dataInicial;
 	}
-	
-	
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
 	
 
 }
