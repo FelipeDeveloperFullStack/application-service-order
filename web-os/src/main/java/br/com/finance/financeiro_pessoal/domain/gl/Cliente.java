@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.domain;
+package br.com.finance.financeiro_pessoal.domain.gl;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +12,9 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import br.com.finance.financeiro_pessoal.domain.GenericDomain;
+import br.com.finance.financeiro_pessoal.domain.Situacao;
 
 @Entity
 @Table(name = "tbl_cliente")

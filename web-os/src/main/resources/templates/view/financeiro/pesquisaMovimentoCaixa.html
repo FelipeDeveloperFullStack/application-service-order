@@ -1,0 +1,116 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+
+<head>
+	<meta charset="UTF-8"/>
+	<title>Movimento de Caixa</title>
+	
+</head>
+
+<body>
+
+	<section layout:fragment="header">
+		<br />
+		<ol class="breadcrumb">
+			<li>
+				<a th:href="@{/pagina_inicial}">
+					<i class="fa fa-desktop"></i>
+					Dashboard
+				</a>
+			</li>
+			<li class="active">Movimento de caixa</li>
+		</ol>
+	</section>
+
+	<div layout:fragment="content">
+	
+		<form method="POST">
+		
+			<!-- <div layout:include = "view/mensagens/mensagem"></div>  -->
+	
+			<!-- <div class="row">
+				<div class="col-md-3">
+		            <a th:href="@{/conta_caixa/cadastro_conta_caixa}" class="btn cor_atalho_dashboard">
+		                <span class="glyphicon glyphicon-plus-sign"></span> Movimento de Caixa
+		            </a>
+				</div>
+			</div> -->
+				
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Movimento de Caixa</h3>
+					<div class="box-tools">
+					
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<label>Conta caixa</label>
+					    <select class="form-control input_forms input-sm">
+							 <option></option>
+					    </select>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+				            <label>Data Movimento</label>
+				              <div class="input-group date input_forms">
+				                <div class="input-group-addon">
+				                    <i class="fa fa-calendar"></i>
+				                </div>
+				                <input type="text" class="form-control pull-right input_forms input-sm datemask"/>
+				             </div>
+				        </div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label>Data Movimento</label>
+							<button type="button" class="btn cor_atalho_dashboard">
+				                <i class="fa fa-save"></i> Pesquisar
+				            </button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="box-body">
+					<table class="table table-condensed table-hover">
+						<thead>
+							<tr>
+								<th>Parceiro</th>
+								<th>Tipo Origem</th>
+								<th>Valor</th>
+								<th style="width: 5px;"><i class=""></i></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Editar">
+										<span class="glyphicon glyphicon-pencil"></span>
+									</a>
+								</td>
+							</tr>
+							 <!-- <tr>
+								<td colspan="6" th:if="${#lists.isEmpty(contaCaixas)}">Nenhum registro encontrado!</td>
+							</tr> --> 
+						</tbody>
+					</table>
+				</div>
+				<div class="box-footer clearfix">
+					<ul class="pagination pagination-sm no-margin pull-right">
+						<li><a href="#">&laquo;</a></li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">&raquo;</a></li>
+					</ul>
+				</div>
+			</div>
+			
+		  </form>
+		</div>
+</body>
+</html>

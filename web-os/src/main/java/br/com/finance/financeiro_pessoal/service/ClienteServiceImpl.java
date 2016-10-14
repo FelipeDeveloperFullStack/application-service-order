@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.finance.financeiro_pessoal.domain.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
 import br.com.finance.financeiro_pessoal.repository.ClienteRepository;
 
 @Service

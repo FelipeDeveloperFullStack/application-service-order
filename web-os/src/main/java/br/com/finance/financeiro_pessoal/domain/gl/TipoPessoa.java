@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.domain;
+package br.com.finance.financeiro_pessoal.domain.gl;
 
 public enum TipoPessoa {
 
