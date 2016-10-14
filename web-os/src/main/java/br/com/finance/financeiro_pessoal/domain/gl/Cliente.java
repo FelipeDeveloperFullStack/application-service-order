@@ -63,7 +63,7 @@ public class Cliente extends GenericDomain{
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Column(name = "cli_dataNascimento")
 	@Temporal(TemporalType.DATE)
-	private Date dataNascimento;
+	private Date dataNascimento = new Date();
 	
 	@Column(name = "cli_sexo")
 	private String Sexo;
@@ -115,19 +115,19 @@ public class Cliente extends GenericDomain{
 	
 	//Crédito
 	@Column(name = "cli_multa")
-	private BigDecimal multa;
+	private BigDecimal multa = new BigDecimal(0.0);
 	
 	@Column(name = "cli_mora")
-	private BigDecimal mora;
+	private BigDecimal mora = new BigDecimal(0.0);
 	
 	@Column(name = "cli_dias_tolerancia")
-	private Long diasTolerancia;
+	private Long diasTolerancia = new Long(0);
 	
 	@Column(name = "cli_dias_bloqueio")
-	private Long diasBloqueio;
+	private Long diasBloqueio = new Long(0);
 	
 	@Column(name = "cli_dias_prazo_pagamento")
-	private Long diasPrazoPagamento;
+	private Long diasPrazoPagamento = new Long(0);
 	
 	@Column(name = "cli_situacao")
 	@Enumerated(EnumType.STRING)
