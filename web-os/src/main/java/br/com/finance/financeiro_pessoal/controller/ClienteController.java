@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.finance.financeiro_pessoal.domain.Situacao;
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.Situacao;
 import br.com.finance.financeiro_pessoal.domain.gl.TipoPessoa;
 import br.com.finance.financeiro_pessoal.service.ClienteService;
 

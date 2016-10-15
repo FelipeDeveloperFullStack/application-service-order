@@ -61,4 +61,5 @@
 .position_buttons {
 	position: relative; 
 	top: 22px;
+	left: -10px;
 }

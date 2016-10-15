@@ -30,13 +30,13 @@
 		
 			<!-- <div layout:include = "view/mensagens/mensagem"></div>  -->
 	
-			<!-- <div class="row">
+			<div class="row">
 				<div class="col-md-3">
-		            <a th:href="@{/conta_caixa/cadastro_conta_caixa}" class="btn cor_atalho_dashboard">
-		                <span class="glyphicon glyphicon-plus-sign"></span> Movimento de Caixa
+		            <a class="btn cor_atalho_dashboard">
+		                <span class="glyphicon glyphicon-plus-sign"></span> Adicionar
 		            </a>
 				</div>
-			</div> -->
+			</div>
 				
 			<div class="box">
 				<div class="box-header with-border">
@@ -47,13 +47,13 @@
 				</div>
 				
 				<div class="box-body">
-					<form method="POST">
+					<form method="POST" th:object="${contaCaixa}">
 						<div class="row">
 							<div class="col-md-3">
 								<div class="form-group">
 					                  <label class="control-label">Conta caixa</label>
 					                    <select class="form-control input_forms input-sm">
-											 <option></option>
+											 <option th:each="c : ${contasFinanceira}" th:value="${c}" th:text="${c.descricao}"></option>
 									    </select>
 				                </div>
 				           </div>
@@ -72,9 +72,6 @@
 								<div class="form-group position_buttons">
 					                    <button type="button" class="btn cor_atalho_dashboard">
 							             	<i class="fa fa-save"></i> Pesquisar
-							        	</button>
-					                    <button type="button" class="btn cor_atalho_dashboard">
-							             	<i class="fa fa-save"></i> Adicionar
 							        	</button>
 					           </div>
 				           </div>

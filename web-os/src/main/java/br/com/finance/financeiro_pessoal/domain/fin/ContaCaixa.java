@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
-import br.com.finance.financeiro_pessoal.domain.Situacao;
+import br.com.finance.financeiro_pessoal.domain.gl.Situacao;
 
 @Entity
 @Table(name = "tbl_conta_caixa")
