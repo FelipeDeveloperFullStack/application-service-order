@@ -1,8 +1,9 @@
-package br.com.finance.financeiro_pessoal.service;
+package br.com.finance.financeiro_pessoal.service.gl;
 
 import java.util.List;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.service.GenericService;
 
 public interface ClienteService extends GenericService<Cliente>{
 	

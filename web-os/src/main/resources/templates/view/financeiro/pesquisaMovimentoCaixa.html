@@ -25,7 +25,7 @@
 	</section>
 
 	<div layout:fragment="content">
-	
+		<form method="POST" th:object="${movimentoCaixa}" th:action="@{/movimento_caixa/pesquisar_movimento}">
 		
 		
 			<!-- <div layout:include = "view/mensagens/mensagem"></div>  -->
@@ -47,12 +47,11 @@
 				</div>
 				
 				<div class="box-body">
-					<form method="POST" th:object="${contaCaixa}">
 						<div class="row">
 							<div class="col-md-3">
 								<div class="form-group">
 					                  <label class="control-label">Conta caixa</label>
-					                    <select class="form-control input_forms input-sm">
+					                    <select class="form-control input_forms input-sm" th:field="*{contaCaixa}">
 											 <option th:each="c : ${contasFinanceira}" th:value="${c}" th:text="${c.descricao}"></option>
 									    </select>
 				                </div>
@@ -64,19 +63,19 @@
 							                <div class="input-group-addon">
 							                    <i class="fa fa-calendar"></i>
 							                </div>
-							                <input type="text" class="form-control pull-right input_forms input-sm datemask"/>
+							                <input type="text" class="form-control pull-right input_forms input-sm datemask" th:field="*{dataMovimento}"/>
 							             </div>
 				                </div>
 				          </div>
 				          <div class="col-md-3">
 								<div class="form-group position_buttons">
-					                    <button type="button" class="btn cor_atalho_dashboard">
+					                    <button type="submit" class="btn cor_atalho_dashboard">
 							             	<i class="fa fa-save"></i> Pesquisar
 							        	</button>
 					           </div>
 				           </div>
 						</div>
-					</form>
+					
 				
 					<table class="table table-condensed table-hover">
 						<thead>
@@ -113,7 +112,34 @@
 				</div>
 			</div>
 			
-		 
+			<div class="box">
+				<div class="box-header with-border">
+					<h3 class="box-title">Resumo de caixa</h3>
+				</div>
+				<div class="box-body">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th>Saldo Inicial</th>
+								<th>Total de Entrada</th>
+								<th>Total de Saída</th>
+								<th>Saldo Operacional</th>
+								<th>Saldo Final</th>
+							</tr>
+							<tr>
+								<td th:text="*{saldoFinanceiro.saldoInicial}"></td>
+								<td th:text="*{saldoFinanceiro.totalEntrada}"></td>
+								<td th:text="*{saldoFinanceiro.totalSaida}"></td>
+								<td th:text="*{saldoFinanceiro.saldoOperacional}"></td>
+								<td th:text="*{saldoFinanceiro.saldoFinal}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			
+		 </form>
 		</div>
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!-- sidebar: style can be found in sidebar.less -->
- <meta charset="UTF-8" />
-<section class="sidebar fixed"> 
-    <!-- sidebar menu: : style can be found in sidebar.less -->
-    
-    <ul class="sidebar-menu">
-    	<!-- <li class="header">
+<meta charset="UTF-8" />
+<section class="sidebar fixed">
+	<!-- sidebar menu: : style can be found in sidebar.less -->
+
+	<ul class="sidebar-menu">
+		<!-- <li class="header">
     		<div class="user-panel">
 	            <div class="pull-left image">
 	              <img th:src="@{/dist/img/img_felipe.jpg}" class="img-circle" alt="User Image"/>
@@ -15,127 +15,106 @@
 	            </div>
     		</div>
     	</li> -->
-        <li class="treeview">
-            <a th:href="@{/pagina_inicial}">
-                <i class="fa fa-desktop"></i> <span>Dashboard</span>
-            </a>
-        </li>
-        
-         <li class="treeview">
-            <a href="#">
-                <i class="fa fa-cart-plus"></i>
-                <span>Compras</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-	            <li><a href="#"><i class="fa fa-truck"></i>Entrada de mercadoria</a></li>
-	            <li><a href="#"><i class="fa fa-shopping-basket"></i>Pedido de compra</a></li>
-	            <li><a href="#"><i class="fa fa-truck"></i>Devolução de mercadoria</a></li>
-	            <li>
-	            	<a href="#"><i class="fa fa-list-alt"></i>Relatórios
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li><a href="#"><i class="fa fa-file-text-o"></i>Necessidade de compra</a></li>
-	            	</ul>
-            	</li>
-            </ul>
-            
-        </li>
-        
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-barcode"></i>
-                <span>Estoque</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-exchange"></i>Transferência de mercadoria</a></li>
-                <li><a href="#"><i class="fa fa-truck"></i>Saída de mercadoria</a></li>
-                <li><a href="#"><i class="fa fa-pencil-square-o"></i>Manutenção de estoque</a></li>
-                <li>
-	            	<a href="#"><i class="fa fa-cog"></i>Cadastros
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Fabricante</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Fornecedor</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Produto</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Família de produto</a></li>
-	            	</ul>
-            	</li>
-                <li>
-	            	<a href="#"><i class="fa fa-list-alt"></i>Relatórios
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li><a href="#"><i class="fa fa-file-text-o"></i>Ficha kardex</a></li>
-	            		<li><a href="#"><i class="fa fa-file-text-o"></i>Estoque</a></li>
-	            	</ul>
-            	</li>
-            </ul>
-        </li>
-        
-        
-        
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-check-square-o"></i>
-                <span>Gestão de serviços</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-plus-square-o"></i>Nova OS</a></li>
-                <li><a th:href="@{/os}"><i class="fa fa-pencil-square-o"></i>Ordens de Serviço</a></li>
-                <li><a href="#"><i class="fa fa-plus-square-o"></i>Serviços</a></li>
-                <li><a href="#"><i class="fa fa-tag"></i>Status de OS</a></li>
-                <li><a href="#"><i class="fa fa-tags"></i>Prioridade de OS</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i>Seções de impressão</a></li>
-                <li><a href="#"><i class="fa fa-cog"></i>Modelos de impressão</a></li>
-                <li><a href="#"><i class="fa fa-list-alt"></i>Relatórios</a></li>
-            </ul>
-        </li>
-        
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-users"></i>
-                <span>RH</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-	            	<a href="#"><i class="fa fa-cog"></i>Cadastros
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li><a href="#"><i class="fa fa-user"></i>Funcionário</a></li>
-	            	</ul>
-            	</li>
-            </ul>
-        </li>
-        
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-usd"></i> 
-            <span>Financeiro</span>
-              <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-          
-          	<li>
-            	<a href="#"><i class="fa fa-cog"></i>Cadastros
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Banco</a></li>
-            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Agência</a></li>
-            		<li><a th:href="@{/conta_caixa}"><i class="fa fa-pencil-square-o"></i>Conta caixa</a></li>
-            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Conta banco</a></li>
-            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Plano de contas</a></li>
-            	</ul>
-            </li>
-          
-            <!-- <li>
+		<li class="treeview"><a th:href="@{/pagina_inicial}"> <i
+				class="fa fa-desktop"></i> <span>Dashboard</span>
+		</a></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-cart-plus"></i>
+				<span>Compras</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-truck"></i>Entrada de
+						mercadoria</a></li>
+				<li><a href="#"><i class="fa fa-shopping-basket"></i>Pedido
+						de compra</a></li>
+				<li><a href="#"><i class="fa fa-truck"></i>Devolução de
+						mercadoria</a></li>
+				<li><a href="#"><i class="fa fa-list-alt"></i>Relatórios <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Necessidade
+								de compra</a></li>
+					</ul></li>
+			</ul></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-barcode"></i>
+				<span>Estoque</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-exchange"></i>Transferência
+						de mercadoria</a></li>
+				<li><a href="#"><i class="fa fa-truck"></i>Saída de
+						mercadoria</a></li>
+				<li><a href="#"><i class="fa fa-pencil-square-o"></i>Manutenção
+						de estoque</a></li>
+				<li><a href="#"><i class="fa fa-cog"></i>Cadastros <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Fabricante</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Fornecedor</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Produto</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Família
+								de produto</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-list-alt"></i>Relatórios <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Ficha
+								kardex</a></li>
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Estoque</a></li>
+					</ul></li>
+			</ul></li>
+
+
+
+		<li class="treeview"><a href="#"> <i
+				class="fa fa-check-square-o"></i> <span>Gestão de serviços</span> <i
+				class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-plus-square-o"></i>Nova OS</a></li>
+				<li><a th:href="@{/os}"><i class="fa fa-pencil-square-o"></i>Ordens
+						de Serviço</a></li>
+				<li><a href="#"><i class="fa fa-plus-square-o"></i>Serviços</a></li>
+				<li><a href="#"><i class="fa fa-tag"></i>Status de OS</a></li>
+				<li><a href="#"><i class="fa fa-tags"></i>Prioridade de OS</a></li>
+				<li><a href="#"><i class="fa fa-cog"></i>Seções de
+						impressão</a></li>
+				<li><a href="#"><i class="fa fa-cog"></i>Modelos de
+						impressão</a></li>
+				<li><a href="#"><i class="fa fa-list-alt"></i>Relatórios</a></li>
+			</ul></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-users"></i>
+				<span>RH</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-cog"></i>Cadastros <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-user"></i>Funcionário</a></li>
+					</ul></li>
+			</ul></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-usd"></i> <span>Financeiro</span>
+				<i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+
+				<li><a href="#"><i class="fa fa-cog"></i>Cadastros <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Banco</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Agência</a></li>
+						<li><a th:href="@{/conta_caixa}"><i
+								class="fa fa-pencil-square-o"></i>Conta caixa</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Conta
+								banco</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Plano
+								de contas</a></li>
+					</ul></li>
+
+				<!-- <li>
               <a href="#"><i class="fa fa-circle-o"></i>Despesas
                   <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -152,115 +131,95 @@
                 </li>
               </ul>
             </li> -->
-            
-            <li>
-            	<a href="#"><i class="fa fa-cube"></i>Caixa
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a th:href="@{/movimento_caixa}"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
-            		<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Estorna fechamento</a></li>
-            	</ul>
-            </li>
-            
-            <li>
-            	<a href="#"><i class="fa fa-university"></i>Banco
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
-            		<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Estorna fechamento</a></li>
-            	</ul>
-            </li>
-            
-            <li>
-            	<a href="#"><i class="fa fa-arrow-circle-down"></i>Contas a pagar
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
-            		<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Acerto manual</a></li>
-            	</ul>
-            </li>
-            
-            <li>
-            	<a href="#"><i class="fa fa-arrow-circle-up"></i>Contas a receber
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
-            		<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Acerto manual</a></li>
-            	</ul>
-            </li>
-            
-            <li>
-            	<a href="#"><i class="fa fa-exchange"></i>Transferência
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
-            	</ul>
-            </li>
-            
-            <li>
-            	<a href="#"><i class="fa fa-list-alt"></i>Relatórios
-            		 <i class="fa fa-angle-left pull-right"></i>	
-            	</a>
-            	<ul class="treeview-menu">
-            		<li><a href="#"><i class="fa fa-file-text-o"></i>Movimento financeiro</a></li>
-            		<li><a href="#"><i class="fa fa-file-text-o"></i>Movimento gerencial</a></li>
-            		<li><a href="#"><i class="fa fa-file-text-o"></i>Fluxo de caixa</a></li>
-            	</ul>
-            </li>
-            
-          </ul>
-        </li>
-        
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-globe"></i>
-                <span>Global</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li>
-	            	<a href="#"><i class="fa fa-cog"></i>Cadastros
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li th:class="${#httpServletRequest.getRequestURI() == '/cliente' ? 'active':''}"><a th:href="@{/cliente}"><i class="fa fa-pencil-square-o"></i>Cliente</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Unidade Empresarial</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Departamento</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Setor</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Seção</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Condição de pagamento</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Perfil</a></li>
-	            		<li><a href="#"><i class="fa fa-pencil-square-o"></i>Usuário</a></li>
-	            	</ul>
-            	</li>
-            	
-                <li>
-	            	<a href="#"><i class="fa fa-list-alt"></i>Relatórios
-	            		 <i class="fa fa-angle-left pull-right"></i>	
-	            	</a>
-	            	<ul class="treeview-menu">
-	            		<li><a href="#"><i class="fa fa-file-text-o"></i>Compras vs Vendas</a></li>
-	            	</ul>
-            	</li>
-            </ul>
-        </li>
-        
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-cogs"></i>
-                <span>Configuração</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-	            <li><a href="#"><i class="fa fa-download"></i>Backup</a></li>
-            </ul>
-        </li>
-        
-    </ul>
+
+				<li><a href="#"><i class="fa fa-cube"></i>Caixa <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a th:href="@{/movimento_caixa}"><i
+								class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
+						<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Estorna
+								fechamento</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-university"></i>Banco <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
+						<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Estorna
+								fechamento</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-arrow-circle-down"></i>Contas
+						a pagar <i class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
+						<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Acerto
+								manual</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-arrow-circle-up"></i>Contas
+						a receber <i class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
+						<li><a href="#"><i class="fa fa-caret-square-o-left"></i>Acerto
+								manual</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-exchange"></i>Transferência
+						<i class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-caret-square-o-right"></i>Lançamento</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-list-alt"></i>Relatórios <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Movimento
+								financeiro</a></li>
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Movimento
+								gerencial</a></li>
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Fluxo de
+								caixa</a></li>
+					</ul></li>
+
+			</ul></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-globe"></i>
+				<span>Global</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-cog"></i>Cadastros <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li
+							th:class="${#httpServletRequest.getRequestURI() == '/cliente' ? 'active':''}"><a
+							th:href="@{/cliente}"><i class="fa fa-pencil-square-o"></i>Cliente</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Unidade
+								Empresarial</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Departamento</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Setor</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Seção</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Condição
+								de pagamento</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Perfil</a></li>
+						<li><a href="#"><i class="fa fa-pencil-square-o"></i>Usuário</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-list-alt"></i>Relatórios <i
+						class="fa fa-angle-left pull-right"></i> </a>
+					<ul class="treeview-menu">
+						<li><a href="#"><i class="fa fa-file-text-o"></i>Compras
+								vs Vendas</a></li>
+					</ul></li>
+			</ul></li>
+
+		<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
+				<span>Configuração</span> <i class="fa fa-angle-left pull-right"></i>
+		</a>
+			<ul class="treeview-menu">
+				<li><a href="#"><i class="fa fa-download"></i>Backup</a></li>
+			</ul></li>
+
+	</ul>
 </section>
 <!-- /.sidebar -->

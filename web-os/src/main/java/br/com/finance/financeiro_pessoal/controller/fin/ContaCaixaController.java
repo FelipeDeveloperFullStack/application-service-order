@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
-import br.com.finance.financeiro_pessoal.domain.gl.Situacao;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.service.fin.ContaCaixaService;
 
 @RestController

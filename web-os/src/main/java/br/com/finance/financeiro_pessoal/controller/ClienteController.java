@@ -12,9 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
-import br.com.finance.financeiro_pessoal.domain.gl.Situacao;
-import br.com.finance.financeiro_pessoal.domain.gl.TipoPessoa;
-import br.com.finance.financeiro_pessoal.service.ClienteService;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
+import br.com.finance.financeiro_pessoal.domain.gl.type.TipoPessoa;
+import br.com.finance.financeiro_pessoal.service.gl.ClienteService;
 
 @RestController
 @RequestMapping(value = "/cliente")

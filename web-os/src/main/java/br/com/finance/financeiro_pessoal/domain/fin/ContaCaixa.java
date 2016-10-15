@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
-import br.com.finance.financeiro_pessoal.domain.gl.Situacao;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 
 @Entity
 @Table(name = "tbl_conta_caixa")
@@ -35,7 +35,7 @@ public class ContaCaixa extends GenericDomain{
 	@DecimalMin(value = "0.00", message = "O valor não pode ser menor que 0,00")
 	@DecimalMax(value = "9999999.99", message = "O valor não pode ser maior que 9.999.999,99")
 	@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal saldoInicial = new BigDecimal(0.0);
+	private BigDecimal saldoInicial = BigDecimal.ZERO;
 	
 	@Column(name = "cc_data_inicial")
 	@NotNull(message = "A data inicial é obrigatória!")

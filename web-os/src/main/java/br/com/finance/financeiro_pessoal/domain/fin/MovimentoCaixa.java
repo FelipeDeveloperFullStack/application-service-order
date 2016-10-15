@@ -1,14 +1,108 @@
 package br.com.finance.financeiro_pessoal.domain.fin;
 
-import java.time.LocalDate;
+import java.math.BigDecimal;
+import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+import br.com.finance.financeiro_pessoal.domain.GenericDomain;
+import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
 import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
 
-public class MovimentoCaixa {
+@Entity
+@Table(name = "tbl_movimento_caixa")
+public class MovimentoCaixa extends GenericDomain{
 
+	private static final long serialVersionUID = 4933752812585187865L;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "mc_parceiro")
+	@NotNull(message = "O parceiro é obrigatório!")
 	private Parceiro parceiro;
 	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "mc_conta_caixa")
+	@NotNull(message = "A conta financeira é obrigatório!")
 	private ContaCaixa contaCaixa;
 	
-	private LocalDate dataMovimento;
+	@Column(name = "mc_data_movimento")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dataMovimento = new Date();
+	
+	@Column(name = "mc_valor_movimento")
+	@NumberFormat(pattern = "#,##0.00")
+	@DecimalMin(value = "0.00", message = "O valor do movimento não pode ser menor que zero!")
+	private BigDecimal valorMovimento = BigDecimal.ZERO;
+	
+	@Column(name = "mc_tipo_origem_movimento")
+	@Enumerated(EnumType.STRING)
+	private TipoOrigemMovimento tipoOrigemMovimento;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "mc_saldo_financeiro")
+	private SaldoFinanceiro saldoFinanceiro;
+
+	public Parceiro getParceiro() {
+		return parceiro;
+	}
+
+	public void setParceiro(Parceiro parceiro) {
+		this.parceiro = parceiro;
+	}
+
+	public ContaCaixa getContaCaixa() {
+		return contaCaixa;
+	}
+
+	public void setContaCaixa(ContaCaixa contaCaixa) {
+		this.contaCaixa = contaCaixa;
+	}
+
+	public Date getDataMovimento() {
+		return dataMovimento;
+	}
+
+	public void setDataMovimento(Date dataMovimento) {
+		this.dataMovimento = dataMovimento;
+	}
+
+	public BigDecimal getValorMovimento() {
+		return valorMovimento;
+	}
+
+	public void setValorMovimento(BigDecimal valorMovimento) {
+		this.valorMovimento = valorMovimento;
+	}
+
+	public TipoOrigemMovimento getTipoOrigemMovimento() {
+		return tipoOrigemMovimento;
+	}
+
+	public void setTipoOrigemMovimento(TipoOrigemMovimento tipoOrigemMovimento) {
+		this.tipoOrigemMovimento = tipoOrigemMovimento;
+	}
+
+	public SaldoFinanceiro getSaldoFinanceiro() {
+		return saldoFinanceiro;
+	}
+
+	public void setSaldoFinanceiro(SaldoFinanceiro saldoFinanceiro) {
+		this.saldoFinanceiro = saldoFinanceiro;
+	}
+	
+	
 }

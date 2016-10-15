@@ -55,12 +55,5 @@ public class CategoriaDespesaController {
 		return REDIRECT_PAGE;
 	}
 	
-	@RequestMapping(value = "{codigo}",method = RequestMethod.DELETE)
-	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes){
-		CategoriaDespesa categoria = categoriaDespesaService.procurarPeloID(codigo);
-		attributes.addFlashAttribute("mensagem", "A categoria '"+categoria.getCategoria() + "' removido com sucesso!");
-		categoriaDespesaService.excluir(codigo);
-		return REDIRECT_PAGE;
-	}
 
 }

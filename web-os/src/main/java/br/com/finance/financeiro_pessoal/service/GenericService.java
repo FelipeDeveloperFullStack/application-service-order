@@ -10,6 +10,4 @@ public interface GenericService<T> {
 
 	T procurarPeloID(Long id);
 
-	void excluir(Long codigo);
-
 }

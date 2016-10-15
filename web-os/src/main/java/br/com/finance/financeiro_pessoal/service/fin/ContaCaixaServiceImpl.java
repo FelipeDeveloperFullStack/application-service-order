@@ -33,10 +33,5 @@ public class ContaCaixaServiceImpl implements ContaCaixaService{
 		return contaCaixaRepository.findOne(id);
 	}
 
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void excluir(Long codigo) {
-		
-	}
 
 }

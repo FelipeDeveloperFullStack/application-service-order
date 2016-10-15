@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.domain.fin;
+package br.com.finance.financeiro_pessoal.domain.fin.type;
 
 public enum TipoOrigemMovimento {
 	

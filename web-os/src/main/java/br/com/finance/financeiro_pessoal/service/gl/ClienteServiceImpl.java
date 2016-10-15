@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.service;
+package br.com.finance.financeiro_pessoal.service.gl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
-import br.com.finance.financeiro_pessoal.repository.ClienteRepository;
+import br.com.finance.financeiro_pessoal.repository.gl.ClienteRepository;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -33,13 +33,6 @@ public class ClienteServiceImpl implements ClienteService {
 		return clienteRepository.findOne(id);
 	}
 
-	@Override
-	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	public void excluir(Long codigo) {
-		/*
-		 * Esse método não será usado
-		 */
-	}
 
 	@Override
 	public Long totalClienteCadastrado() {
