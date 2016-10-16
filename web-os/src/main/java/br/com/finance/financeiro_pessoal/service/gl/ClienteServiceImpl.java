@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.repository.gl.ClienteRepository;
 
 @Service
@@ -42,6 +43,11 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public List<Cliente> procurarPeloNome(String nome) {
 		return clienteRepository.findByNomeContaining(nome);
+	}
+
+	@Override
+	public List<Cliente> findByClientesAtivos(Situacao situacao) {
+		return clienteRepository.findBySituacao(situacao);
 	}
 
 }

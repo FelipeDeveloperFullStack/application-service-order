@@ -54,7 +54,7 @@ public class MovimentoCaixaController {
 	public ModelAndView abrirCadastroMovimentoCaixa(MovimentoCaixa movimentoCaixa){
 		mv = new ModelAndView(PAGINA_CADASTRO_MOVIMENTO_CAIXA);
 		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
-		mv.addObject("parceiros", clienteService.listarTodos());
+		mv.addObject("parceiros", clienteService.findByClientesAtivos(Situacao.ATIVO));
 		return mv;
 	}
 	

@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
 	List<Cliente> findByNomeContaining(String nome);
+	
+	List<Cliente> findBySituacao(Situacao situacao);
 }
