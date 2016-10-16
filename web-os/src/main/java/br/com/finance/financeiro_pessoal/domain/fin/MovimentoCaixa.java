@@ -44,8 +44,8 @@ public class MovimentoCaixa extends GenericDomain{
 	private Date dataMovimento = new Date();
 	
 	@Column(name = "mc_valor_movimento")
-	@NumberFormat(pattern = "#,##0.00")
 	@DecimalMin(value = "0.00", message = "O valor do movimento não pode ser menor que zero!")
+	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valorMovimento = BigDecimal.ZERO;
 	
 	@Column(name = "mc_tipo_origem_movimento")

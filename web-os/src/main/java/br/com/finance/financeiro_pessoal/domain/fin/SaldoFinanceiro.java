@@ -44,6 +44,10 @@ public class SaldoFinanceiro extends GenericDomain {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal saldoOperacional = BigDecimal.ZERO;
 	
+	@Column(name = "sf_saldo_final")
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal saldoFinal = BigDecimal.ZERO;
+	
 	@Column(name = "sf_tipo_financeiro")
 	@Enumerated(EnumType.STRING)
 	private TipoFinanceiro tipoFinanceiro;
@@ -94,6 +98,14 @@ public class SaldoFinanceiro extends GenericDomain {
 
 	public void setTipoFinanceiro(TipoFinanceiro tipoFinanceiro) {
 		this.tipoFinanceiro = tipoFinanceiro;
+	}
+
+	public BigDecimal getSaldoFinal() {
+		return saldoFinal;
+	}
+
+	public void setSaldoFinal(BigDecimal saldoFinal) {
+		this.saldoFinal = saldoFinal;
 	}
 
 	

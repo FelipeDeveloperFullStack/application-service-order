@@ -1,5 +1,6 @@
 package br.com.finance.financeiro_pessoal.service.fin;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.finance.financeiro_pessoal.domain.fin.SaldoFinanceiro;
+import br.com.finance.financeiro_pessoal.domain.fin.type.TipoFinanceiro;
 import br.com.finance.financeiro_pessoal.repository.fin.SaldoFinanceiroRepository;
 
 @Service
@@ -31,6 +33,11 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	@Override
 	public SaldoFinanceiro procurarPeloID(Long id) {
 		return saldoFinanceiroRepository.findOne(id);
+	}
+
+	@Override
+	public SaldoFinanceiro findByDataMovimentoAndTipoFinanceiro(Date dataMovimento, TipoFinanceiro tipoFinanceiro) {
+		return saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiro(dataMovimento, tipoFinanceiro);
 	}
 
 
