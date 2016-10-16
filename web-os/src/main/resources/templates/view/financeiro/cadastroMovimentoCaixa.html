@@ -38,7 +38,7 @@
 						<div class="form-group">
 					           <label class="control-label">Conta Caixa</label>
 					           <select class="form-control input_forms input-sm" th:field="*{contaCaixa}">
-									<option th:each="cf : ${contasFinanceira}" th:value="${cf}" th:text="${cf.descricao}"></option>
+									<option th:each="cf : ${contasFinanceira}" th:value="${cf.id}" th:text="${cf.descricao}"></option>
 							   </select>
 				        </div>
 					</div>
@@ -59,7 +59,7 @@
 						<div class="form-group">
 					           <label class="control-label">Parceiro</label>
 					           <select class="form-control input_forms input-sm" th:field="*{parceiro}">
-									<option th:each="parc : ${parceiros}" th:value="${parc}" th:text="${parc.nome}"></option>
+									<option th:each="parc : ${parceiros}" th:value="${parc.id}" th:text="${parc.nome}"></option>
 							   </select>
 				        </div>
 					</div>

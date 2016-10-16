@@ -52,10 +52,6 @@ public class MovimentoCaixa extends GenericDomain{
 	@Enumerated(EnumType.STRING)
 	private TipoOrigemMovimento tipoOrigemMovimento;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "mc_saldo_financeiro")
-	private SaldoFinanceiro saldoFinanceiro;
-
 	public Parceiro getParceiro() {
 		return parceiro;
 	}
@@ -95,14 +91,5 @@ public class MovimentoCaixa extends GenericDomain{
 	public void setTipoOrigemMovimento(TipoOrigemMovimento tipoOrigemMovimento) {
 		this.tipoOrigemMovimento = tipoOrigemMovimento;
 	}
-
-	public SaldoFinanceiro getSaldoFinanceiro() {
-		return saldoFinanceiro;
-	}
-
-	public void setSaldoFinanceiro(SaldoFinanceiro saldoFinanceiro) {
-		this.saldoFinanceiro = saldoFinanceiro;
-	}
-	
 	
 }
