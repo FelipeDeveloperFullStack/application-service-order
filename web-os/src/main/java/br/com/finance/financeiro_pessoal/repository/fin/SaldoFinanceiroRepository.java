@@ -13,4 +13,5 @@ public interface SaldoFinanceiroRepository extends JpaRepository<SaldoFinanceiro
 	
 	SaldoFinanceiro findByDataMovimentoAndTipoFinanceiro(Date dataMovimento, TipoFinanceiro tipoFinanceiro);
 
+	SaldoFinanceiro findByDataMovimento(Date dataMovimento);
 }

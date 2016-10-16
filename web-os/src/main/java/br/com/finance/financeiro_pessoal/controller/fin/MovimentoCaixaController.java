@@ -12,7 +12,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoFinanceiro;
+import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
+import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.service.fin.ContaCaixaService;
+import br.com.finance.financeiro_pessoal.service.fin.MovimentoCaixaService;
 import br.com.finance.financeiro_pessoal.service.fin.SaldoFinanceiroService;
 import br.com.finance.financeiro_pessoal.service.gl.ClienteService;
 
@@ -23,6 +26,9 @@ public class MovimentoCaixaController {
 	private ModelAndView mv;
 	
 	@Autowired
+	private MovimentoCaixaService movimentoCaixaService;
+	
+	@Autowired
 	private ContaCaixaService contaCaixaService;
 	
 	@Autowired
@@ -31,32 +37,36 @@ public class MovimentoCaixaController {
 	@Autowired
 	private SaldoFinanceiroService saldoFinanceiroService;
 	
-	private static final String REDIRECT_PAGINA_PRINCIPAL = "/movimento_caixa";
+	private static final String REDIRECT_PAGINA_PRINCIPAL = "redirect:/movimento_caixa";
 	private static final String PAGINA_PRINCIPAL = "/view/financeiro/pesquisaMovimentoCaixa";
 	private static final String PAGINA_CADASTRO_MOVIMENTO_CAIXA = "/view/financeiro/cadastroMovimentoCaixa";
 	
 	@RequestMapping
 	public ModelAndView abrirPaginaMovimentoCaixa(MovimentoCaixa movimentoCaixa){
 		mv = new ModelAndView(PAGINA_PRINCIPAL);
-		mv.addObject("contasFinanceira", contaCaixaService.listarTodos());
+		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiro(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA));
+		mv.addObject("movimentoDeCaixa", movimentoCaixaService.listarTodos());
 		return mv;
 	}
 	
 	@RequestMapping(value = "/cadastro_movimento_caixa", method = RequestMethod.GET)
 	public ModelAndView abrirCadastroMovimentoCaixa(MovimentoCaixa movimentoCaixa){
 		mv = new ModelAndView(PAGINA_CADASTRO_MOVIMENTO_CAIXA);
-		mv.addObject("contasFinanceira", contaCaixaService.listarTodos());
+		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		mv.addObject("parceiros", clienteService.listarTodos());
 		return mv;
 	}
 	
 	@RequestMapping(value = "/salvar_movimento_caixa", method = RequestMethod.POST)
 	public ModelAndView salvarMovimentoCaixa(@Valid MovimentoCaixa movimentoCaixa, BindingResult bindingResult, RedirectAttributes attributes){
+		movimentoCaixa.setTipoOrigemMovimento(TipoOrigemMovimento.LANCAMENTO);
 		if(bindingResult.hasErrors()){
 			return abrirCadastroMovimentoCaixa(movimentoCaixa);
 		}
 		attributes.addFlashAttribute("mensagem", "Movimento de caixa salvo com sucesso!");
+		saldoFinanceiroService.calcularSaldoFinanceiro(movimentoCaixa);
+		movimentoCaixaService.salvar(movimentoCaixa);
 		mv = new ModelAndView(REDIRECT_PAGINA_PRINCIPAL);
 		return mv;
 	}

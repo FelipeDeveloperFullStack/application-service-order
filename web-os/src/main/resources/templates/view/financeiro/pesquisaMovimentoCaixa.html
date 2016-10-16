@@ -86,19 +86,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
+							<tr th:each="mc : ${movimentoDeCaixa}">
+								<td th:text="${mc.parceiro.nome}"></td>
+								<td th:text="${mc.tipoOrigemMovimento}"></td>
+								<td th:text="|R$: ${{mc.valorMovimento}}|"></td>
 								<td>
 									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Remover">
 										<span class="fa fa-times"></span>
 									</a>
 								</td>
 							</tr>
-							 <!-- <tr>
-								<td colspan="6" th:if="${#lists.isEmpty(contaCaixas)}">Nenhum registro encontrado!</td>
-							</tr> --> 
+							 <tr>
+								<td colspan="6" th:if="${#lists.isEmpty(movimentoDeCaixa)}">Nenhum registro encontrado!</td>
+							</tr> 
 						</tbody>
 					</table>
 				</div>

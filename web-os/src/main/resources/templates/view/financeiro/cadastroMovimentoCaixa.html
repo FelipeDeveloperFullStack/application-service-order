@@ -45,7 +45,7 @@
 					<div class="col-md-3">
 								<div class="form-group">
 				                <label>Data Movimento</label>
-				                <div class="input-group date input_forms">
+				                <div class="input-group date input_forms" th:classappend="${#fields.hasErrors('dataMovimento')} ? has-error">
 				                  <div class="input-group-addon">
 				                    <i class="fa fa-calendar"></i>
 				                  </div>
@@ -64,7 +64,7 @@
 				        </div>
 					</div>
 					<div class="col-xs-3">
-				        <div class="form-group">
+				        <div class="form-group" th:classappend="${#fields.hasErrors('valorMovimento')} ? has-error">
 				               <label>Valor</label>
 				               <input type="text" class="form-control input_forms input-sm caixa_alta js-currency" th:field="*{valorMovimento}"/>
 				        </div>

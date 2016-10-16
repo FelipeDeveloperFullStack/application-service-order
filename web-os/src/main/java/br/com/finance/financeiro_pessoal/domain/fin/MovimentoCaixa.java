@@ -13,25 +13,24 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
-import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
+import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
 
 @Entity
 @Table(name = "tbl_movimento_caixa")
 public class MovimentoCaixa extends GenericDomain{
-
+	
 	private static final long serialVersionUID = 4933752812585187865L;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "mc_parceiro")
 	@NotNull(message = "O parceiro é obrigatório!")
-	private Parceiro parceiro;
+	private Cliente parceiro;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "mc_conta_caixa")
@@ -41,10 +40,10 @@ public class MovimentoCaixa extends GenericDomain{
 	@Column(name = "mc_data_movimento")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "A data do movimento é obrigatória!")
 	private Date dataMovimento = new Date();
 	
 	@Column(name = "mc_valor_movimento")
-	@DecimalMin(value = "0.00", message = "O valor do movimento não pode ser menor que zero!")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valorMovimento = BigDecimal.ZERO;
 	
@@ -52,11 +51,11 @@ public class MovimentoCaixa extends GenericDomain{
 	@Enumerated(EnumType.STRING)
 	private TipoOrigemMovimento tipoOrigemMovimento;
 	
-	public Parceiro getParceiro() {
+	public Cliente getParceiro() {
 		return parceiro;
 	}
 
-	public void setParceiro(Parceiro parceiro) {
+	public void setParceiro(Cliente parceiro) {
 		this.parceiro = parceiro;
 	}
 

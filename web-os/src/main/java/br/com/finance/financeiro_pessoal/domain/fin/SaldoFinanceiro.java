@@ -69,7 +69,7 @@ public class SaldoFinanceiro extends GenericDomain {
 	}
 
 	public BigDecimal getTotalEntrada() {
-		return totalEntrada;
+		return totalEntrada.abs();
 	}
 
 	public void setTotalEntrada(BigDecimal totalEntrada) {
@@ -77,7 +77,7 @@ public class SaldoFinanceiro extends GenericDomain {
 	}
 
 	public BigDecimal getTotalSaida() {
-		return totalSaida;
+		return totalSaida.abs();
 	}
 
 	public void setTotalSaida(BigDecimal totalSaida) {

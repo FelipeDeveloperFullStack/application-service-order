@@ -46,6 +46,9 @@ public class ContaCaixa extends GenericDomain{
 	@Column(name = "cc_situacao")
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
+	
+	@Column(name = "cc_possui_movimento")
+	private Boolean possuiMovimento = Boolean.FALSE;
 
 	public String getDescricao() {
 		return descricao;
@@ -77,6 +80,14 @@ public class ContaCaixa extends GenericDomain{
 
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
+	}
+
+	public Boolean isPossuiMovimento() {
+		return possuiMovimento;
+	}
+
+	public void setPossuiMovimento(Boolean possuiMovimento) {
+		this.possuiMovimento = possuiMovimento;
 	}
 	
 
