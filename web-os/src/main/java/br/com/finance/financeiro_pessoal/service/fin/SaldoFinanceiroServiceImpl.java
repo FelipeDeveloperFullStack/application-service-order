@@ -29,7 +29,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	private ContaCaixaService contaCaixaService;
 	
 	@Override
-	public void calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa){
+	public SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa){
 		ContaCaixa contaCaixa = contaCaixaService.procurarPeloID(movimentoCaixa.getContaCaixa().getId());
 		BigDecimal saldoInicial = BigDecimal.ZERO;
 		if(!contaCaixa.isPossuiMovimento()){
@@ -40,7 +40,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 			calcularResumoCaixa(verificarSeExisteSaldoFinalDiaAnterior(movimentoCaixa, 
 					obterSaldoInicialMovimento(movimentoCaixa)),movimentoCaixa);
 		}
-		
+		return obterSaldoFinanceiro(movimentoCaixa);
 	}
 	
 	private BigDecimal obterSaldoInicialMovimento(MovimentoCaixa movimentoCaixa){

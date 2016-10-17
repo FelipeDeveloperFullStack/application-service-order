@@ -80,6 +80,7 @@
 						<thead>
 							<tr>
 								<th>Parceiro</th>
+								<th>Conta Caixa</th>
 								<th>Tipo Origem</th>
 								<th>Valor</th>
 								<th style="width: 5px;"><i class=""></i></th>
@@ -88,6 +89,7 @@
 						<tbody>
 							<tr th:each="mc : ${movimentoDeCaixa}">
 								<td th:text="${mc.parceiro.nome}"></td>
+								<td th:text="${mc.contaCaixa.descricao}"></td>
 								<td th:text="${mc.tipoOrigemMovimento}"></td>
 								<td th:text="|R$: ${{mc.valorMovimento}}|"></td>
 								<td>
