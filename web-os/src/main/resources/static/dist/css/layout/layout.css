@@ -63,3 +63,11 @@
 	top: 22px;
 	left: -10px;
 }
+
+.box_sombreamento {
+	box-shadow: -1px 1px 10px gray;
+}
+
+.box_header {
+	background-color: #edeced;
+}
