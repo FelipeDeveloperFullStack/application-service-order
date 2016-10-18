@@ -88,7 +88,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="mc : ${movimentoDeCaixa}">
-								<td th:text="${mc.parceiro.nome}"></td>
+								<td th:text="${mc.parceiro.parceiro}"></td>
 								<td th:text="${mc.contaCaixa.descricao}"></td>
 								<td th:text="${mc.tipoOrigemMovimento}"></td>
 								<td th:text="|R$: ${{mc.valorMovimento}}|"></td>

@@ -70,7 +70,7 @@
 						<tbody>
 							<tr th:each="cliente : ${clientes}">
 								<td th:text="${cliente.id}" style="font-weight: bold;"></td>
-								<td th:text="${cliente.nome}"></td>
+								<td th:text="${cliente.parceiro}"></td>
 								<td th:text="${cliente.cpf != ''} ? ${cliente.cpf} : ${cliente.cnpj}"></td>
 								<td th:text="${cliente.municipio}"></td>
 								<td th:text="${cliente.telefoneCelular}"></td>

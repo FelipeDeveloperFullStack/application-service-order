@@ -11,7 +11,7 @@ import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
 
-	List<Cliente> findByNomeContaining(String nome);
+	List<Cliente> findByParceiroContaining(String parceiro);
 	
 	List<Cliente> findBySituacao(Situacao situacao);
 }

@@ -59,7 +59,7 @@
 						<div class="form-group" th:classappend="${#fields.hasErrors('parceiro')} ? has-error">
 					           <label class="control-label">Parceiro</label>
 					           <select class="form-control input_forms input-sm" th:field="*{parceiro}">
-									<option th:each="parc : ${parceiros}" th:value="${parc.id}" th:text="${parc.nome}"></option>
+									<option th:each="parc : ${parceiros}" th:value="${parc.id}" th:text="${parc.parceiro}"></option>
 							   </select>
 				        </div>
 					</div>

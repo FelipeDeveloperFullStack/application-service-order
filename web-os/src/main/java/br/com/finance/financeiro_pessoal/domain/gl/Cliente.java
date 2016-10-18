@@ -10,22 +10,16 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import br.com.finance.financeiro_pessoal.domain.GenericDomain;
 import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.domain.gl.type.TipoPessoa;
 
 @Entity
 @Table(name = "tbl_cliente")
-public class Cliente extends GenericDomain{
+public class Cliente extends Parceiro{
 
 	private static final long serialVersionUID = -3773578657921276220L;
-	
-	@Column(name = "cli_nome")
-	@NotBlank(message = "O nome do cliente é obrigatório!")
-	private String nome;
 	
 	@Column(name = "cli_tipo_pessoa")
 	@Enumerated(EnumType.STRING)
@@ -133,14 +127,6 @@ public class Cliente extends GenericDomain{
 	@Column(name = "cli_situacao")
 	@Enumerated(EnumType.STRING)
 	private Situacao situacao;
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getRg() {
 		return rg;
@@ -416,7 +402,7 @@ public class Cliente extends GenericDomain{
 
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", tipoPessoa=" + tipoPessoa + ", cpf=" + cpf + ", orgaoExpedidor="
+		return "Cliente [parceiro=" + getParceiro() + ", tipoPessoa=" + tipoPessoa + ", cpf=" + cpf + ", orgaoExpedidor="
 				+ orgaoExpedidor + ", ufOrgaoExpedidor=" + ufOrgaoExpedidor + ", cnpj=" + cnpj + ", razaoSocial="
 				+ razaoSocial + ", nomeFantasia=" + nomeFantasia + ", inscricaoEstadual=" + inscricaoEstadual
 				+ ", inscricaoEstadualST=" + inscricaoEstadualST + ", inscricaoMunicipal=" + inscricaoMunicipal

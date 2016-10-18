@@ -14,12 +14,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
 
 @Entity
 @Table(name = "tbl_movimento_caixa")
@@ -30,7 +32,7 @@ public class MovimentoCaixa extends GenericDomain{
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "mc_parceiro")
 	@NotNull(message = "O parceiro é obrigatório!")
-	private Cliente parceiro;
+	private Parceiro parceiro;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "mc_conta_caixa")
@@ -51,7 +53,7 @@ public class MovimentoCaixa extends GenericDomain{
 	@Enumerated(EnumType.STRING)
 	private TipoOrigemMovimento tipoOrigemMovimento;
 	
-	public Cliente getParceiro() {
+	public Parceiro getParceiro() {
 		return parceiro;
 	}
 

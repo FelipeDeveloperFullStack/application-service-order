@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public List<Cliente> procurarPeloNome(String nome) {
-		return clienteRepository.findByNomeContaining(nome);
+		return clienteRepository.findByParceiroContaining(nome);
 	}
 
 	@Override
