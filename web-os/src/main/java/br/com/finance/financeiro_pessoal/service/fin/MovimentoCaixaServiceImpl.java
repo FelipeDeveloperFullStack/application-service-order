@@ -1,5 +1,6 @@
 package br.com.finance.financeiro_pessoal.service.fin;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
 import br.com.finance.financeiro_pessoal.repository.fin.MovimentoCaixaRepository;
 
@@ -31,6 +33,16 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Override
 	public MovimentoCaixa procurarPeloID(Long id) {
 		return movimentoCaixaRepository.findOne(id);
+	}
+
+	@Override
+	public List<MovimentoCaixa> findByDataMovimentoEquals(Date dataMovimento) {
+		return movimentoCaixaRepository.findByDataMovimentoEquals(dataMovimento);
+	}
+
+	@Override
+	public List<MovimentoCaixa> findByDataMovimentoAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa) {
+		return movimentoCaixaRepository.findByDataMovimentoAndContaCaixa(dataMovimento, contaCaixa);
 	}
 
 }

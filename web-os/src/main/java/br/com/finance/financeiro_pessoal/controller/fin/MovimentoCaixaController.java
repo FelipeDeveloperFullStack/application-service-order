@@ -46,7 +46,7 @@ public class MovimentoCaixaController {
 		mv = new ModelAndView(PAGINA_PRINCIPAL);
 		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiro(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA));
-		mv.addObject("movimentoDeCaixa", movimentoCaixaService.listarTodos());
+		mv.addObject("movimentoDeCaixa", movimentoCaixaService.findByDataMovimentoEquals(movimentoCaixa.getDataMovimento()));
 		return mv;
 	}
 	
@@ -65,7 +65,7 @@ public class MovimentoCaixaController {
 			return abrirCadastroMovimentoCaixa(movimentoCaixa);
 		}
 		attributes.addFlashAttribute("mensagem", "Movimento de caixa salvo com sucesso!");
-		movimentoCaixa.setSaldoFinanceiro(saldoFinanceiroService.calcularSaldoFinanceiro(movimentoCaixa));
+		saldoFinanceiroService.calcularSaldoFinanceiro(movimentoCaixa);
 		movimentoCaixaService.salvar(movimentoCaixa);
 		mv = new ModelAndView(REDIRECT_PAGINA_PRINCIPAL);
 		return mv;
@@ -76,6 +76,9 @@ public class MovimentoCaixaController {
 		if(bindingResult.hasErrors()){
 			return abrirPaginaMovimentoCaixa(movimentoCaixa);
 		}
+		mv = new ModelAndView(PAGINA_PRINCIPAL);
+		mv.addObject("movimentoDeCaixa", movimentoCaixaService.findByDataMovimentoAndContaCaixa(movimentoCaixa.getDataMovimento(), movimentoCaixa.getContaCaixa()));
+		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiro(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA));
 		return mv;
 	}
 

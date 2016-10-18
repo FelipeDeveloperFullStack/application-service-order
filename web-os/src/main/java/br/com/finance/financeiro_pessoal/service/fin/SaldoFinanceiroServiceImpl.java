@@ -37,15 +37,9 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 			calcularResumoCaixa(saldoInicial, movimentoCaixa);
 			atualizarContaCaixa(contaCaixa);
 		}else{
-			calcularResumoCaixa(verificarSeExisteSaldoFinalDiaAnterior(movimentoCaixa, 
-					obterSaldoInicialMovimento(movimentoCaixa)),movimentoCaixa);
+			calcularResumoCaixa(verificarSeExisteSaldoFinalDiaAnterior(movimentoCaixa, movimentoCaixa.getContaCaixa().getSaldoInicial()),movimentoCaixa);
 		}
 		return obterSaldoFinanceiro(movimentoCaixa);
-	}
-	
-	private BigDecimal obterSaldoInicialMovimento(MovimentoCaixa movimentoCaixa){
-		SaldoFinanceiro saldoFinanceiro = obterSaldoFinanceiro(movimentoCaixa);
-		return saldoFinanceiro.getSaldoInicial();
 	}
 	
 	private BigDecimal verificarSeExisteSaldoFinalDiaAnterior(MovimentoCaixa movimentoCaixa, BigDecimal saldoInicial){
@@ -56,8 +50,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		return saldo;
 	}
 	
-	private void calcularResumoCaixa(BigDecimal saldoFinalAnteriorOuSaldoInicialAtual,
-			MovimentoCaixa movimentoCaixa){
+	private void calcularResumoCaixa(BigDecimal saldoFinalAnteriorOuSaldoInicialAtual, MovimentoCaixa movimentoCaixa){
 		BigDecimal saldoInicial = saldoFinalAnteriorOuSaldoInicialAtual;
 		BigDecimal totalEntrada = BigDecimal.ZERO;
 		BigDecimal totalSaida = BigDecimal.ZERO;
@@ -80,6 +73,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		}
 		
 		SaldoFinanceiro saldoFinanceiro = obterSaldoFinanceiro(movimentoCaixa);
+		
 		if(saldoFinanceiro == null){
 			saldoFinanceiro = new SaldoFinanceiro();
 			saldoOperacional = calcularSaldoOperacional(saldoFinanceiro.getTotalEntrada().add(totalEntrada), saldoFinanceiro.getTotalSaida().add(totalSaida));
@@ -98,6 +92,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 			,BigDecimal totalEntrada, BigDecimal totalSaida){
 		
 		SaldoFinanceiro saldoFinanceiro = obterSaldoFinanceiro(movimentoCaixa);
+		
 		if(saldoFinanceiro == null){
 			saldoFinanceiro = new SaldoFinanceiro();
 			return setarSaldoFinanceiro(saldoFinanceiro, movimentoCaixa, saldoFinal, saldoInicial, saldoOperacional, tipoFinanceiro, totalEntrada, totalSaida);
@@ -109,6 +104,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	private SaldoFinanceiro setarSaldoFinanceiro(SaldoFinanceiro saldoFinanceiro,MovimentoCaixa movimentoCaixa, BigDecimal saldoFinal, BigDecimal saldoInicial
 			,BigDecimal saldoOperacional, TipoFinanceiro tipoFinanceiro
 			,BigDecimal totalEntrada, BigDecimal totalSaida){
+		
 		saldoFinanceiro.setDataMovimento(movimentoCaixa.getDataMovimento());
 		saldoFinanceiro.setSaldoFinal(saldoFinal);
 		saldoFinanceiro.setSaldoInicial(saldoInicial);
