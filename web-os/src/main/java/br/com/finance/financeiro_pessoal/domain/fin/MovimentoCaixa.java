@@ -92,5 +92,6 @@ public class MovimentoCaixa extends GenericDomain{
 	public void setTipoOrigemMovimento(TipoOrigemMovimento tipoOrigemMovimento) {
 		this.tipoOrigemMovimento = tipoOrigemMovimento;
 	}
+
 	
 }
