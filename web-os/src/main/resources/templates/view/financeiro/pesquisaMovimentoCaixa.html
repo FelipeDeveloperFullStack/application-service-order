@@ -25,7 +25,7 @@
 	</section>
 
 	<div layout:fragment="content">
-		<form method="POST" th:object="${movimentoCaixa}" th:action="@{/movimento_caixa/pesquisar_movimento}">
+		<form method="GET" th:object="${movimentoCaixa}" th:action="@{/movimento_caixa/pesquisar_movimento}">
 		
 			<div layout:include = "view/mensagens/mensagem"></div> 
 	
@@ -51,7 +51,7 @@
 								<div class="form-group">
 					                  <label class="control-label">Conta caixa</label>
 					                    <select class="form-control input_forms input-sm" th:field="*{contaCaixa}">
-											 <option th:each="c : ${contasFinanceira}" th:value="${c}" th:text="${c.descricao}"></option>
+											 <option th:each="c : ${contasFinanceira}" th:value="${c.id}" th:text="${c.descricao}"></option>
 									    </select>
 				                </div>
 				           </div>
