@@ -62,7 +62,7 @@
 							                <div class="input-group-addon">
 							                    <i class="fa fa-calendar"></i>
 							                </div>
-							                <input type="text" class="form-control pull-right input_forms input-sm datemask" th:field="*{dataMovimento}"/>
+							                <input type="text" class="form-control pull-right input_forms input-sm datemask" th:field="*{dataMovimento}" placeholder="Dia/Mês/Ano"/>
 							             </div>
 				                </div>
 				          </div>
@@ -93,7 +93,8 @@
 								<td th:text="${mc.tipoOrigemMovimento}"></td>
 								<td th:text="|R$: ${{mc.valorMovimento}}|"></td>
 								<td>
-									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="tooltip" data-placement="top" title="Remover">
+									<a class="btn btn-link btn-xs" style="color: black;" data-toggle="modal" data-target="#excluirMovimentoCaixaFinanceiro" 
+										th:attr="data-id = ${mc.id}, data-parceiro = ${mc.parceiro.parceiro}, data-conta = ${mc.contaCaixa.descricao}, data-valor = ${mc.valorMovimento}">
 										<span class="fa fa-times"></span>
 									</a>
 								</td>
@@ -148,9 +149,9 @@
 					</table>
 				</div>
 			</div>
-			
-			
 		 </form>
+		 
+			<div layout:include = "view/dialog/dialog-movimento-caixa-financeiro"></div>
 		</div>
 </body>
 </html>
