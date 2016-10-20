@@ -71,3 +71,8 @@
 .box_header {
 	background-color: #edeced;
 }
+
+.table_resumo_financeiro_tamanho_fonte {
+	font-size: 17px;
+	font-family: "arial";
+}

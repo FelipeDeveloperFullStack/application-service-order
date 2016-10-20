@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,6 +53,10 @@ public class SaldoFinanceiro extends GenericDomain {
 	@Column(name = "sf_tipo_financeiro")
 	@Enumerated(EnumType.STRING)
 	private TipoFinanceiro tipoFinanceiro;
+	
+	@OneToOne
+	@JoinColumn(name = "sf_conta_caixa")
+	private ContaCaixa contaCaixa;
 
 	public Date getDataMovimento() {
 		return dataMovimento;
@@ -108,5 +114,12 @@ public class SaldoFinanceiro extends GenericDomain {
 		this.saldoFinal = saldoFinal;
 	}
 
+	public ContaCaixa getContaCaixa() {
+		return contaCaixa;
+	}
+
+	public void setContaCaixa(ContaCaixa contaCaixa) {
+		this.contaCaixa = contaCaixa;
+	}
 	
 }

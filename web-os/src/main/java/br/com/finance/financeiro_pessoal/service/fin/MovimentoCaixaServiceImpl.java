@@ -52,4 +52,9 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 		return movimentoCaixaRepository.findAll(pageable);
 	}
 
+	@Override
+	public MovimentoCaixa findByContaCaixaEndingWith(ContaCaixa contaCaixa) {
+		return movimentoCaixaRepository.findByContaCaixaEndingWith(contaCaixa);
+	}
+
 }

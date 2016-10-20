@@ -43,7 +43,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 	
 	private BigDecimal verificarSeExisteSaldoFinalDiaAnterior(MovimentoCaixa movimentoCaixa, BigDecimal saldoInicial){
-		BigDecimal saldo = findByDataMovimentoSaldoFinalDiaAnterior(DateUtil.asLocalDate(movimentoCaixa.getDataMovimento()));
+		BigDecimal saldo = findByDataMovimentoSaldoFinalDiaAnterior(DateUtil.asLocalDate(movimentoCaixa.getDataMovimento()), movimentoCaixa.getContaCaixa(), TipoFinanceiro.CAIXA);
 		if(saldo == BigDecimal.ZERO){
 			return saldoInicial;
 		}
@@ -112,13 +112,14 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		saldoFinanceiro.setTipoFinanceiro(tipoFinanceiro);
 		saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().add(totalEntrada));
 		saldoFinanceiro.setTotalSaida(saldoFinanceiro.getTotalSaida().add(totalSaida));
+		saldoFinanceiro.setContaCaixa(movimentoCaixa.getContaCaixa());
 		
 		return saldoFinanceiro;
 	}
 	
 	private SaldoFinanceiro obterSaldoFinanceiro(MovimentoCaixa movimentoCaixa){
-		SaldoFinanceiro saldoFinanceiro = saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiro
-				(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA);
+		SaldoFinanceiro saldoFinanceiro = saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiroAndContaCaixa
+				(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA, movimentoCaixa.getContaCaixa());
 		return saldoFinanceiro;
 	}
 	
@@ -153,14 +154,14 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 
 	@Override
-	public SaldoFinanceiro findByDataMovimentoAndTipoFinanceiro(Date dataMovimento, TipoFinanceiro tipoFinanceiro) {
-		return saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiro(dataMovimento, tipoFinanceiro);
+	public SaldoFinanceiro findByDataMovimentoAndTipoFinanceiroAndContaCaixa(Date dataMovimento, TipoFinanceiro tipoFinanceiro, ContaCaixa contaCaixa) {
+		return saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiroAndContaCaixa(dataMovimento, tipoFinanceiro, contaCaixa);
 	}
 
 	@Override
-	public BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal) {
+	public BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro) {
 		SaldoFinanceiro saldoFinanceiroDataMovimentoSaldoFinalAnterior = saldoFinanceiroRepository
-				.findByDataMovimento(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal.minusDays(1)));
+				.findByDataMovimentoAndContaCaixaAndTipoFinanceiro(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal.minusDays(1)), contaCaixa, tipoFinanceiro);
 		return saldoFinanceiroDataMovimentoSaldoFinalAnterior == null 
 				? BigDecimal.ZERO : saldoFinanceiroDataMovimentoSaldoFinalAnterior.getSaldoFinal() ;
 	}

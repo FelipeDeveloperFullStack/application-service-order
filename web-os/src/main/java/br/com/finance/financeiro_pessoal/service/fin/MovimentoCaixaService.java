@@ -16,6 +16,8 @@ public interface MovimentoCaixaService extends GenericService<MovimentoCaixa>{
 	
 	Page<MovimentoCaixa> findAll(Pageable pageable);
 	
+	MovimentoCaixa findByContaCaixaEndingWith(ContaCaixa contaCaixa);
+	
 	List<MovimentoCaixa> findByDataMovimentoAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 
 }
