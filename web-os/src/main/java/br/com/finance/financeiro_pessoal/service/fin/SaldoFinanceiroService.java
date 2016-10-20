@@ -16,5 +16,8 @@ public interface SaldoFinanceiroService extends GenericService<SaldoFinanceiro>{
 	
 	BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro);
 	
-	public SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa);
+	SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa);
+	
+	void excluirSaldoFinanceiro();
+	
 }

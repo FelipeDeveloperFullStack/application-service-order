@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +38,7 @@ public class MovimentoCaixaController {
 	@Autowired
 	private SaldoFinanceiroService saldoFinanceiroService;
 	
-	//private static final String REDIRECT_PAGINA_PRINCIPAL = "redirect:/movimento_caixa";
+	private static final String REDIRECT_PAGINA_PRINCIPAL = "redirect:/movimento_caixa";
 	private static final String PAGINA_PRINCIPAL = "/view/financeiro/pesquisaMovimentoCaixa";
 	private static final String PAGINA_CADASTRO_MOVIMENTO_CAIXA = "/view/financeiro/cadastroMovimentoCaixa";
 	
@@ -79,6 +80,12 @@ public class MovimentoCaixaController {
 		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiroAndContaCaixa(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA, movimentoCaixa.getContaCaixa()));
 		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		return mv;
+	}
+	
+	@RequestMapping(value = "{codigo}")
+	public ModelAndView excluirMovimentoCaixa(@PathVariable Long codigo, MovimentoCaixa movimentoCaixa){
+		movimentoCaixaService.excluirMovimentoCaixa(codigo);
+		return new ModelAndView(REDIRECT_PAGINA_PRINCIPAL);
 	}
 
 }

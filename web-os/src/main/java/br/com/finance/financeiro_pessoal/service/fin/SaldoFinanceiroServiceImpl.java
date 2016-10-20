@@ -165,6 +165,11 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		return saldoFinanceiroDataMovimentoSaldoFinalAnterior == null 
 				? BigDecimal.ZERO : saldoFinanceiroDataMovimentoSaldoFinalAnterior.getSaldoFinal() ;
 	}
+
+	@Override
+	public void excluirSaldoFinanceiro() {
+		
+	}
 	
 
 

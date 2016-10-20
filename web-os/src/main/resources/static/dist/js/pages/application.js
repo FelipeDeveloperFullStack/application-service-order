@@ -17,11 +17,25 @@ $('#excluirMovimentoCaixaFinanceiro').on('show.bs.modal', function(event){
 	var button = $(event.relatedTarget);
 	
 	var id = button.data('id');
+	
 	var parceiro = button.data('parceiro');
+	
 	var contaCaixa = button.data('conta');
+	
 	var valorMovimento = button.data('valor');
 	
 	var modal = $(this);
+	
+	var form = modal.find('form');
+	
+	var valueAction = form.data('url-base');
+	
+	if(!valueAction.endsWith('/')){
+		valueAction += '/';
+	}
+	
+	form.attr('action', valueAction + id);
+	
 	modal.find('.modal-body span').html('Deseja realmente apagar o movimento de caixa financeiro? '
 			+'<table class="table table-hover">'+
 				'<thead>'+
