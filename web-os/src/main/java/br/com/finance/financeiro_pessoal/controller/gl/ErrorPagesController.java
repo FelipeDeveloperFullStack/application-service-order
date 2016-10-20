@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.controller;
+package br.com.finance.financeiro_pessoal.controller.gl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +19,11 @@ public class ErrorPagesController {
 	@RequestMapping("/500")
 	public String internalServerError() {
 		return "/error/500";
+	}
+	
+	@RequestMapping("/400")
+	public String badRequest(){
+		return "/error/400";
 	}
 	
 }

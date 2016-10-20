@@ -7,6 +7,10 @@ function mascara_valores_decimais(){
 }
 //https://github.com/plentz/jquery-maskmoney
 
+$(document).ready(function (){
+	mascara_valores_decimais();
+});	
+
 // Página de movimento de caixa - exclusão
 $('#excluirMovimentoCaixaFinanceiro').on('show.bs.modal', function(event){
 	
@@ -18,11 +22,23 @@ $('#excluirMovimentoCaixaFinanceiro').on('show.bs.modal', function(event){
 	var valorMovimento = button.data('valor');
 	
 	var modal = $(this);
-	modal.find('.modal-body span').html('Deseja realmente apagar o movimento de caixa financeiro? <p></p> Código: <strong>'
-			+id+'</strong> Parceiro: <strong>'+parceiro+'</strong> <p></p> Conta Caixa: <strong>'+contaCaixa+'</strong> Valor do movimento: <strong>'+valorMovimento+'</strong>');
-	
+	modal.find('.modal-body span').html('Deseja realmente apagar o movimento de caixa financeiro? '
+			+'<table class="table table-hover">'+
+				'<thead>'+
+					'<th> ID </th>'+
+					'<th> Parceiro </th>'+
+					'<th> Conta Caixa </th>'+
+					'<th> Valor do movimento </th>'+
+				'</thead>'+
+				'<tbody>'+
+					'<tr>'+
+						'<td>'+id+'</td>'+
+						'<td>'+parceiro+'</td>'+
+						'<td>'+contaCaixa+'</td>'+
+						'<td class="js-currency">'+valorMovimento+'</td>'+
+					'</tr>'+
+				'</tbody>'+
+			'</table>');
 });
 
-$(document).ready(function (){
-	mascara_valores_decimais();
-});	
+

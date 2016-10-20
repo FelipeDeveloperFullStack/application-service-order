@@ -1,4 +1,4 @@
-package br.com.finance.financeiro_pessoal.controller;
+package br.com.finance.financeiro_pessoal.controller.gl;
 
 import javax.validation.Valid;
 

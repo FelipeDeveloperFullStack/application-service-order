@@ -15,8 +15,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		ErrorPage error400 = new ErrorPage(HttpStatus.BAD_REQUEST, "/400");
 		ErrorPage error404 = new ErrorPage(HttpStatus.NOT_FOUND, "/404");
 		ErrorPage error500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500");
-		//ErrorPage error403 = new ErrorPage(HttpStatus.FORBIDDEN, "/403");
-		return (container -> container.addErrorPages(error404, error400, error500));
+		ErrorPage error403 = new ErrorPage(HttpStatus.FORBIDDEN, "/403");
+		return (container -> container.addErrorPages(error404, error400, error500, error403));
 	}
 	
 }
