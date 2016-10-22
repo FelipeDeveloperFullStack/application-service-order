@@ -168,7 +168,8 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	@Override
 	public BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro) {
 		List<SaldoFinanceiro> saldosPorContaCaixa = findByContaCaixa(contaCaixa);
-		SaldoFinanceiro saldo = saldosPorContaCaixa.get(saldosPorContaCaixa.size() - 1);
+		List<SaldoFinanceiro> saldosAnterioresDaDataMovimento = findByDataMovimentoBefore(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal));
+		SaldoFinanceiro saldo = saldosAnterioresDaDataMovimento.get(saldosAnterioresDaDataMovimento.size() - 1);
 		if(saldo == null){
 			return BigDecimal.ZERO;
 		}else{
@@ -177,13 +178,13 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 
 	@Override
-	public void excluirSaldoFinanceiro() {
-		
+	public List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa) {
+		return saldoFinanceiroRepository.findByContaCaixa(contaCaixa);
 	}
 
 	@Override
-	public List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa) {
-		return saldoFinanceiroRepository.findByContaCaixa(contaCaixa);
+	public List<SaldoFinanceiro> findByDataMovimentoBefore(Date dataMovimento) {
+		return saldoFinanceiroRepository.findByDataMovimentoBefore(dataMovimento);
 	}
 	
 

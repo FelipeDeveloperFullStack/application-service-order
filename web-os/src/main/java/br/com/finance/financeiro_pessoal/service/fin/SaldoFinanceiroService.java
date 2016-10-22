@@ -19,12 +19,12 @@ public interface SaldoFinanceiroService extends GenericService<SaldoFinanceiro>{
 	
 	SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa);
 	
-	void excluirSaldoFinanceiro();
-	
 	List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa);
 	
 	BigDecimal calcularSaldoFinal(BigDecimal saldoOperacional, BigDecimal saldoInicial);
 	
 	BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida);
+	
+	List<SaldoFinanceiro> findByDataMovimentoBefore(Date dataMovimento);
 	
 }
