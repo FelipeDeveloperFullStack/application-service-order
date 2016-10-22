@@ -67,33 +67,55 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Override
 	public void excluirMovimentoCaixa(Long id) {
 		MovimentoCaixa movimentoCaixa = procurarPeloID(id);
-		for(SaldoFinanceiro saldoFinanceiro : saldoFinanceiroService.listarTodos()){
-			if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
-				saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
+		System.out.println(movimentoCaixa);
+		for(SaldoFinanceiro saldoFinanceiro : saldoFinanceiroService.findByContaCaixa(movimentoCaixa.getContaCaixa())){
+			if(saldoFinanceiro.getDataMovimento().equals(movimentoCaixa.getDataMovimento())){
+				if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
+					saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
+					movimentoCaixaRepository.delete(id);
+					return;
+				}
 			}
 		}
-		movimentoCaixaRepository.delete(id);
 	}
 	
 	private SaldoFinanceiro consistirMovimento(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
 		
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.LANCAMENTO){
 			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
+			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.PAGAMENTO){
 			saldoFinanceiro.setTotalSaida(saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
+			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.RECEBIMENTO){
 			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
+			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.TRANSFERENCIA_PARA_DESTINO){
 			saldoFinanceiro.setTotalSaida(saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento()));
-		}
+			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
+			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
+		} 
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.TRANSFERENCIA_PARA_ORIGEM){
 			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
+			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		
 		return saldoFinanceiro;
 	}
+	
+	private BigDecimal calcularSaldoOperacional(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
+		return saldoFinanceiro.getSaldoOperacional().subtract(movimentoCaixa.getValorMovimento());
+	}
+	private BigDecimal calcularSaldoFinal(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
+		return saldoFinanceiro.getSaldoFinal().subtract(movimentoCaixa.getValorMovimento());
+	}
+	
 
 }

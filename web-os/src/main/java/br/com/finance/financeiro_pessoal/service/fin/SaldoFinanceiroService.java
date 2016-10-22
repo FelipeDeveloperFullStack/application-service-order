@@ -3,6 +3,7 @@ package br.com.finance.financeiro_pessoal.service.fin;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
@@ -19,5 +20,11 @@ public interface SaldoFinanceiroService extends GenericService<SaldoFinanceiro>{
 	SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa);
 	
 	void excluirSaldoFinanceiro();
+	
+	List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa);
+	
+	BigDecimal calcularSaldoFinal(BigDecimal saldoOperacional, BigDecimal saldoInicial);
+	
+	BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida);
 	
 }

@@ -87,7 +87,8 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		
 	}
 	
-	private SaldoFinanceiro setarSaldoFinanceiro(MovimentoCaixa movimentoCaixa, BigDecimal saldoFinal, BigDecimal saldoInicial
+	private SaldoFinanceiro setarSaldoFinanceiro(MovimentoCaixa movimentoCaixa
+			,BigDecimal saldoFinal, BigDecimal saldoInicial
 			,BigDecimal saldoOperacional, TipoFinanceiro tipoFinanceiro
 			,BigDecimal totalEntrada, BigDecimal totalSaida){
 		
@@ -95,9 +96,13 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		
 		if(saldoFinanceiro == null){
 			saldoFinanceiro = new SaldoFinanceiro();
-			return setarSaldoFinanceiro(saldoFinanceiro, movimentoCaixa, saldoFinal, saldoInicial, saldoOperacional, tipoFinanceiro, totalEntrada, totalSaida);
+			return setarSaldoFinanceiro(saldoFinanceiro, movimentoCaixa, saldoFinal
+					, saldoInicial, saldoOperacional
+					, tipoFinanceiro, totalEntrada, totalSaida);
 		}else{
-			return setarSaldoFinanceiro(saldoFinanceiro, movimentoCaixa, saldoFinal, saldoInicial, saldoOperacional, tipoFinanceiro, totalEntrada, totalSaida);
+			return setarSaldoFinanceiro(saldoFinanceiro, movimentoCaixa
+					, saldoFinal, saldoInicial, saldoOperacional
+					, tipoFinanceiro, totalEntrada, totalSaida);
 		}
 	}
 	
@@ -124,11 +129,13 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 	
 	
-	private BigDecimal calcularSaldoFinal(BigDecimal saldoOperacional, BigDecimal saldoInicial){
+	@Override
+	public BigDecimal calcularSaldoFinal(BigDecimal saldoOperacional, BigDecimal saldoInicial){
 		return saldoOperacional.add(saldoInicial);
 	}
 	
-	private BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida){
+	@Override
+	public BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida){
 		return totalEntrada.subtract(totalSaida);
 	}
 	
@@ -160,15 +167,23 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 
 	@Override
 	public BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro) {
-		SaldoFinanceiro saldoFinanceiroDataMovimentoSaldoFinalAnterior = saldoFinanceiroRepository
-				.findByDataMovimentoAndContaCaixaAndTipoFinanceiro(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal.minusDays(1)), contaCaixa, tipoFinanceiro);
-		return saldoFinanceiroDataMovimentoSaldoFinalAnterior == null 
-				? BigDecimal.ZERO : saldoFinanceiroDataMovimentoSaldoFinalAnterior.getSaldoFinal() ;
+		List<SaldoFinanceiro> saldosPorContaCaixa = findByContaCaixa(contaCaixa);
+		SaldoFinanceiro saldo = saldosPorContaCaixa.get(saldosPorContaCaixa.size() - 1);
+		if(saldo == null){
+			return BigDecimal.ZERO;
+		}else{
+			return saldo.getSaldoFinal();
+		}
 	}
 
 	@Override
 	public void excluirSaldoFinanceiro() {
 		
+	}
+
+	@Override
+	public List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa) {
+		return saldoFinanceiroRepository.findByContaCaixa(contaCaixa);
 	}
 	
 

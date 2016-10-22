@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,12 +28,12 @@ public class MovimentoCaixa extends GenericDomain{
 	
 	private static final long serialVersionUID = 4933752812585187865L;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "mc_parceiro")
 	@NotNull(message = "O parceiro é obrigatório!")
 	private Parceiro parceiro;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name = "mc_conta_caixa")
 	@NotNull(message = "A conta financeira é obrigatório!")
 	private ContaCaixa contaCaixa;
