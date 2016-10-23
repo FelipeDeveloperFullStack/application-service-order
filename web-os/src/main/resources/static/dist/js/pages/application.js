@@ -9,7 +9,24 @@ function mascara_valores_decimais(){
 
 $(document).ready(function (){
 	mascara_valores_decimais();
+	formatarDatas();
 });	
+
+function isValidDate(str) {
+    return str == 'dd/mm/yyyy' || ( /^\d{2}\/\d{2}\/\d{4}$/.test(str) && new Date(str).getTime() );
+}
+
+function formatarDatas(){
+	$(".datemask").mask("99/99/9999");
+	$(".cpf").mask("999.999.999-99");
+	$(".cnpj").mask("99.999.999/9999-99");
+	$(".cep").mask("99999-999");
+	$(".fone_residencial").mask("(62) 9999-9999");
+	$(".fone_celular").mask("(62) 9999-9999");
+	$(".caixa_alta").keyup(function (){
+		$(this).val($(this).val().toUpperCase());
+	});
+}
 
 // Página de movimento de caixa - exclusão
 $('#excluirMovimentoCaixaFinanceiro').on('show.bs.modal', function(event){
@@ -55,4 +72,6 @@ $('#excluirMovimentoCaixaFinanceiro').on('show.bs.modal', function(event){
 			'</table>');
 });
 
-
+function desabilitarBotao(){
+	$('.js-disabled').prop('disabled', true);
+}

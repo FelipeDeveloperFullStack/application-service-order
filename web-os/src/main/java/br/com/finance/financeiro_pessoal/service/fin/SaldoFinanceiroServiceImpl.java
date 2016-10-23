@@ -2,6 +2,8 @@ package br.com.finance.financeiro_pessoal.service.fin;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -123,8 +125,8 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 	
 	private SaldoFinanceiro obterSaldoFinanceiro(MovimentoCaixa movimentoCaixa){
-		SaldoFinanceiro saldoFinanceiro = saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiroAndContaCaixa
-				(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA, movimentoCaixa.getContaCaixa());
+		SaldoFinanceiro saldoFinanceiro = saldoFinanceiroRepository.findByDataMovimentoAndContaCaixaAndTipoFinanceiro
+				(movimentoCaixa.getDataMovimento(), movimentoCaixa.getContaCaixa() ,TipoFinanceiro.CAIXA);
 		return saldoFinanceiro;
 	}
 	
@@ -162,18 +164,33 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 
 	@Override
 	public SaldoFinanceiro findByDataMovimentoAndTipoFinanceiroAndContaCaixa(Date dataMovimento, TipoFinanceiro tipoFinanceiro, ContaCaixa contaCaixa) {
-		return saldoFinanceiroRepository.findByDataMovimentoAndTipoFinanceiroAndContaCaixa(dataMovimento, tipoFinanceiro, contaCaixa);
+		return saldoFinanceiroRepository.findByDataMovimentoAndContaCaixaAndTipoFinanceiro(dataMovimento, contaCaixa ,tipoFinanceiro);
 	}
 
 	@Override
 	public BigDecimal findByDataMovimentoSaldoFinalDiaAnterior(LocalDate dataMovimentoAnteriorSaldoFinal, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro) {
-		List<SaldoFinanceiro> saldosPorContaCaixa = findByContaCaixa(contaCaixa);
-		List<SaldoFinanceiro> saldosAnterioresDaDataMovimento = findByDataMovimentoBefore(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal));
-		SaldoFinanceiro saldo = saldosAnterioresDaDataMovimento.get(saldosAnterioresDaDataMovimento.size() - 1);
-		if(saldo == null){
-			return BigDecimal.ZERO;
+		List<SaldoFinanceiro> saldosAnterioresDaDataMovimento = findByDataMovimentoBeforeAndContaCaixa(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal), contaCaixa);
+		SaldoFinanceiro saldo = new SaldoFinanceiro();
+		if(saldosAnterioresDaDataMovimento.isEmpty()){
+			saldo = findByDataMovimentoAndTipoFinanceiroAndContaCaixa(DateUtil.asDate(dataMovimentoAnteriorSaldoFinal), TipoFinanceiro.CAIXA, contaCaixa);
+			if(saldo == null){
+				return BigDecimal.ZERO;
+			}else{
+				return saldo.getSaldoInicial();
+			}
 		}else{
-			return saldo.getSaldoFinal();
+			Collections.sort(saldosAnterioresDaDataMovimento, new Comparator<SaldoFinanceiro>() {
+				@Override
+				public int compare(SaldoFinanceiro saldo1, SaldoFinanceiro saldo2) {
+					return saldo1.getDataMovimento().compareTo(saldo2.getDataMovimento());
+				}
+			});
+			saldo = saldosAnterioresDaDataMovimento.get(saldosAnterioresDaDataMovimento.size() - 1);
+			if(saldo == null){
+				return BigDecimal.ZERO;
+			}else{
+				return saldo.getSaldoFinal();
+			}
 		}
 	}
 
@@ -183,8 +200,8 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 
 	@Override
-	public List<SaldoFinanceiro> findByDataMovimentoBefore(Date dataMovimento) {
-		return saldoFinanceiroRepository.findByDataMovimentoBefore(dataMovimento);
+	public List<SaldoFinanceiro> findByDataMovimentoBeforeAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa) {
+		return saldoFinanceiroRepository.findByDataMovimentoBeforeAndContaCaixa(dataMovimento, contaCaixa);
 	}
 	
 

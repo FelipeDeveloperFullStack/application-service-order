@@ -25,6 +25,6 @@ public interface SaldoFinanceiroService extends GenericService<SaldoFinanceiro>{
 	
 	BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida);
 	
-	List<SaldoFinanceiro> findByDataMovimentoBefore(Date dataMovimento);
+	List<SaldoFinanceiro> findByDataMovimentoBeforeAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 	
 }

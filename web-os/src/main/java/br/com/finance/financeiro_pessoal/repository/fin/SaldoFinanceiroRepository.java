@@ -13,11 +13,9 @@ import br.com.finance.financeiro_pessoal.domain.fin.type.TipoFinanceiro;
 @Repository
 public interface SaldoFinanceiroRepository extends JpaRepository<SaldoFinanceiro, Long>{
 	
-	SaldoFinanceiro findByDataMovimentoAndTipoFinanceiroAndContaCaixa(Date dataMovimento, TipoFinanceiro tipoFinanceiro, ContaCaixa contaCaixa);
-
 	SaldoFinanceiro findByDataMovimentoAndContaCaixaAndTipoFinanceiro(Date dataMovimento, ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro);
 	
 	List<SaldoFinanceiro> findByContaCaixa(ContaCaixa contaCaixa);
 	
-	List<SaldoFinanceiro> findByDataMovimentoBefore(Date dataMovimento);
+	List<SaldoFinanceiro> findByDataMovimentoBeforeAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 }

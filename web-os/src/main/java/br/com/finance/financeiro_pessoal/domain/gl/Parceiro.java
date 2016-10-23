@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import br.com.finance.financeiro_pessoal.domain.GenericDomain;
 
 @Entity
@@ -13,6 +15,7 @@ public class Parceiro extends GenericDomain{
 
 	private static final long serialVersionUID = -4191571551428701093L;
 	
+	@NotEmpty(message = "O parceiro é obrigatório!")
 	@Column(name = "cli_parceiro")
 	private String parceiro;
 

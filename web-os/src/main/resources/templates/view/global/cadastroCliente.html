@@ -22,7 +22,7 @@
 	</section>
 
 	<div layout:fragment="content">
-		<form method="POST" th:object="${cliente}" th:action="@{/cliente}">
+		<form method="POST" th:object="${cliente}" th:action="@{/cliente}" onsubmit="desabilitarBotao()">
 		
 		<input type="hidden" th:field="*{id}"/>
 		
@@ -190,7 +190,7 @@
 							<div class="col-md-2">
 								<div class="form-group">
 				                  <label for="uf">UF</label>
-				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="uf" th:field="*{uf}"/>
+				                  <input type="text" class="form-control input_forms input-sm caixa_alta" id="uf" th:field="*{uf}" size="2" maxlength="2"/>
 				                </div>
 							</div>
 							<div class="col-md-3">
@@ -314,7 +314,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<button type="submit" class="btn cor_atalho_dashboard">
+						<button type="submit" class="btn cor_atalho_dashboard js-disabled">
 			                <i class="fa fa-save"></i> Salvar
 			            </button>
 					</div>

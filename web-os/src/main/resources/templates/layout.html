@@ -273,19 +273,6 @@
 <script th:src="@{/plugins/jQuery/jQuery-2.2.0.min.js}"></script>
 <script th:src="@{/dist/js/pages/jquery-ui.min.js}"></script>
 <script th:src="@{/plugins/jQuery/jquery.mask.js}"></script>
-<script>
-	$(document).ready(function (){
-		$(".datemask").mask("99/99/9999");
-		$(".cpf").mask("999.999.999-99");
-		$(".cnpj").mask("99.999.999/9999-99");
-		$(".cep").mask("99999-999");
-		$(".fone_residencial").mask("(62) 9999-9999");
-		$(".fone_celular").mask("(62) 9999-9999");
-		$(".caixa_alta").keyup(function (){
-			$(this).val($(this).val().toUpperCase());
-		});
-	});
-</script>
 <script th:src="@{/plugins/jQuery/jquery.maskMoney.min.js}"></script>
 <script th:src="@{/bootstrap/js/bootstrap-dynamic-tabs.js}"></script>
 <script th:src="@{/dist/js/pages/application.js}"></script>

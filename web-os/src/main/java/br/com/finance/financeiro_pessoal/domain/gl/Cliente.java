@@ -76,7 +76,7 @@ public class Cliente extends Parceiro{
 	private String logradouro;
 	
 	@Column(name = "cli_numero")
-	private String numero;
+	private String numero = new String("S/N");
 	
 	@Column(name = "cli_complemento")
 	private String complemento;
@@ -277,7 +277,7 @@ public class Cliente extends Parceiro{
 	}
 
 	public void setUf(String uf) {
-		this.uf = uf;
+		this.uf = uf.replace(",", "");
 	}
 
 	public String getMunicipio() {

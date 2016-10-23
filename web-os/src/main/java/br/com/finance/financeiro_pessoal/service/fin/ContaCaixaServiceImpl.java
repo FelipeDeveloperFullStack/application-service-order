@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
 import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.repository.fin.ContaCaixaRepository;
+import br.com.finance.financeiro_pessoal.service.HandlerRuntimeException;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -21,7 +22,12 @@ public class ContaCaixaServiceImpl implements ContaCaixaService{
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public ContaCaixa salvar(ContaCaixa contaCaixa) {
-		return contaCaixaRepository.save(contaCaixa);
+		try {
+			return contaCaixaRepository.save(contaCaixa);
+		} catch (RuntimeException e) {
+			HandlerRuntimeException.handlerRuntimeException(e.getMessage(), ContaCaixaServiceImpl.class);
+		}
+		return contaCaixa;
 	}
 
 	@Override

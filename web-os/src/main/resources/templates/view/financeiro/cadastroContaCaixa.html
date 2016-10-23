@@ -22,7 +22,7 @@
 	</section>
 
 	<div layout:fragment="content">
-		<form method="POST" th:object="${contaCaixa}" th:action="@{/conta_caixa}">
+		<form method="POST" th:object="${contaCaixa}" th:action="@{/conta_caixa}" onsubmit="desabilitarBotao()">
 		
 		 <input type="hidden" th:field="*{id}"/> 
 		
@@ -68,7 +68,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<button type="submit" class="btn cor_atalho_dashboard">
+						<button type="submit" class="btn cor_atalho_dashboard js-disabled">
 			                <i class="fa fa-save"></i> Salvar
 			            </button>
 					</div>

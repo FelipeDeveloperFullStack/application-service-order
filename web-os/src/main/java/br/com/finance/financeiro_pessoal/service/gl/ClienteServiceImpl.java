@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
 import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
 import br.com.finance.financeiro_pessoal.repository.gl.ClienteRepository;
+import br.com.finance.financeiro_pessoal.service.HandlerRuntimeException;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -21,7 +22,20 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public Cliente salvar(Cliente cliente) {
-		return clienteRepository.save(cliente);
+		return consistirCliente(cliente);
+	}
+	
+	private Cliente consistirCliente(Cliente cliente){
+		try {
+			if(cliente.getParceiro().isEmpty()){
+				HandlerRuntimeException.handlerRuntimeException("O nome do parceiro é obrigatório!", getClass());
+			}else{
+				return clienteRepository.save(cliente);
+			}
+		} catch (RuntimeException e) {
+			HandlerRuntimeException.handlerRuntimeException(e.getMessage(), getClass());
+		}
+		return cliente;
 	}
 
 	@Override

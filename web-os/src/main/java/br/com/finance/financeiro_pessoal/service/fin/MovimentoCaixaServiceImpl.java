@@ -67,42 +67,46 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Override
 	public void excluirMovimentoCaixa(Long id) {
 		MovimentoCaixa movimentoCaixa = procurarPeloID(id);
-		System.out.println(movimentoCaixa);
 		for(SaldoFinanceiro saldoFinanceiro : saldoFinanceiroService.findByContaCaixa(movimentoCaixa.getContaCaixa())){
 			if(saldoFinanceiro.getDataMovimento().equals(movimentoCaixa.getDataMovimento())){
 				if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
 					saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
-					movimentoCaixaRepository.delete(id);
+					deletarMovimentoCaixa(id);
 					return;
 				}
 			}
 		}
 	}
 	
+	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+	private void deletarMovimentoCaixa(Long id){
+		movimentoCaixaRepository.delete(id);
+	}
+	
 	private SaldoFinanceiro consistirMovimento(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
 		
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.LANCAMENTO){
-			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setTotalEntrada(calcularTotalEntrada(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.PAGAMENTO){
-			saldoFinanceiro.setTotalSaida(saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setTotalSaida(calcularTotalSaida(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.RECEBIMENTO){
-			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setTotalEntrada(calcularTotalEntrada(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.TRANSFERENCIA_PARA_DESTINO){
-			saldoFinanceiro.setTotalSaida(saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setTotalSaida(calcularTotalSaida(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		} 
 		if(movimentoCaixa.getTipoOrigemMovimento() == TipoOrigemMovimento.TRANSFERENCIA_PARA_ORIGEM){
-			saldoFinanceiro.setTotalEntrada(saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento()));
+			saldoFinanceiro.setTotalEntrada(calcularTotalEntrada(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoOperacional(calcularSaldoOperacional(movimentoCaixa, saldoFinanceiro));
 			saldoFinanceiro.setSaldoFinal(calcularSaldoFinal(movimentoCaixa, saldoFinanceiro));
 		}
@@ -116,6 +120,11 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	private BigDecimal calcularSaldoFinal(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
 		return saldoFinanceiro.getSaldoFinal().subtract(movimentoCaixa.getValorMovimento());
 	}
-	
+	private BigDecimal calcularTotalEntrada(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
+		return saldoFinanceiro.getTotalEntrada().subtract(movimentoCaixa.getValorMovimento());
+	}
+	private BigDecimal calcularTotalSaida(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
+		return saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento());
+	}
 
 }

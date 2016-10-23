@@ -9,7 +9,7 @@
 	
 <div class="modal fade" id="excluirMovimentoCaixaFinanceiro" tabindex="-1" data-keyboard="false" data-backdrop="static">
 	<div class="modal-dialog">
-		<form th:attr="data-url-base='/movimento_caixa'" method="POST">
+		<form th:attr="data-url-base='/movimento_caixa'" method="POST" onsubmit="desabilitarBotao()">
 			<input type="hidden" name="_method" value="DELETE"/>
 			<div class="modal-content">
 				<div class="modal-header">
@@ -22,8 +22,8 @@
 					<span></span>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
-        			<button type="submit" class="btn btn-danger">Excluir</button>
+					<button type="button" class="btn btn-link js-disabled" data-dismiss="modal">Cancelar</button>
+        			<button type="submit" class="btn btn-danger js-disabled">Excluir</button>
 				</div>
 			</div>			
 		</form>

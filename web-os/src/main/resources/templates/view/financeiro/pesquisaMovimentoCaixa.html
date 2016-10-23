@@ -25,7 +25,7 @@
 	</section>
 
 	<div layout:fragment="content">
-		<form method="GET" th:object="${movimentoCaixa}" th:action="@{/movimento_caixa/pesquisar_movimento}">
+		<form class="js-form" method="GET" th:object="${movimentoCaixa}" th:action="@{/movimento_caixa/pesquisar_movimento}">
 		
 			<div layout:include = "view/mensagens/mensagem"></div> 
 	
@@ -68,7 +68,7 @@
 				          </div>
 				          <div class="col-md-3">
 								<div class="form-group position_buttons">
-					                    <button type="submit" class="btn cor_atalho_dashboard">
+					                    <button type="submit" class="btn cor_atalho_dashboard" id="data" name="data">
 							             	<i class="fa fa-save"></i> Pesquisar
 							        	</button>
 					           </div>
