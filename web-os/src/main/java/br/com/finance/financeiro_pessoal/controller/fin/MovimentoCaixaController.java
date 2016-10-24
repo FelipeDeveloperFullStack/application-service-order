@@ -77,12 +77,10 @@ public class MovimentoCaixaController {
 	@RequestMapping(value = "/pesquisar_movimento", method = RequestMethod.GET)
 	public ModelAndView pesquisarMovimentoCaixa(MovimentoCaixa movimentoCaixa) {
 		mv = new ModelAndView(PAGINA_PRINCIPAL);
-		mv.addObject("movimentoDeCaixa", movimentoCaixaService
-				.findByDataMovimentoAndContaCaixa(movimentoCaixa.getDataMovimento(), movimentoCaixa.getContaCaixa()));
-		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiroAndContaCaixa(
-				movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA, movimentoCaixa.getContaCaixa()));
-		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		saldoFinanceiroService.calcularSaldoFinanceiro(movimentoCaixa);
+		mv.addObject("movimentoDeCaixa", movimentoCaixaService.findByDataMovimentoAndContaCaixa(movimentoCaixa.getDataMovimento(), movimentoCaixa.getContaCaixa()));
+		mv.addObject("resumoCaixa", saldoFinanceiroService.findByDataMovimentoAndTipoFinanceiroAndContaCaixa(movimentoCaixa.getDataMovimento(), TipoFinanceiro.CAIXA, movimentoCaixa.getContaCaixa()));
+		mv.addObject("contasFinanceira", contaCaixaService.findByContaCaixaAtivo(Situacao.ATIVO));
 		return mv;
 	}
 
