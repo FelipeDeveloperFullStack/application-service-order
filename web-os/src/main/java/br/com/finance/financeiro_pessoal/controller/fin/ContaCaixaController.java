@@ -52,12 +52,6 @@ public class ContaCaixaController {
 		if(bindingResult.hasErrors()){
 			return cadastroContaCaixa(contaCaixa);
 		}
-		if(contaCaixa.getId() != null){
-			ContaCaixa conta = contaCaixaService.procurarPeloID(contaCaixa.getId());
-			contaCaixa.setSaldoInicial(conta.getSaldoInicial());
-			contaCaixa.setDataInicial(conta.getDataInicial());
-			contaCaixa.setPossuiMovimento(conta.isPossuiMovimento());
-		}
 		attributes.addFlashAttribute("mensagem", "Conta caixa salvo com sucesso!");
 		contaCaixaService.salvar(contaCaixa);
 		return new ModelAndView(REDIRECT_PRINCIPAL);

@@ -27,17 +27,10 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	@Autowired
 	private SaldoFinanceiroRepository saldoFinanceiroRepository;
 	
-	@Autowired
-	private ContaCaixaService contaCaixaService;
-	
 	@Override
 	public SaldoFinanceiro calcularSaldoFinanceiro(MovimentoCaixa movimentoCaixa){
-		ContaCaixa contaCaixa = contaCaixaService.procurarPeloID(movimentoCaixa.getContaCaixa().getId());
-		BigDecimal saldoInicial = BigDecimal.ZERO;
-		if(!contaCaixa.isPossuiMovimento()){
-			saldoInicial = contaCaixa.getSaldoInicial();
-			calcularResumoCaixa(saldoInicial, movimentoCaixa);
-			atualizarContaCaixa(contaCaixa);
+		if(!movimentoCaixa.getContaCaixa().isPossuiMovimento()){
+			calcularResumoCaixa(movimentoCaixa.getContaCaixa().getSaldoInicial(), movimentoCaixa);
 		}else{
 			calcularResumoCaixa(verificarSeExisteSaldoFinalDiaAnterior(movimentoCaixa, movimentoCaixa.getContaCaixa().getSaldoInicial()),movimentoCaixa);
 		}
@@ -143,11 +136,6 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	@Override
 	public BigDecimal calcularSaldoOperacional(BigDecimal totalEntrada, BigDecimal totalSaida){
 		return totalEntrada.subtract(totalSaida);
-	}
-	
-	private void atualizarContaCaixa(ContaCaixa contaCaixa){
-		contaCaixa.setPossuiMovimento(Boolean.TRUE);
-		contaCaixaService.salvar(contaCaixa);
 	}
 	
 	@Override

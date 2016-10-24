@@ -28,6 +28,11 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Autowired
 	private SaldoFinanceiroService saldoFinanceiroService;
 	
+	@Autowired
+	private ContaCaixaService contaCaixaService;
+
+	private MovimentoCaixa movimentoCaixa;
+	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public MovimentoCaixa salvar(MovimentoCaixa movimentoCaixa) {
@@ -67,20 +72,24 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Override
 	public void excluirMovimentoCaixa(Long id) {
 		MovimentoCaixa movimentoCaixa = procurarPeloID(id);
-		for(SaldoFinanceiro saldoFinanceiro : saldoFinanceiroService.findByContaCaixa(movimentoCaixa.getContaCaixa())){
-			if(saldoFinanceiro.getDataMovimento().equals(movimentoCaixa.getDataMovimento())){
-				if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
-					saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
-					deletarMovimentoCaixa(id);
-					return;
+			for(SaldoFinanceiro saldoFinanceiro : saldoFinanceiroService.findByContaCaixa(movimentoCaixa.getContaCaixa())){
+				if(saldoFinanceiro.getDataMovimento().equals(movimentoCaixa.getDataMovimento())){
+					if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
+						saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
+						deletarMovimentoCaixa(id);
+						return;
+					}
 				}
-			}
 		}
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	private void deletarMovimentoCaixa(Long id){
+		movimentoCaixa = procurarPeloID(id);
 		movimentoCaixaRepository.delete(id);
+		if(procurarPeloID(id) == null){
+			contaCaixaService.atualizarContaCaixa(movimentoCaixa.getContaCaixa(),Boolean.FALSE);
+		}
 	}
 	
 	private SaldoFinanceiro consistirMovimento(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
@@ -125,6 +134,11 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	}
 	private BigDecimal calcularTotalSaida(MovimentoCaixa movimentoCaixa, SaldoFinanceiro saldoFinanceiro){
 		return saldoFinanceiro.getTotalSaida().subtract(movimentoCaixa.getValorMovimento());
+	}
+
+	@Override
+	public List<MovimentoCaixa> findByContaCaixa(ContaCaixa contaCaixa) {
+		return movimentoCaixaRepository.findByContaCaixa(contaCaixa);
 	}
 
 }

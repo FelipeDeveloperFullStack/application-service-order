@@ -71,6 +71,7 @@ public class MovimentoCaixaController {
 		attributes.addFlashAttribute("mensagem", "Movimento de caixa salvo com sucesso!");
 		saldoFinanceiroService.calcularSaldoFinanceiro(movimentoCaixa);
 		movimentoCaixaService.salvar(movimentoCaixa);
+		contaCaixaService.atualizarContaCaixa(movimentoCaixa.getContaCaixa(), Boolean.TRUE);
 		return abrirPaginaMovimentoCaixa(movimentoCaixa);
 	}
 

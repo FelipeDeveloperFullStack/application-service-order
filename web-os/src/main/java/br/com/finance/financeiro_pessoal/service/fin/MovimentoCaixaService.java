@@ -18,6 +18,8 @@ public interface MovimentoCaixaService extends GenericService<MovimentoCaixa>{
 	
 	MovimentoCaixa findByContaCaixaEndingWith(ContaCaixa contaCaixa);
 	
+	List<MovimentoCaixa> findByContaCaixa(ContaCaixa contaCaixa);
+	
 	List<MovimentoCaixa> findByDataMovimentoAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 	
 	void excluirMovimentoCaixa(Long id);

@@ -9,5 +9,7 @@ import br.com.finance.financeiro_pessoal.service.GenericService;
 public interface ContaCaixaService extends GenericService<ContaCaixa>{
 	
 	List<ContaCaixa> findByContaCaixaAtivo(Situacao situacao);
+	
+	void atualizarContaCaixa(ContaCaixa contaCaixa, Boolean possuiMovimento);
 
 }

@@ -17,5 +17,7 @@ public interface MovimentoCaixaRepository extends JpaRepository<MovimentoCaixa, 
 	MovimentoCaixa findByContaCaixaEndingWith(ContaCaixa contaCaixa);
 	
 	List<MovimentoCaixa> findByDataMovimentoAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
+	
+	List<MovimentoCaixa> findByContaCaixa(ContaCaixa contaCaixa);
 
 }

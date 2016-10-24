@@ -51,7 +51,7 @@
 					<div class="col-md-3">
 						<div class="form-group">
 						      <label for="sin">Saldo Inicial</label>
-						      <input type="text" class="form-control input_forms input-sm caixa_alta js-currency" id="sin" th:disabled="${id == null ? 'false' : 'disabled'}" th:field="*{saldoInicial}" />
+						      <input type="text" class="form-control input_forms input-sm caixa_alta js-currency" id="sin" th:disabled="${contaCaixa.possuiMovimento == false ? 'false' : 'disabled'}" th:field="*{saldoInicial}" />
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -61,7 +61,7 @@
 				                <div class="input-group-addon">
 				                    <i class="fa fa-calendar"></i>
 				                </div>
-				                <input type="text" class="form-control pull-right input_forms input-sm datemask" th:disabled="${id == null ? 'false' : 'disabled'}" th:field="*{{dataInicial}}"/>
+				                <input type="text" class="form-control pull-right input_forms input-sm datemask" th:disabled="${contaCaixa.possuiMovimento == false ? 'false' : 'disabled'}" th:field="*{{dataInicial}}" placeholder="Dia/Mês/Ano"/>
 				             </div>
 				        </div>
 					</div>
