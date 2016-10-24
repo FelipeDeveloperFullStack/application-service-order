@@ -45,6 +45,9 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 	
 	private BigDecimal verificarSeExisteSaldoFinalDiaAnterior(MovimentoCaixa movimentoCaixa, BigDecimal saldoInicial){
+		
+		calcularTodoSaldosFinanceiros(movimentoCaixa.getContaCaixa(), TipoFinanceiro.CAIXA);
+		
 		BigDecimal saldo = findByDataMovimentoSaldoFinalDiaAnterior(DateUtil.asLocalDate(movimentoCaixa.getDataMovimento()), movimentoCaixa.getContaCaixa(), TipoFinanceiro.CAIXA);
 		if(saldo == BigDecimal.ZERO){
 			return saldoInicial;
@@ -52,7 +55,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		return saldo;
 	}
 	
-	private void calcularResumoCaixa(BigDecimal saldoFinalAnteriorOuSaldoInicialAtual, MovimentoCaixa movimentoCaixa){
+	private void calcularResumoCaixa(BigDecimal saldoFinalAnteriorOuSaldoInicialAtual,MovimentoCaixa movimentoCaixa){
 		BigDecimal saldoInicial = saldoFinalAnteriorOuSaldoInicialAtual;
 		BigDecimal totalEntrada = BigDecimal.ZERO;
 		BigDecimal totalSaida = BigDecimal.ZERO;
@@ -108,7 +111,8 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		}
 	}
 	
-	private SaldoFinanceiro setarSaldoFinanceiro(SaldoFinanceiro saldoFinanceiro,MovimentoCaixa movimentoCaixa, BigDecimal saldoFinal, BigDecimal saldoInicial
+	private SaldoFinanceiro setarSaldoFinanceiro(SaldoFinanceiro saldoFinanceiro
+			,MovimentoCaixa movimentoCaixa, BigDecimal saldoFinal, BigDecimal saldoInicial
 			,BigDecimal saldoOperacional, TipoFinanceiro tipoFinanceiro
 			,BigDecimal totalEntrada, BigDecimal totalSaida){
 		
@@ -204,6 +208,27 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 		return saldoFinanceiroRepository.findByDataMovimentoBeforeAndContaCaixa(dataMovimento, contaCaixa);
 	}
 	
-
-
+	//Usar esse método nos outros programas
+	private void calcularTodoSaldosFinanceiros(ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro){
+		List<SaldoFinanceiro> saldos = saldoFinanceiroRepository.findByContaCaixaAndTipoFinanceiro(contaCaixa, tipoFinanceiro);
+		if(saldos != null){
+			Collections.sort(saldos, new Comparator<SaldoFinanceiro>() {
+				@Override
+				public int compare(SaldoFinanceiro s1, SaldoFinanceiro s2) {
+					return s1.getDataMovimento().compareTo(s2.getDataMovimento());
+				}
+			});
+			for(SaldoFinanceiro saldo : saldos){
+				saldo.setSaldoOperacional(calcularSaldoOperacional(saldo.getTotalEntrada(), saldo.getTotalSaida()));
+				BigDecimal saldoAnterior = findByDataMovimentoSaldoFinalDiaAnterior(DateUtil.asLocalDate(saldo.getDataMovimento()), contaCaixa, tipoFinanceiro);
+				if(saldoAnterior == BigDecimal.ZERO){
+					saldo.setSaldoInicial(contaCaixa.getSaldoInicial());
+				}else{
+					saldo.setSaldoInicial(saldoAnterior);
+				}
+				saldo.setSaldoFinal(calcularSaldoFinal(saldo.getSaldoOperacional(), saldo.getSaldoInicial()));
+				salvar(saldo);
+			}
+		}
+	}
 }
