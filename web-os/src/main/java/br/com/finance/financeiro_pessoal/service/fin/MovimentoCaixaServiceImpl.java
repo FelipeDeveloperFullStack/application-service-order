@@ -16,6 +16,8 @@ import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.SaldoFinanceiro;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoFinanceiro;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
+import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
+import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
 import br.com.finance.financeiro_pessoal.repository.fin.MovimentoCaixaRepository;
 
 @Service

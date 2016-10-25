@@ -1,5 +1,6 @@
 package br.com.finance.financeiro_pessoal.service.gl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
@@ -14,4 +15,5 @@ public interface ClienteService extends GenericService<Cliente>{
 	
 	List<Cliente> findByClientesAtivos(Situacao situacao);
 	
+	BigDecimal calcularTotalMovimentosRecebidoCliente(Cliente cliente);
 }

@@ -41,6 +41,7 @@ public class ClienteController {
 	public ModelAndView visualzarCliente(@PathVariable Long id){
 		mv = new ModelAndView(CAMINHO_PAGINA_VISUALIZAR_CLIENTE);
 		mv.addObject("cliente", clienteService.procurarPeloID(id));
+		mv.addObject("totalMovimentoRecebido", clienteService.calcularTotalMovimentosRecebidoCliente(clienteService.procurarPeloID(id)));
 		return mv;
 	}
 	

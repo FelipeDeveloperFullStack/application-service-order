@@ -1,5 +1,6 @@
 package br.com.finance.financeiro_pessoal.service.gl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
+import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
 import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
 import br.com.finance.financeiro_pessoal.domain.gl.type.Situacao;
+import br.com.finance.financeiro_pessoal.repository.fin.MovimentoCaixaRepository;
 import br.com.finance.financeiro_pessoal.repository.gl.ClienteRepository;
 import br.com.finance.financeiro_pessoal.service.HandlerRuntimeException;
 
@@ -18,6 +22,9 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
+	
+	@Autowired
+	private MovimentoCaixaRepository movimentoCaixaRepository;
 	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
@@ -37,7 +44,23 @@ public class ClienteServiceImpl implements ClienteService {
 		}
 		return cliente;
 	}
-
+	
+	public BigDecimal calcularTotalMovimentosRecebidoCliente(Cliente cliente){
+		BigDecimal valorTotal = BigDecimal.ZERO;
+		for(MovimentoCaixa mov : movimentoCaixaRepository.findByParceiro(cliente)){
+			if(mov.getTipoOrigemMovimento() == TipoOrigemMovimento.LANCAMENTO){
+				valorTotal = valorTotal.add(mov.getValorMovimento());
+			}
+			if(mov.getTipoOrigemMovimento() == TipoOrigemMovimento.RECEBIMENTO){
+				valorTotal = valorTotal.add(mov.getValorMovimento());
+			}
+			if(mov.getTipoOrigemMovimento() == TipoOrigemMovimento.TRANSFERENCIA_PARA_ORIGEM){
+				valorTotal = valorTotal.add(mov.getValorMovimento());
+			}
+		}
+		return valorTotal;
+	}
+	
 	@Override
 	public List<Cliente> listarTodos() {
 		return clienteRepository.findAll();

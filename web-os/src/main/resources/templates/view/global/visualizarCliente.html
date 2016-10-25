@@ -251,10 +251,11 @@
 				<div class="tab-pane" id="tab_3">
 					<div class="row">
 						<div class="col-md-6">
-							<div class="small-box bg-aqua">
+							<div class="small-box bg-purple margin">
 					            <div class="inner">
-					              <p>Total de lançamentos recebido</p>
-					              <h3>R$: 150,98</h3>
+					              <p>Total de lançamentos recebidos</p>
+					              <h3 th:text="|R$: ${{totalMovimentoRecebido == 0 ? '0,00' : totalMovimentoRecebido}}|"></h3>
+					           	  <small th:text="|Total do mês: ${{totalMovimentoRecebido == 0 ? '0,00' : totalMovimentoRecebido}}|"></small> 	
 					            </div>
 					            <div class="icon">
 					              <i class="fa fa-arrow-up"></i>
@@ -263,10 +264,11 @@
 					          </div>
 						</div>
 						<div class="col-md-6">
-							<div class="small-box bg-red">
+							<div class="small-box bg-maroon margin">
 					            <div class="inner">
-					              <p>Total de lançamentos pago</p>
-					              <h3>R$: 58,00</h3>
+					              <p>Total de lançamentos pagos</p>
+					              <h3>R$: 0,00</h3>
+					              <small>Total do mês: R$: 0,00</small> 	
 					            </div>
 					            <div class="icon">
 					              <i class="fa fa-arrow-down"></i>
@@ -277,22 +279,24 @@
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<div class="small-box cor_atalho_dashboard">
+							<div class="small-box bg-orange margin">
 					            <div class="inner">
-					              <p>Total de Lançamentos</p>
-					              <h3>15</h3>
+					              <p>Total de títulos a receber pendentes</p>
+					              <h3>R$: 0,00</h3>
+					              <small>Total do mês: R$: 0,00</small> 	
 					            </div>
 					            <div class="icon">
-					              <i class="fa fa-bookmark-o"></i>
+					              <i class="fa fa-retweet"></i>
 					            </div>
 					            <a href="#" class="small-box-footer"></a>
 					          </div>
 						</div>
 						<div class="col-md-6">
-							<div class="small-box bg-yellow">
+							<div class="small-box bg-orange margin">
 					            <div class="inner">
-					              <p>Total de lançamentos pendente</p>
-					              <h3>R$: 320,50</h3>
+					              <p>Total de títulos a pagar pendentes</p>
+					              <h3>R$: 0,00</h3>
+					              <small>Total do mês: R$: 0,00</small> 	
 					            </div>
 					            <div class="icon">
 					              <i class="fa fa-retweet"></i>

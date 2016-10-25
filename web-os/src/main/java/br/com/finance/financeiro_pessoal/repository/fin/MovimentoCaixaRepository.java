@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
+import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
 
 @Repository
 public interface MovimentoCaixaRepository extends JpaRepository<MovimentoCaixa, Long>{
@@ -19,5 +20,7 @@ public interface MovimentoCaixaRepository extends JpaRepository<MovimentoCaixa, 
 	List<MovimentoCaixa> findByDataMovimentoAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 	
 	List<MovimentoCaixa> findByContaCaixa(ContaCaixa contaCaixa);
+	
+	List<MovimentoCaixa> findByParceiro(Parceiro parceiro);
 
 }
