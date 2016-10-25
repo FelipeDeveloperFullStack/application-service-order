@@ -10,14 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import br.com.finance.financeiro_pessoal.domain.fin.ContaCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.MovimentoCaixa;
 import br.com.finance.financeiro_pessoal.domain.fin.SaldoFinanceiro;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoFinanceiro;
 import br.com.finance.financeiro_pessoal.domain.fin.type.TipoOrigemMovimento;
-import br.com.finance.financeiro_pessoal.domain.gl.Cliente;
-import br.com.finance.financeiro_pessoal.domain.gl.Parceiro;
 import br.com.finance.financeiro_pessoal.repository.fin.MovimentoCaixaRepository;
 
 @Service
@@ -33,8 +30,6 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	@Autowired
 	private ContaCaixaService contaCaixaService;
 
-	private MovimentoCaixa movimentoCaixa;
-	
 	@Override
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public MovimentoCaixa salvar(MovimentoCaixa movimentoCaixa) {
@@ -78,7 +73,7 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 				if(saldoFinanceiro.getDataMovimento().equals(movimentoCaixa.getDataMovimento())){
 					if(saldoFinanceiro.getTipoFinanceiro() == TipoFinanceiro.CAIXA){
 						saldoFinanceiroService.salvar(consistirMovimento(movimentoCaixa, saldoFinanceiro));
-						deletarMovimentoCaixa(id);
+						deletarMovimentoCaixa(id, movimentoCaixa.getContaCaixa());
 						return;
 					}
 				}
@@ -86,11 +81,12 @@ public class MovimentoCaixaServiceImpl implements MovimentoCaixaService{
 	}
 	
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
-	private void deletarMovimentoCaixa(Long id){
-		movimentoCaixa = procurarPeloID(id);
+	private void deletarMovimentoCaixa(Long id, ContaCaixa contaCaixa){
 		movimentoCaixaRepository.delete(id);
-		if(procurarPeloID(id) == null){
-			contaCaixaService.atualizarContaCaixa(movimentoCaixa.getContaCaixa(),Boolean.FALSE);
+		List<MovimentoCaixa> movimentos = findByContaCaixa(contaCaixa);
+		if(movimentos.isEmpty()){
+			contaCaixaService.atualizarContaCaixa(contaCaixa,Boolean.FALSE);
+			saldoFinanceiroService.calcularTodoSaldosFinanceiros(contaCaixa, TipoFinanceiro.CAIXA);
 		}
 	}
 	

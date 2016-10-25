@@ -27,4 +27,6 @@ public interface SaldoFinanceiroService extends GenericService<SaldoFinanceiro>{
 	
 	List<SaldoFinanceiro> findByDataMovimentoBeforeAndContaCaixa(Date dataMovimento, ContaCaixa contaCaixa);
 	
+	void calcularTodoSaldosFinanceiros(ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro);
+	
 }

@@ -197,7 +197,7 @@ public class SaldoFinanceiroServiceImpl implements SaldoFinanceiroService {
 	}
 	
 	//Usar esse método nos outros programas
-	private void calcularTodoSaldosFinanceiros(ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro){
+	public void calcularTodoSaldosFinanceiros(ContaCaixa contaCaixa, TipoFinanceiro tipoFinanceiro){
 		List<SaldoFinanceiro> saldos = saldoFinanceiroRepository.findByContaCaixaAndTipoFinanceiro(contaCaixa, tipoFinanceiro);
 		if(saldos != null){
 			Collections.sort(saldos, new Comparator<SaldoFinanceiro>() {
