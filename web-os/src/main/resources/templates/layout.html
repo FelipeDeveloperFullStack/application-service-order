@@ -5,34 +5,20 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">WEB OS</title>
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" />
-    <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap-dynamic-tabs.css}" media="all"/>
-    <!-- Font Awesome -->
     <link rel="stylesheet" th:href="@{/dist/fonts/font-awesome.css}" />
-    <!-- Ionicons -->
-   <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" /> -->
-     <link rel="stylesheet" th:href="@{/fonts/ionicons.min.css}"/>
-    <!-- Date Picker -->
-    <link rel="stylesheet" th:href="@{/plugins/datepicker/datepicker3.css}"/>
-    <!-- iCheck -->
+    <!--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" /> -->
+    <link rel="stylesheet" th:href="@{/fonts/ionicons.min.css}"/>
     <link rel="stylesheet" th:href="@{/plugins/iCheck/all.css}" />
-    <!-- Theme style -->
     <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" th:href="@{/dist/css/skins/_all-skins.min.css}"/>
-    <!-- Morris chart -->
+    <link rel="stylesheet" th:href="@{/dist/css/skins/_all-skins.min.css}"/> 
     <link rel="stylesheet" th:href="@{/plugins/morris/morris.css}"/>
-    <!-- jvectormap -->
     <link rel="stylesheet" th:href="@{/plugins/jvectormap/jquery-jvectormap-1.2.2.css}"/>
-    <!-- Daterange picker -->
     <link rel="stylesheet" th:href="@{/plugins/daterangepicker/daterangepicker-bs3.css}"/>
-    <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" th:href="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css}"/>
-	<link rel="stylesheet" th:href="@{/dist/css/layout/layout.css}" media="all"/>
+	<link rel="stylesheet" th:href="@{/dist/css/layout/layout.css}"/>
 </head>
 <body class="hold-transition skin-blue sidebar-mini sidebar-collapse fixed">
 <div class="wrapper">
@@ -283,15 +269,11 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> -->
-<script th:src="@{/plugins/morris/morris.min.js}"></script>
+<!-- <script th:src="@{/plugins/morris/morris.min.js}"></script> -->
 <script th:src="@{/plugins/sparkline/jquery.sparkline.min.js}"></script>
 <script th:src="@{/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js}"></script>
 <script th:src="@{/plugins/jvectormap/jquery-jvectormap-world-mill-en.js}"></script>
 <script th:src="@{/plugins/knob/jquery.knob.js}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script> -->
-<script th:src="@{/plugins/daterangepicker/daterangepicker.js}"></script>
-<script th:src="@{/plugins/datepicker/bootstrap-datepicker.js}"></script>
 <script th:src="@{/plugins/validator.min.js}"></script>
 <script th:src="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js}"></script>
 <script th:src="@{/plugins/slimScroll/jquery.slimscroll.min.js}"></script>

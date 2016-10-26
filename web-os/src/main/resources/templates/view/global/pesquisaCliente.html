@@ -26,7 +26,7 @@
 
 	<div layout:fragment="content">
 	
-		<form th:object="${cliente}" method="POST" th:action="@{/cliente}">
+		<form th:object="${cliente}" method="GET" th:action="@{/cliente}">
 		
 			<div layout:include = "view/mensagens/mensagem"></div>
 	
@@ -53,6 +53,32 @@
 					</div>
 				</div>
 				<div class="box-body">
+				
+					<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+					                  <label class="control-label">Situação</label>
+					                    <select class="form-control input_forms input-sm">
+											 <option>ATIVO</option>
+											 <option>INATIVO</option>
+									    </select>
+				                </div>
+				           </div>
+				           <div class="col-md-6">     
+				                <div class="form-group">
+					                  <label class="control-label">Nome</label>
+					                  <input type="text" class="form-control input_forms input-sm caixa_alta" autofocus="autofocus"/>
+				                </div>
+				          </div>
+				          <div class="col-md-3">
+								<div class="form-group position_buttons">
+					                    <button type="submit" class="btn cor_atalho_dashboard">
+							             	<i class="fa fa-save"></i> Pesquisar
+							        	</button>
+					           </div>
+				           </div>
+						</div>
+				
 					<table class="table table-condensed table-hover">
 						<thead>
 							<tr>

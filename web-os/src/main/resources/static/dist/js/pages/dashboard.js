@@ -3,7 +3,7 @@
  * Date: 4 Jan 2014
  * Description:
  *      This is a demo file used only for the main dashboard (index.html)
- **/
+ *
 
 $(function () {
 
@@ -45,7 +45,7 @@ $(function () {
     window.alert("You chose: " + start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
   });
 
-  /* jQueryKnob */
+   jQueryKnob 
   $(".knob").knob();
 
   //jvectormap data
@@ -122,7 +122,7 @@ $(function () {
     height: '250px'
   });
 
-  /* Morris.js Charts */
+   Morris.js Charts 
   // Sales chart
   var area = new Morris.Area({
     element: 'revenue-chart',
@@ -195,7 +195,7 @@ $(function () {
     line.redraw();
   });
 
-  /* The todo list plugin */
+   The todo list plugin 
   $(".todo-list").todolist({
     onCheck: function (ele) {
       window.console.log("The element has been checked");
@@ -208,3 +208,4 @@ $(function () {
   });
 
 });
+*/
