@@ -23,15 +23,22 @@ public class ContaCaixaServiceImpl implements ContaCaixaService{
 	@Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	public ContaCaixa salvar(ContaCaixa contaCaixa) {
 		try {
-			ContaCaixa conta = procurarPeloID(contaCaixa.getId());
-			if(conta.isPossuiMovimento()){
-				contaCaixa.setDataInicial(conta.getDataInicial());
-				contaCaixa.setSaldoInicial(conta.getSaldoInicial());
-				contaCaixa.setPossuiMovimento(conta.isPossuiMovimento());
+			if(contaCaixa.getId() != null){
+				contaCaixa = setarContaCaixa(contaCaixa);
 			}
 			return contaCaixaRepository.save(contaCaixa);
 		} catch (RuntimeException e) {
 			HandlerRuntimeException.handlerRuntimeException(e.getMessage(), ContaCaixaServiceImpl.class);
+		}
+		return contaCaixa;
+	}
+	
+	private ContaCaixa setarContaCaixa(ContaCaixa contaCaixa){
+		ContaCaixa conta = procurarPeloID(contaCaixa.getId());
+		if(conta.isPossuiMovimento()){
+			contaCaixa.setDataInicial(conta.getDataInicial());
+			contaCaixa.setSaldoInicial(conta.getSaldoInicial());
+			contaCaixa.setPossuiMovimento(conta.isPossuiMovimento());
 		}
 		return contaCaixa;
 	}
